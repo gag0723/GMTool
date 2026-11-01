@@ -216,11 +216,19 @@
 
   /* ---------------- 杂凑算法猜测 ---------------- */
   (function () {
-    const HASH_ORDER = ['SM3', 'SHA', 'MD5', 'SHA224', 'SHA256', 'SHA384', 'SHA512', 'SHA3_224', 'SHA3_256', 'SHA3_384', 'SHA3_512'];
+    const HASH_ORDER = ['SM3', 'SHA', 'MD5', 'SHA224', 'SHA256', 'SHA384', 'SHA512', 'SHA3_224', 'SHA3_256', 'SHA3_384', 'SHA3_512',
+      'RIPEMD_160', 'BLAKE2B_512', 'BLAKE2S_256', 'WHIRLPOOL', 'SHAKE128', 'SHAKE256', 'GOST3411',
+      'KECCAK_224', 'KECCAK_256', 'KECCAK_384', 'KECCAK_512', 'TIGER', 'SKEIN_256', 'SKEIN_512', 'SKEIN_1024', 'DSTU7564_256', 'DSTU7564_512'];
     const TYPE_OF = {
       'SM3': 'SM3', 'SHA-1': 'SHA', 'MD5': 'MD5', 'SHA-224': 'SHA224', 'SHA-256': 'SHA256',
       'SHA-384': 'SHA384', 'SHA-512': 'SHA512', 'SHA3-224': 'SHA3_224', 'SHA3-256': 'SHA3_256',
-      'SHA3-384': 'SHA3_384', 'SHA3-512': 'SHA3_512'
+      'SHA3-384': 'SHA3_384', 'SHA3-512': 'SHA3_512', 'RIPEMD_160': 'RIPEMD_160',
+      'BLAKE2B_512': 'BLAKE2B_512', 'BLAKE2S_256': 'BLAKE2S_256', 'WHIRLPOOL': 'WHIRLPOOL',
+      'SHAKE128': 'SHAKE128', 'SHAKE256': 'SHAKE256', 'GOST3411': 'GOST3411',
+      'KECCAK_224': 'KECCAK_224', 'KECCAK_256': 'KECCAK_256', 'KECCAK_384': 'KECCAK_384',
+      'KECCAK_512': 'KECCAK_512', 'TIGER': 'TIGER', 'SKEIN_256': 'SKEIN_256',
+      'SKEIN_512': 'SKEIN_512', 'SKEIN_1024': 'SKEIN_1024', 'DSTU7564_256': 'DSTU7564_256',
+      'DSTU7564_512': 'DSTU7564_512'
     };
 
     function digestToHex(raw, fmt) {
@@ -245,7 +253,7 @@
       key: 'hash/all',
       cat: 'hash',
       title: '杂凑算法猜测',
-      desc: '一次计算 11 种杂凑算法，并根据原始摘要高亮匹配项',
+      desc: '一次计算 23 种杂凑算法，并根据原始摘要高亮匹配项',
       help: [
         { title: '数据格式要求', items: ['字符串输入按 UTF-8 处理。', '十六进制输入应为合法 HEX 字符串。', 'Base64 输入应为合法 Base64 编码。'] },
         { title: '长度要求', items: ['消息长度不能超过 5000 个字节。'] },

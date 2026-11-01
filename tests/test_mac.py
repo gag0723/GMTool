@@ -269,13 +269,13 @@ def test_api_errors(client, payload, keyword):
 
 
 def test_api_hash_all(client):
-    """杂凑猜测：11 种算法 + 原始摘要匹配置顶。"""
+    """杂凑猜测：23 种算法 + 原始摘要匹配置顶。"""
     data = client.post("/api/hash/digest/all", json={
         "message": "abc", "messageFormat": "TEXT", "originDigest": "", "hashFormat": "HEX",
     }).get_json()
     assert data["code"] == 0
     rows = data["data"]["rows"]
-    assert len(rows) == 11
+    assert len(rows) == 23
     mapping = {r["algo"]: r["value"] for r in rows}
     assert mapping["SM3"] == "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0"
     assert mapping["MD5"] == "900150983cd24fb0d6963f7d28e17f72"

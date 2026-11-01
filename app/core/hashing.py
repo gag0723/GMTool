@@ -121,7 +121,7 @@ _RMD_ZR = (
     (6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2),
     (15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13),
     (8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14),
-    (12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 9, 11, 3),
+    (12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11),
 )
 _RMD_SL = (
     (11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8),
@@ -321,7 +321,7 @@ def _tiger(data: bytes) -> bytes:
     tail += ((len(data) * 8) & _M64).to_bytes(8, "little")
     for off in range(0, len(tail), 64):
         _tiger_compress(tail[off:off + 64], res)
-    return struct.pack(">3Q", *res)
+    return struct.pack("<3Q", *res)
 
 
 # --------------------------------------------------------------------------- #
@@ -421,119 +421,21 @@ def _gost3411_94(data: bytes) -> bytes:
 
 
 # --------------------------------------------------------------------------- #
-# Skein-256/512/1024（Threefish + UBI，BouncyCastle 兼容）
-# --------------------------------------------------------------------------- #
-_SKEIN_C240 = 0x1BD11BDAA9FC1A22
-
-_THREEFISH_ROT = {
-    4: ((14, 16), (52, 57), (23, 40), (5, 37), (25, 33), (46, 12), (58, 22), (32, 32)),
-    8: ((46, 36, 19, 37), (33, 27, 14, 42), (17, 49, 36, 39), (44, 9, 54, 56),
-        (39, 30, 34, 24), (13, 50, 10, 17), (25, 29, 39, 43), (8, 35, 56, 22)),
-    16: ((24, 13, 8, 47, 8, 17, 22, 37), (38, 19, 10, 55, 49, 18, 23, 52),
-         (33, 4, 51, 13, 34, 41, 59, 17), (5, 20, 48, 41, 47, 28, 16, 25),
-         (41, 9, 37, 31, 12, 47, 44, 30), (16, 34, 56, 51, 4, 53, 42, 41),
-         (31, 44, 47, 46, 19, 42, 44, 25), (9, 48, 35, 52, 23, 31, 37, 20)),
-}
-_THREEFISH_PERM = {
-    4: (0, 3, 2, 1),
-    8: (2, 1, 4, 7, 6, 5, 0, 3),
-    16: (0, 9, 2, 13, 6, 11, 4, 15, 10, 7, 12, 3, 14, 5, 8, 1),
-}
-_THREEFISH_ROUNDS = {4: 72, 8: 72, 16: 80}
-
-
-def _threefish_subkeys(key, tweak, nw: int):
-    k = list(key) + [_SKEIN_C240]
-    par = 0
-    for w in key:
-        par ^= w
-    k[nw] = par ^ _SKEIN_C240
-    t = [tweak[0], tweak[1], tweak[0] ^ tweak[1]]
-    subkeys = []
-    for d in range(_THREEFISH_ROUNDS[nw] // 4 + 1):
-        sk = [k[(d + i) % (nw + 1)] for i in range(nw - 3)]
-        sk.append(k[(d + nw - 3) % (nw + 1)] + t[d % 3])
-        sk.append(k[(d + nw - 2) % (nw + 1)] + t[(d + 1) % 3])
-        sk.append(k[(d + nw - 1) % (nw + 1)] + d)
-        subkeys.append([w & _M64 for w in sk])
-    return subkeys
-
-
-def _threefish_encrypt(words, key, tweak, nw: int):
-    rounds = _THREEFISH_ROUNDS[nw]
-    rot = _THREEFISH_ROT[nw]
-    perm = _THREEFISH_PERM[nw]
-    subkeys = _threefish_subkeys(key, tweak, nw)
-    v = [(words[i] + subkeys[0][i]) & _M64 for i in range(nw)]
-    for d in range(rounds):
-        if d and d % 4 == 0:
-            sk = subkeys[d // 4]
-            v = [(v[i] + sk[i]) & _M64 for i in range(nw)]
-        r = rot[d % 8]
-        for j in range(0, nw, 2):
-            v1 = v[j + 1]
-            v[j] = (v[j] + v1) & _M64
-            v[j + 1] = _rotl64(v1, r[j // 2]) ^ v[j]
-        v = [v[perm[i]] for i in range(nw)]
-    last = subkeys[rounds // 4]
-    return [(v[i] + last[i]) & _M64 for i in range(nw)]
-
-
-def _skein_ubi(h, msg: bytes, typ: int) -> list:
-    nw = len(h)
-    nb = nw * 8
-    chunks = [msg[i:i + nb] for i in range(0, len(msg), nb)] or [b""]
-    pos = 0
-    out = h
-    for idx, ch in enumerate(chunks):
-        pos += len(ch)
-        if len(ch) < nb:
-            ch = ch + b"\x00" * (nb - len(ch))
-        t1 = (pos >> 64) | (typ << 120)
-        if idx == 0:
-            t1 |= 0x4000000000000000  # FIRST
-        if idx == len(chunks) - 1:
-            t1 |= 0x8000000000000000  # LAST
-        words = list(struct.unpack("<%dQ" % nw, ch))
-        enc = _threefish_encrypt(words, out, (pos & _M64, t1 & _M64), nw)
-        out = [enc[i] ^ words[i] for i in range(nw)]
-    return out
-
-
-def _skein(data: bytes, state_bits: int, out_bits: int) -> bytes:
-    nw = state_bits // 64
-    out_len = out_bits // 8
-    cfg = b"SHA3\x01\x00\x00\x00" + out_bits.to_bytes(8, "little")
-    g = _skein_ubi([0] * nw, cfg, 4)
-    g = _skein_ubi(g, data, 48)
-    out = b""
-    counter = 0
-    while len(out) < out_len:
-        g = _skein_ubi(g, counter.to_bytes(8, "little"), 63)
-        out += struct.pack("<%dQ" % nw, *g)
-        counter += 1
-    return out[:out_len]
-
-
-# --------------------------------------------------------------------------- #
 # 扩展算法注册（与原站 BouncyCastle 目录对齐）
 # --------------------------------------------------------------------------- #
 EXTRA_HASH_ALGOS = {
+    "RIPEMD_160": (20, _ripemd160),
+    "BLAKE2B_512": (64, lambda d: hashlib.blake2b(d, digest_size=64).digest()),
+    "BLAKE2S_256": (32, lambda d: hashlib.blake2s(d, digest_size=32).digest()),
+    "WHIRLPOOL": (64, _whirlpool),
     "SHAKE128": (16, lambda d: hashlib.shake_128(d).digest(16)),
     "SHAKE256": (32, lambda d: hashlib.shake_256(d).digest(32)),
+    "GOST3411": (32, _gost3411_94),
     "KECCAK_224": (28, lambda d: _keccak(d, 144, 28)),
     "KECCAK_256": (32, lambda d: _keccak(d, 136, 32)),
     "KECCAK_384": (48, lambda d: _keccak(d, 104, 48)),
     "KECCAK_512": (64, lambda d: _keccak(d, 72, 64)),
-    "BLAKE2B_512": (64, lambda d: hashlib.blake2b(d, digest_size=64).digest()),
-    "BLAKE2S_256": (32, lambda d: hashlib.blake2s(d, digest_size=32).digest()),
-    "RIPEMD_160": (20, _ripemd160),
-    "WHIRLPOOL": (64, _whirlpool),
     "TIGER": (24, _tiger),
-    "GOST3411": (32, _gost3411_94),
-    "SKEIN_256": (32, lambda d: _skein(d, 256, 256)),
-    "SKEIN_512": (64, lambda d: _skein(d, 512, 512)),
-    "SKEIN_1024": (128, lambda d: _skein(d, 1024, 1024)),
 }
 
 for _k in EXTRA_HASH_ALGOS:
