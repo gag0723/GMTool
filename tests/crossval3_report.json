@@ -1,0 +1,3990 @@
+[
+ {
+  "name": "SM2 点压缩",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "03CDD5A7B3D3EB91AC051D4D95EF509D16B06608D4B7C4A1BD5A4C2D6D26718AB"
+  },
+  "local": {
+   "code": 0,
+   "data": "030CDD5A7B3D3EB91AC051D4D95EF509D16B06608D4B7C4A1BD5A4C2D6D26718AB",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "字符集转换 UTF-8→GBK",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "瀵嗙爜宸ュ叿绠�"
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "hex": "e5af86e7a081e5b7a5e585b7e7aeb1",
+    "length": 15,
+    "result": "瀵嗙爜宸ュ叿绠?"
+   },
+   "msg": "成功"
+  },
+  "truth_hex": "e5af86e7a081e5b7a5e585b7e7aeb1"
+ },
+ {
+  "name": "证书格式检查（原站 vs 本地）",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "name": "证书版本",
+     "value": "V3",
+     "valid": 2,
+     "infoMsg": null
+    },
+    {
+     "name": "序列号",
+     "value": "3136D3A26155BBD42194D1C2B895348C",
+     "valid": 2,
+     "infoMsg": null
+    },
+    {
+     "name": "使用者",
+     "value": "1.2.840.113549.1.9.1=a@b.c,CN=crossval,OU=CBX,O=CBX,L=BJ,ST=BJ,C=CN",
+     "valid": 2,
+     "infoMsg": null
+    },
+    {
+     "name": "颁发者",
+     "value": "CN=CipherBox 本地根 CA（SM2）,OU=Local CA,O=CipherBox Offline Toolkit,C=CN",
+     "valid": 2,
+     "infoMsg": null
+    },
+    {
+     "name": "有效期",
+     "value": "2026年11月01日 12:54:42 - 2027年11月01日 12:59:42",
+     "valid": 2,
+     "infoMsg": "证书当前处于有效期内"
+    },
+    {
+     "name": "签名算法",
+     "value": "SM3WITHSM2",
+     "valid": 2,
+     "infoMsg": "签名算法符合推荐要求"
+    },
+    {
+     "name": "公钥算法",
+     "value": "SM2 (256Bits)",
+     "valid": 2,
+     "infoMsg": "公钥算法符合推荐要求"
+    },
+    {
+     "name": "密钥用法",
+     "value": "数字签名, 防止否认, 密钥加密",
+     "valid": 0,
+     "infoMsg": "基本约束为终端实体证书，但密钥用法同时包含签名用途和加密用途，未按用途分离"
+    },
+    {
+     "name": "增强型密钥用法",
+     "value": "客户端身份验证, 电子邮件保护",
+     "valid": 2,
+     "infoMsg": null
+    },
+    {
+     "name": "基本约束",
+     "value": "CA证书: 否，属于终端实体证书",
+     "valid": 2,
+     "infoMsg": "基本约束校验通过"
+    },
+    {
+     "name": "公钥值",
+     "value": "1A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81",
+     "valid": 2,
+     "infoMsg": null
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "cert": {
+     "aki": "F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+     "crlUrls": [],
+     "curve": "SM2",
+     "daysLeft": 364,
+     "eku": [
+      "client_auth",
+      "email_protection"
+     ],
+     "expired": false,
+     "extensions": [
+      {
+       "brief": "ca=FALSE",
+       "critical": true,
+       "name": "基本约束",
+       "oid": "2.5.29.19"
+      },
+      {
+       "brief": "key_encipherment, non_repudiation, digital_signature",
+       "critical": true,
+       "name": "密钥用法",
+       "oid": "2.5.29.15"
+      },
+      {
+       "brief": "client_auth, email_protection",
+       "critical": false,
+       "name": "扩展密钥用法",
+       "oid": "2.5.29.37"
+      },
+      {
+       "brief": "a@b.c",
+       "critical": false,
+       "name": "主体备用名",
+       "oid": "2.5.29.17"
+      },
+      {
+       "brief": "da94dd7eb2adaa4f60a82c7c7261aa9553c1010b",
+       "critical": false,
+       "name": "主体密钥标识",
+       "oid": "2.5.29.14"
+      },
+      {
+       "brief": "key_identifier=f98e2fba145e17180ec7e6c9f351e7895136afd8",
+       "critical": false,
+       "name": "颁发者密钥标识",
+       "oid": "2.5.29.35"
+      }
+     ],
+     "fingerprintSha256": "5f67d901da03b03e439aadc70e13486c57c4faf93965b22f495d91e98b643916",
+     "fingerprintSm3": "d86b8084a73b44dd75f85e258c61de8fa987adeb71b778ef02b5a1a273c72ee6",
+     "isCa": false,
+     "issuer": "CN=CipherBox 本地根 CA（SM2）, OU=Local CA, O=CipherBox Offline Toolkit, C=CN",
+     "keyBits": 256,
+     "keyUsage": [
+      "digital_signature",
+      "key_encipherment",
+      "non_repudiation"
+     ],
+     "length": 622,
+     "notAfter": "2027-11-01 04:59:42 UTC",
+     "notBefore": "2026-11-01 04:54:42 UTC",
+     "ocspUrls": [],
+     "pathLen": null,
+     "pubAlg": "SM2",
+     "san": [
+      "a@b.c"
+     ],
+     "selfSigned": false,
+     "serial": "3136D3A26155BBD42194D1C2B895348C",
+     "sha256": "5F:67:D9:01:DA:03:B0:3E:43:9A:AD:C7:0E:13:48:6C:57:C4:FA:F9:39:65:B2:2F:49:5D:91:E9:8B:64:39:16",
+     "sigAlg": "SM3withSM2",
+     "sigOid": "1.2.156.10197.1.501",
+     "ski": "DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+     "sm3": "D8:6B:80:84:A7:3B:44:DD:75:F8:5E:25:8C:61:DE:8F:A9:87:AD:EB:71:B7:78:EF:02:B5:A1:A2:73:C7:2E:E6",
+     "subject": "Email=a@b.c, CN=crossval, OU=CBX, O=CBX, L=BJ, ST=BJ, C=CN",
+     "subjectFields": {
+      "common_name": "crossval",
+      "country_name": "CN",
+      "email_address": "a@b.c",
+      "locality_name": "BJ",
+      "organization_name": "CBX",
+      "organizational_unit_name": "CBX",
+      "state_or_province_name": "BJ"
+     },
+     "version": "v3"
+    },
+    "items": [
+     {
+      "infoMsg": "X.509 证书结构解析成功",
+      "name": "证书格式",
+      "valid": 2,
+      "value": "PEM · 622 字节"
+     },
+     {
+      "infoMsg": "使用 v3 版本，支持扩展项",
+      "name": "证书版本",
+      "valid": 2,
+      "value": "V3"
+     },
+     {
+      "infoMsg": "126 位，符合唯一性要求",
+      "name": "序列号",
+      "valid": 2,
+      "value": "3136D3A26155BBD42194D1C2B895348C"
+     },
+     {
+      "infoMsg": "签名算法强度符合要求",
+      "name": "签名算法",
+      "valid": 2,
+      "value": "SM3withSM2"
+     },
+     {
+      "infoMsg": "颁发者可分辨名称解析成功",
+      "name": "颁发者",
+      "valid": 2,
+      "value": "CN=CipherBox 本地根 CA（SM2）, OU=Local CA, O=CipherBox Offline Toolkit, C=CN"
+     },
+     {
+      "infoMsg": "使用者可分辨名称解析成功",
+      "name": "使用者",
+      "valid": 2,
+      "value": "Email=a@b.c, CN=crossval, OU=CBX, O=CBX, L=BJ, ST=BJ, C=CN"
+     },
+     {
+      "infoMsg": "SM2 椭圆曲线公钥（256 位），符合 GM/T 0015",
+      "name": "公钥算法",
+      "valid": 2,
+      "value": "SM2（SM2 曲线） · 256 位"
+     },
+     {
+      "infoMsg": "SubjectPublicKeyInfo，共 91 字节",
+      "name": "公钥值",
+      "valid": 2,
+      "value": "3059301306072A8648CE3D020106082A811CCF5501822D034200041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81"
+     },
+     {
+      "infoMsg": "当前处于有效期内，剩余 364 天",
+      "name": "有效期",
+      "valid": 2,
+      "value": "2026-11-01 04:54:42 UTC ~ 2027-11-01 04:59:42 UTC"
+     },
+     {
+      "infoMsg": "时间编码符合 RFC 5280 要求",
+      "name": "时间格式",
+      "valid": 2,
+      "value": "UTCTime / UTCTime"
+     },
+     {
+      "infoMsg": "终端证书密钥用法符合要求",
+      "name": "密钥用法",
+      "valid": 2,
+      "value": "digital_signature, key_encipherment, non_repudiation"
+     },
+     {
+      "infoMsg": "已声明扩展密钥用法",
+      "name": "扩展密钥用法",
+      "valid": 2,
+      "value": "client_auth, email_protection"
+     },
+     {
+      "infoMsg": "终端证书基本约束正确",
+      "name": "基本约束",
+      "valid": 2,
+      "value": "CA=FALSE（critical）"
+     },
+     {
+      "infoMsg": "共 1 项 SAN",
+      "name": "主体备用名",
+      "valid": 2,
+      "value": "a@b.c"
+     },
+     {
+      "infoMsg": "主体与颁发者密钥标识齐全",
+      "name": "密钥标识",
+      "valid": 2,
+      "value": "SKI=DA94DD7EB2ADAA4F… / AKI=F98E2FBA145E1718…"
+     },
+     {
+      "infoMsg": "共 6 个扩展",
+      "name": "扩展项",
+      "valid": 2,
+      "value": "基本约束, 密钥用法, 扩展密钥用法, 主体备用名, 主体密钥标识, 颁发者密钥标识"
+     },
+     {
+      "infoMsg": "非自签证书，需在“证书链验证”中用上级证书公钥验证",
+      "name": "签名验证",
+      "valid": 1,
+      "value": "待验证"
+     },
+     {
+      "infoMsg": "SHA-256 摘要",
+      "name": "SHA256 指纹",
+      "valid": 2,
+      "value": "5F:67:D9:01:DA:03:B0:3E:43:9A:AD:C7:0E:13:48:6C:57:C4:FA:F9:39:65:B2:2F:49:5D:91:E9:8B:64:39:16"
+     },
+     {
+      "infoMsg": "GB/T 32905 SM3 摘要",
+      "name": "SM3 指纹",
+      "valid": 2,
+      "value": "D8:6B:80:84:A7:3B:44:DD:75:F8:5E:25:8C:61:DE:8F:A9:87:AD:EB:71:B7:78:EF:02:B5:A1:A2:73:C7:2E:E6"
+     }
+    ],
+    "parsedCount": 1,
+    "status": "partial",
+    "summary": "存在 1 项部分符合：签名验证"
+   },
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "证书 ASN.1 解析",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": {
+    "type": "SEQUENCE",
+    "value": null,
+    "rawValue": null,
+    "level": 0,
+    "index": 0,
+    "headerLength": 4,
+    "contentLength": 618,
+    "totalLength": 622,
+    "fullContent": null,
+    "hexData": "3082026A30820211A00302010202103136D3A26155BBD42194D1C2B895348C300A06082A811CCF55018375306E310B300906035504061302434E31223020060355040A0C19436970686572426F78204F66666C696E6520546F6F6C6B69743111300F060355040B0C084C6F63616C2043413128302606035504030C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89301E170D3236313130313034353434325A170D3237313130313034353934325A306C310B300906035504061302434E310B300906035504080C02424A310B300906035504070C02424A310C300A060355040A0C03434258310C300A060355040B0C034342583111300F06035504030C0863726F737376616C3114301206092A864886F70D01090116056140622E633059301306072A8648CE3D020106082A811CCF5501822D034200041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81A3819230818F300C0603551D130101FF04023000300E0603551D0F0101FF0404030205E0301D0603551D250416301406082B0601050507030206082B0601050507030430100603551D110409300781056140622E63301D0603551D0E04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B301F0603551D23041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8300A06082A811CCF55018375034700304402201943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9022047473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+    "children": [
+     {
+      "type": "SEQUENCE",
+      "value": null,
+      "rawValue": null,
+      "level": 1,
+      "index": 0,
+      "headerLength": 4,
+      "contentLength": 529,
+      "totalLength": 533,
+      "fullContent": null,
+      "hexData": "30820211A00302010202103136D3A26155BBD42194D1C2B895348C300A06082A811CCF55018375306E310B300906035504061302434E31223020060355040A0C19436970686572426F78204F66666C696E6520546F6F6C6B69743111300F060355040B0C084C6F63616C2043413128302606035504030C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89301E170D3236313130313034353434325A170D3237313130313034353934325A306C310B300906035504061302434E310B300906035504080C02424A310B300906035504070C02424A310C300A060355040A0C03434258310C300A060355040B0C034342583111300F06035504030C0863726F737376616C3114301206092A864886F70D01090116056140622E633059301306072A8648CE3D020106082A811CCF5501822D034200041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81A3819230818F300C0603551D130101FF04023000300E0603551D0F0101FF0404030205E0301D0603551D250416301406082B0601050507030206082B0601050507030430100603551D110409300781056140622E63301D0603551D0E04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B301F0603551D23041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+      "children": [
+       {
+        "type": "TAGGED [0] EXPLICIT",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 0,
+        "headerLength": 2,
+        "contentLength": 3,
+        "totalLength": 5,
+        "fullContent": null,
+        "hexData": "A003020102",
+        "children": [
+         {
+          "type": "INTEGER",
+          "value": "02",
+          "rawValue": "02",
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 1,
+          "totalLength": 3,
+          "fullContent": null,
+          "hexData": "020102",
+          "children": []
+         }
+        ]
+       },
+       {
+        "type": "INTEGER",
+        "value": "3136D3A26155BBD42194D1C2B895348C",
+        "rawValue": "3136D3A26155BBD42194D1C2B895348C",
+        "level": 2,
+        "index": 1,
+        "headerLength": 2,
+        "contentLength": 16,
+        "totalLength": 18,
+        "fullContent": null,
+        "hexData": "02103136D3A26155BBD42194D1C2B895348C",
+        "children": []
+       },
+       {
+        "type": "SEQUENCE",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 2,
+        "headerLength": 2,
+        "contentLength": 10,
+        "totalLength": 12,
+        "fullContent": null,
+        "hexData": "300A06082A811CCF55018375",
+        "children": [
+         {
+          "type": "OBJECT IDENTIFIER",
+          "value": "2A811CCF55018375",
+          "rawValue": "1.2.156.10197.1.501",
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 8,
+          "totalLength": 10,
+          "fullContent": null,
+          "hexData": "06082A811CCF55018375",
+          "children": []
+         }
+        ]
+       },
+       {
+        "type": "SEQUENCE",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 3,
+        "headerLength": 2,
+        "contentLength": 110,
+        "totalLength": 112,
+        "fullContent": null,
+        "hexData": "306E310B300906035504061302434E31223020060355040A0C19436970686572426F78204F66666C696E6520546F6F6C6B69743111300F060355040B0C084C6F63616C2043413128302606035504030C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89",
+        "children": [
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 11,
+          "totalLength": 13,
+          "fullContent": null,
+          "hexData": "310B300906035504061302434E",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 9,
+            "totalLength": 11,
+            "fullContent": null,
+            "hexData": "300906035504061302434E",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550406",
+              "rawValue": "2.5.4.6",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550406",
+              "children": []
+             },
+             {
+              "type": "PRINTABLE STRING",
+              "value": "434E",
+              "rawValue": "CN",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 2,
+              "totalLength": 4,
+              "fullContent": null,
+              "hexData": "1302434E",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 1,
+          "headerLength": 2,
+          "contentLength": 34,
+          "totalLength": 36,
+          "fullContent": null,
+          "hexData": "31223020060355040A0C19436970686572426F78204F66666C696E6520546F6F6C6B6974",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 32,
+            "totalLength": 34,
+            "fullContent": null,
+            "hexData": "3020060355040A0C19436970686572426F78204F66666C696E6520546F6F6C6B6974",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "55040A",
+              "rawValue": "2.5.4.10",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "060355040A",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "436970686572426F78204F66666C696E6520546F6F6C6B6974",
+              "rawValue": "CipherBox Offline Toolkit",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 25,
+              "totalLength": 27,
+              "fullContent": null,
+              "hexData": "0C19436970686572426F78204F66666C696E6520546F6F6C6B6974",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 2,
+          "headerLength": 2,
+          "contentLength": 17,
+          "totalLength": 19,
+          "fullContent": null,
+          "hexData": "3111300F060355040B0C084C6F63616C204341",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 15,
+            "totalLength": 17,
+            "fullContent": null,
+            "hexData": "300F060355040B0C084C6F63616C204341",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "55040B",
+              "rawValue": "2.5.4.11",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "060355040B",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "4C6F63616C204341",
+              "rawValue": "Local CA",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 8,
+              "totalLength": 10,
+              "fullContent": null,
+              "hexData": "0C084C6F63616C204341",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 3,
+          "headerLength": 2,
+          "contentLength": 40,
+          "totalLength": 42,
+          "fullContent": null,
+          "hexData": "3128302606035504030C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 38,
+            "totalLength": 40,
+            "fullContent": null,
+            "hexData": "302606035504030C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550403",
+              "rawValue": "2.5.4.3",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550403",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89",
+              "rawValue": "CipherBox 本地根 CA（SM2）",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 31,
+              "totalLength": 33,
+              "fullContent": null,
+              "hexData": "0C1F436970686572426F7820E69CACE59CB0E6A0B9204341EFBC88534D32EFBC89",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "SEQUENCE",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 4,
+        "headerLength": 2,
+        "contentLength": 30,
+        "totalLength": 32,
+        "fullContent": null,
+        "hexData": "301E170D3236313130313034353434325A170D3237313130313034353934325A",
+        "children": [
+         {
+          "type": "UTC TIME",
+          "value": "3236313130313034353434325A",
+          "rawValue": "261101045442GMT+00:00",
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 13,
+          "totalLength": 15,
+          "fullContent": null,
+          "hexData": "170D3236313130313034353434325A",
+          "children": []
+         },
+         {
+          "type": "UTC TIME",
+          "value": "3237313130313034353934325A",
+          "rawValue": "271101045942GMT+00:00",
+          "level": 3,
+          "index": 1,
+          "headerLength": 2,
+          "contentLength": 13,
+          "totalLength": 15,
+          "fullContent": null,
+          "hexData": "170D3237313130313034353934325A",
+          "children": []
+         }
+        ]
+       },
+       {
+        "type": "SEQUENCE",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 5,
+        "headerLength": 2,
+        "contentLength": 108,
+        "totalLength": 110,
+        "fullContent": null,
+        "hexData": "306C310B300906035504061302434E310B300906035504080C02424A310B300906035504070C02424A310C300A060355040A0C03434258310C300A060355040B0C034342583111300F06035504030C0863726F737376616C3114301206092A864886F70D01090116056140622E63",
+        "children": [
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 11,
+          "totalLength": 13,
+          "fullContent": null,
+          "hexData": "310B300906035504061302434E",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 9,
+            "totalLength": 11,
+            "fullContent": null,
+            "hexData": "300906035504061302434E",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550406",
+              "rawValue": "2.5.4.6",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550406",
+              "children": []
+             },
+             {
+              "type": "PRINTABLE STRING",
+              "value": "434E",
+              "rawValue": "CN",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 2,
+              "totalLength": 4,
+              "fullContent": null,
+              "hexData": "1302434E",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 1,
+          "headerLength": 2,
+          "contentLength": 11,
+          "totalLength": 13,
+          "fullContent": null,
+          "hexData": "310B300906035504080C02424A",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 9,
+            "totalLength": 11,
+            "fullContent": null,
+            "hexData": "300906035504080C02424A",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550408",
+              "rawValue": "2.5.4.8",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550408",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "424A",
+              "rawValue": "BJ",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 2,
+              "totalLength": 4,
+              "fullContent": null,
+              "hexData": "0C02424A",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 2,
+          "headerLength": 2,
+          "contentLength": 11,
+          "totalLength": 13,
+          "fullContent": null,
+          "hexData": "310B300906035504070C02424A",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 9,
+            "totalLength": 11,
+            "fullContent": null,
+            "hexData": "300906035504070C02424A",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550407",
+              "rawValue": "2.5.4.7",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550407",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "424A",
+              "rawValue": "BJ",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 2,
+              "totalLength": 4,
+              "fullContent": null,
+              "hexData": "0C02424A",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 3,
+          "headerLength": 2,
+          "contentLength": 12,
+          "totalLength": 14,
+          "fullContent": null,
+          "hexData": "310C300A060355040A0C03434258",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 10,
+            "totalLength": 12,
+            "fullContent": null,
+            "hexData": "300A060355040A0C03434258",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "55040A",
+              "rawValue": "2.5.4.10",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "060355040A",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "434258",
+              "rawValue": "CBX",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0C03434258",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 4,
+          "headerLength": 2,
+          "contentLength": 12,
+          "totalLength": 14,
+          "fullContent": null,
+          "hexData": "310C300A060355040B0C03434258",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 10,
+            "totalLength": 12,
+            "fullContent": null,
+            "hexData": "300A060355040B0C03434258",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "55040B",
+              "rawValue": "2.5.4.11",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "060355040B",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "434258",
+              "rawValue": "CBX",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0C03434258",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 5,
+          "headerLength": 2,
+          "contentLength": 17,
+          "totalLength": 19,
+          "fullContent": null,
+          "hexData": "3111300F06035504030C0863726F737376616C",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 15,
+            "totalLength": 17,
+            "fullContent": null,
+            "hexData": "300F06035504030C0863726F737376616C",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "550403",
+              "rawValue": "2.5.4.3",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603550403",
+              "children": []
+             },
+             {
+              "type": "UTF8 STRING",
+              "value": "63726F737376616C",
+              "rawValue": "crossval",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 8,
+              "totalLength": 10,
+              "fullContent": null,
+              "hexData": "0C0863726F737376616C",
+              "children": []
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "type": "SET",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 6,
+          "headerLength": 2,
+          "contentLength": 20,
+          "totalLength": 22,
+          "fullContent": null,
+          "hexData": "3114301206092A864886F70D01090116056140622E63",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 18,
+            "totalLength": 20,
+            "fullContent": null,
+            "hexData": "301206092A864886F70D01090116056140622E63",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "2A864886F70D010901",
+              "rawValue": "1.2.840.113549.1.9.1",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 9,
+              "totalLength": 11,
+              "fullContent": null,
+              "hexData": "06092A864886F70D010901",
+              "children": []
+             },
+             {
+              "type": "IA5 STRING",
+              "value": "6140622E63",
+              "rawValue": "a@b.c",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 5,
+              "totalLength": 7,
+              "fullContent": null,
+              "hexData": "16056140622E63",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "SEQUENCE",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 6,
+        "headerLength": 2,
+        "contentLength": 89,
+        "totalLength": 91,
+        "fullContent": null,
+        "hexData": "3059301306072A8648CE3D020106082A811CCF5501822D034200041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81",
+        "children": [
+         {
+          "type": "SEQUENCE",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 19,
+          "totalLength": 21,
+          "fullContent": null,
+          "hexData": "301306072A8648CE3D020106082A811CCF5501822D",
+          "children": [
+           {
+            "type": "OBJECT IDENTIFIER",
+            "value": "2A8648CE3D0201",
+            "rawValue": "1.2.840.10045.2.1",
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 7,
+            "totalLength": 9,
+            "fullContent": null,
+            "hexData": "06072A8648CE3D0201",
+            "children": []
+           },
+           {
+            "type": "OBJECT IDENTIFIER",
+            "value": "2A811CCF5501822D",
+            "rawValue": "1.2.156.10197.1.301",
+            "level": 4,
+            "index": 1,
+            "headerLength": 2,
+            "contentLength": 8,
+            "totalLength": 10,
+            "fullContent": null,
+            "hexData": "06082A811CCF5501822D",
+            "children": []
+           }
+          ]
+         },
+         {
+          "type": "BIT STRING",
+          "value": "041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81",
+          "rawValue": null,
+          "level": 3,
+          "index": 1,
+          "headerLength": 2,
+          "contentLength": 66,
+          "totalLength": 68,
+          "fullContent": null,
+          "hexData": "034200041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7D59EB7D7EB5D0ED31E70638175BBDB90E24A8CE436126B8173362EA3AAC47244A283644F81",
+          "children": [
+           {
+            "type": "OCTET STRING",
+            "value": "1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7",
+            "rawValue": "\u001fG\nýstà,OÈm\u0002AF¬ñÄâ\u0016Àzãü÷",
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 26,
+            "totalLength": 28,
+            "fullContent": null,
+            "hexData": "041A1F470AFD7374E02C4FC86D024146AC8AF1C4E216C0967AE3FCF7",
+            "children": []
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "TAGGED [3] EXPLICIT",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 7,
+        "headerLength": 3,
+        "contentLength": 146,
+        "totalLength": 149,
+        "fullContent": null,
+        "hexData": "A3819230818F300C0603551D130101FF04023000300E0603551D0F0101FF0404030205E0301D0603551D250416301406082B0601050507030206082B0601050507030430100603551D110409300781056140622E63301D0603551D0E04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B301F0603551D23041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+        "children": [
+         {
+          "type": "SEQUENCE",
+          "value": null,
+          "rawValue": null,
+          "level": 3,
+          "index": 0,
+          "headerLength": 3,
+          "contentLength": 143,
+          "totalLength": 146,
+          "fullContent": null,
+          "hexData": "30818F300C0603551D130101FF04023000300E0603551D0F0101FF0404030205E0301D0603551D250416301406082B0601050507030206082B0601050507030430100603551D110409300781056140622E63301D0603551D0E04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B301F0603551D23041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+          "children": [
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 0,
+            "headerLength": 2,
+            "contentLength": 12,
+            "totalLength": 14,
+            "fullContent": null,
+            "hexData": "300C0603551D130101FF04023000",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D13",
+              "rawValue": "2.5.29.19",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D13",
+              "children": []
+             },
+             {
+              "type": "BOOLEAN",
+              "value": "true",
+              "rawValue": null,
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 1,
+              "totalLength": 3,
+              "fullContent": null,
+              "hexData": "0101FF",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "3000",
+              "rawValue": "0\u0000",
+              "level": 5,
+              "index": 2,
+              "headerLength": 2,
+              "contentLength": 2,
+              "totalLength": 4,
+              "fullContent": null,
+              "hexData": "04023000",
+              "children": [
+               {
+                "type": "SEQUENCE",
+                "value": null,
+                "rawValue": null,
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 0,
+                "totalLength": 2,
+                "fullContent": null,
+                "hexData": "3000",
+                "children": []
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 1,
+            "headerLength": 2,
+            "contentLength": 14,
+            "totalLength": 16,
+            "fullContent": null,
+            "hexData": "300E0603551D0F0101FF0404030205E0",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D0F",
+              "rawValue": "2.5.29.15",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D0F",
+              "children": []
+             },
+             {
+              "type": "BOOLEAN",
+              "value": "true",
+              "rawValue": null,
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 1,
+              "totalLength": 3,
+              "fullContent": null,
+              "hexData": "0101FF",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "030205E0",
+              "rawValue": "\u0003\u0002\u0005à",
+              "level": 5,
+              "index": 2,
+              "headerLength": 2,
+              "contentLength": 4,
+              "totalLength": 6,
+              "fullContent": null,
+              "hexData": "0404030205E0",
+              "children": [
+               {
+                "type": "BIT STRING",
+                "value": "E0",
+                "rawValue": null,
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 2,
+                "totalLength": 4,
+                "fullContent": null,
+                "hexData": "030205E0",
+                "children": []
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 2,
+            "headerLength": 2,
+            "contentLength": 29,
+            "totalLength": 31,
+            "fullContent": null,
+            "hexData": "301D0603551D250416301406082B0601050507030206082B06010505070304",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D25",
+              "rawValue": "2.5.29.37",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D25",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "301406082B0601050507030206082B06010505070304",
+              "rawValue": "0\u0014\u0006\b+\u0006\u0001\u0005\u0005\u0007\u0003\u0002\u0006\b+\u0006\u0001\u0005\u0005\u0007\u0003\u0004",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 22,
+              "totalLength": 24,
+              "fullContent": null,
+              "hexData": "0416301406082B0601050507030206082B06010505070304",
+              "children": [
+               {
+                "type": "SEQUENCE",
+                "value": null,
+                "rawValue": null,
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 20,
+                "totalLength": 22,
+                "fullContent": null,
+                "hexData": "301406082B0601050507030206082B06010505070304",
+                "children": [
+                 {
+                  "type": "OBJECT IDENTIFIER",
+                  "value": "2B06010505070302",
+                  "rawValue": "1.3.6.1.5.5.7.3.2",
+                  "level": 7,
+                  "index": 0,
+                  "headerLength": 2,
+                  "contentLength": 8,
+                  "totalLength": 10,
+                  "fullContent": null,
+                  "hexData": "06082B06010505070302",
+                  "children": []
+                 },
+                 {
+                  "type": "OBJECT IDENTIFIER",
+                  "value": "2B06010505070304",
+                  "rawValue": "1.3.6.1.5.5.7.3.4",
+                  "level": 7,
+                  "index": 1,
+                  "headerLength": 2,
+                  "contentLength": 8,
+                  "totalLength": 10,
+                  "fullContent": null,
+                  "hexData": "06082B06010505070304",
+                  "children": []
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 3,
+            "headerLength": 2,
+            "contentLength": 16,
+            "totalLength": 18,
+            "fullContent": null,
+            "hexData": "30100603551D110409300781056140622E63",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D11",
+              "rawValue": "2.5.29.17",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D11",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "300781056140622E63",
+              "rawValue": "0\u0007\u0005a@b.c",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 9,
+              "totalLength": 11,
+              "fullContent": null,
+              "hexData": "0409300781056140622E63",
+              "children": [
+               {
+                "type": "SEQUENCE",
+                "value": null,
+                "rawValue": null,
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 9,
+                "totalLength": 11,
+                "fullContent": null,
+                "hexData": "300781056140622E63",
+                "children": [
+                 {
+                  "type": "TAGGED [1] IMPLICIT",
+                  "value": null,
+                  "rawValue": null,
+                  "level": 7,
+                  "index": 0,
+                  "headerLength": 2,
+                  "contentLength": 7,
+                  "totalLength": 9,
+                  "fullContent": null,
+                  "hexData": "81056140622E63",
+                  "children": [
+                   {
+                    "type": "OCTET STRING",
+                    "value": "6140622E63",
+                    "rawValue": "a@b.c",
+                    "level": 8,
+                    "index": 0,
+                    "headerLength": 2,
+                    "contentLength": 5,
+                    "totalLength": 7,
+                    "fullContent": null,
+                    "hexData": "04056140622E63",
+                    "children": []
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 4,
+            "headerLength": 2,
+            "contentLength": 29,
+            "totalLength": 31,
+            "fullContent": null,
+            "hexData": "301D0603551D0E04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D0E",
+              "rawValue": "2.5.29.14",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D0E",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "0414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+              "rawValue": "\u0004\u0014ÚÝ~²­ªO`¨,|raªSÁ\u0001\u000b",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 22,
+              "totalLength": 24,
+              "fullContent": null,
+              "hexData": "04160414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+              "children": [
+               {
+                "type": "OCTET STRING",
+                "value": "DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+                "rawValue": "ÚÝ~²­ªO`¨,|raªSÁ\u0001\u000b",
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 20,
+                "totalLength": 22,
+                "fullContent": null,
+                "hexData": "0414DA94DD7EB2ADAA4F60A82C7C7261AA9553C1010B",
+                "children": []
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "type": "SEQUENCE",
+            "value": null,
+            "rawValue": null,
+            "level": 4,
+            "index": 5,
+            "headerLength": 2,
+            "contentLength": 31,
+            "totalLength": 33,
+            "fullContent": null,
+            "hexData": "301F0603551D23041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+            "children": [
+             {
+              "type": "OBJECT IDENTIFIER",
+              "value": "551D23",
+              "rawValue": "2.5.29.35",
+              "level": 5,
+              "index": 0,
+              "headerLength": 2,
+              "contentLength": 3,
+              "totalLength": 5,
+              "fullContent": null,
+              "hexData": "0603551D23",
+              "children": []
+             },
+             {
+              "type": "OCTET STRING",
+              "value": "30168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+              "rawValue": "0\u0016\u0014ù/º\u0014^\u0017\u0018\u000eÇæÉóQçQ6¯Ø",
+              "level": 5,
+              "index": 1,
+              "headerLength": 2,
+              "contentLength": 24,
+              "totalLength": 26,
+              "fullContent": null,
+              "hexData": "041830168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+              "children": [
+               {
+                "type": "SEQUENCE",
+                "value": null,
+                "rawValue": null,
+                "level": 6,
+                "index": 0,
+                "headerLength": 2,
+                "contentLength": 24,
+                "totalLength": 26,
+                "fullContent": null,
+                "hexData": "30168014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+                "children": [
+                 {
+                  "type": "TAGGED [0] IMPLICIT",
+                  "value": null,
+                  "rawValue": null,
+                  "level": 7,
+                  "index": 0,
+                  "headerLength": 2,
+                  "contentLength": 22,
+                  "totalLength": 24,
+                  "fullContent": null,
+                  "hexData": "8014F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+                  "children": [
+                   {
+                    "type": "OCTET STRING",
+                    "value": "F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+                    "rawValue": "ù/º\u0014^\u0017\u0018\u000eÇæÉóQçQ6¯Ø",
+                    "level": 8,
+                    "index": 0,
+                    "headerLength": 2,
+                    "contentLength": 20,
+                    "totalLength": 22,
+                    "fullContent": null,
+                    "hexData": "0414F98E2FBA145E17180EC7E6C9F351E7895136AFD8",
+                    "children": []
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "type": "SEQUENCE",
+      "value": null,
+      "rawValue": null,
+      "level": 1,
+      "index": 1,
+      "headerLength": 2,
+      "contentLength": 10,
+      "totalLength": 12,
+      "fullContent": null,
+      "hexData": "300A06082A811CCF55018375",
+      "children": [
+       {
+        "type": "OBJECT IDENTIFIER",
+        "value": "2A811CCF55018375",
+        "rawValue": "1.2.156.10197.1.501",
+        "level": 2,
+        "index": 0,
+        "headerLength": 2,
+        "contentLength": 8,
+        "totalLength": 10,
+        "fullContent": null,
+        "hexData": "06082A811CCF55018375",
+        "children": []
+       }
+      ]
+     },
+     {
+      "type": "BIT STRING",
+      "value": "304402201943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9022047473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+      "rawValue": null,
+      "level": 1,
+      "index": 2,
+      "headerLength": 2,
+      "contentLength": 71,
+      "totalLength": 73,
+      "fullContent": null,
+      "hexData": "034700304402201943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9022047473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+      "children": [
+       {
+        "type": "ECDSA Signature (r, s)",
+        "value": null,
+        "rawValue": null,
+        "level": 2,
+        "index": 0,
+        "headerLength": 2,
+        "contentLength": 68,
+        "totalLength": 70,
+        "fullContent": null,
+        "hexData": "304402201943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9022047473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+        "children": [
+         {
+          "type": "INTEGER (r)",
+          "value": "1943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9",
+          "rawValue": "1943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9",
+          "level": 3,
+          "index": 0,
+          "headerLength": 2,
+          "contentLength": 32,
+          "totalLength": 34,
+          "fullContent": null,
+          "hexData": "02201943F6BF35CFADEDE1640FEA40A6A25532B822BDE36F9FA77069289C1B0382A9",
+          "children": []
+         },
+         {
+          "type": "INTEGER (s)",
+          "value": "47473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+          "rawValue": "47473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+          "level": 3,
+          "index": 1,
+          "headerLength": 2,
+          "contentLength": 32,
+          "totalLength": 34,
+          "fullContent": null,
+          "hexData": "022047473F1B4102D3CF95E8D539A10F25E51B57E6AD74A9492936ACDD1C2A393D7D",
+          "children": []
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "depth": 6,
+    "format": "PEM",
+    "hex": "3082026a30820211a00302010202103136d3a26155bbd42194d1c2b895348c300a06082a811ccf55018375306e310b300906035504061302434e31223020060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b69743111300f060355040b0c084c6f63616c2043413128302606035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89301e170d3236313130313034353434325a170d3237313130313034353934325a306c310b300906035504061302434e310b300906035504080c02424a310b300906035504070c02424a310c300a060355040a0c03434258310c300a060355040b0c034342583111300f06035504030c0863726f737376616c3114301206092a864886f70d01090116056140622e633059301306072a8648ce3d020106082a811ccf5501822d034200041a1f470afd7374e02c4fc86d024146ac8af1c4e216c0967ae3fcf7d59eb7d7eb5d0ed31e70638175bbdb90e24a8ce436126b8173362ea3aac47244a283644f81a3819230818f300c0603551d130101ff04023000300e0603551d0f0101ff0404030205e0301d0603551d250416301406082b0601050507030206082b0601050507030430100603551d110409300781056140622e63301d0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b301f0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8300a06082a811ccf55018375034700304402201943f6bf35cfadede1640fea40a6a25532b822bde36f9fa77069289c1b0382a9022047473f1b4102d3cf95e8d539a10f25e51b57e6ad74a9492936acdd1c2a393d7d",
+    "length": 622,
+    "nodes": 86,
+    "tree": {
+     "children": [
+      {
+       "children": [
+        {
+         "children": [
+          {
+           "children": [],
+           "contentLength": 1,
+           "hexData": "02",
+           "index": 0,
+           "level": 3,
+           "type": "INTEGER",
+           "value": "2"
+          }
+         ],
+         "contentLength": 3,
+         "hexData": "020102",
+         "index": 0,
+         "level": 2,
+         "type": "[0]",
+         "value": ""
+        },
+        {
+         "children": [],
+         "contentLength": 16,
+         "hexData": "3136d3a26155bbd42194d1c2b895348c",
+         "index": 1,
+         "level": 2,
+         "type": "INTEGER",
+         "value": "65416848277334147920508880709945209996"
+        },
+        {
+         "children": [
+          {
+           "children": [],
+           "contentLength": 8,
+           "hexData": "2a811ccf55018375",
+           "index": 0,
+           "level": 3,
+           "type": "OBJECT IDENTIFIER",
+           "value": "1.2.156.10197.1.501"
+          }
+         ],
+         "contentLength": 10,
+         "hexData": "06082a811ccf55018375",
+         "index": 2,
+         "level": 2,
+         "type": "SEQUENCE",
+         "value": ""
+        },
+        {
+         "children": [
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550406",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.6"
+              },
+              {
+               "children": [],
+               "contentLength": 2,
+               "hexData": "434e",
+               "index": 1,
+               "level": 5,
+               "type": "PrintableString",
+               "value": "CN"
+              }
+             ],
+             "contentLength": 9,
+             "hexData": "06035504061302434e",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 11,
+           "hexData": "300906035504061302434e",
+           "index": 0,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "55040a",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.10"
+              },
+              {
+               "children": [],
+               "contentLength": 25,
+               "hexData": "436970686572426f78204f66666c696e6520546f6f6c6b6974",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "CipherBox Offline Toolkit"
+              }
+             ],
+             "contentLength": 32,
+             "hexData": "060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b6974",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 34,
+           "hexData": "3020060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b6974",
+           "index": 1,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "55040b",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.11"
+              },
+              {
+               "children": [],
+               "contentLength": 8,
+               "hexData": "4c6f63616c204341",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "Local CA"
+              }
+             ],
+             "contentLength": 15,
+             "hexData": "060355040b0c084c6f63616c204341",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 17,
+           "hexData": "300f060355040b0c084c6f63616c204341",
+           "index": 2,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550403",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.3"
+              },
+              {
+               "children": [],
+               "contentLength": 31,
+               "hexData": "436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "CipherBox 本地根 CA（SM2）"
+              }
+             ],
+             "contentLength": 38,
+             "hexData": "06035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 40,
+           "hexData": "302606035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89",
+           "index": 3,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          }
+         ],
+         "contentLength": 110,
+         "hexData": "310b300906035504061302434e31223020060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b69743111300f060355040b0c084c6f63616c2043413128302606035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89",
+         "index": 3,
+         "level": 2,
+         "type": "SEQUENCE",
+         "value": ""
+        },
+        {
+         "children": [
+          {
+           "children": [],
+           "contentLength": 13,
+           "hexData": "3236313130313034353434325a",
+           "index": 0,
+           "level": 3,
+           "type": "UTCTime",
+           "value": "261101045442Z"
+          },
+          {
+           "children": [],
+           "contentLength": 13,
+           "hexData": "3237313130313034353934325a",
+           "index": 1,
+           "level": 3,
+           "type": "UTCTime",
+           "value": "271101045942Z"
+          }
+         ],
+         "contentLength": 30,
+         "hexData": "170d3236313130313034353434325a170d3237313130313034353934325a",
+         "index": 4,
+         "level": 2,
+         "type": "SEQUENCE",
+         "value": ""
+        },
+        {
+         "children": [
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550406",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.6"
+              },
+              {
+               "children": [],
+               "contentLength": 2,
+               "hexData": "434e",
+               "index": 1,
+               "level": 5,
+               "type": "PrintableString",
+               "value": "CN"
+              }
+             ],
+             "contentLength": 9,
+             "hexData": "06035504061302434e",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 11,
+           "hexData": "300906035504061302434e",
+           "index": 0,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550408",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.8"
+              },
+              {
+               "children": [],
+               "contentLength": 2,
+               "hexData": "424a",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "BJ"
+              }
+             ],
+             "contentLength": 9,
+             "hexData": "06035504080c02424a",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 11,
+           "hexData": "300906035504080c02424a",
+           "index": 1,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550407",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.7"
+              },
+              {
+               "children": [],
+               "contentLength": 2,
+               "hexData": "424a",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "BJ"
+              }
+             ],
+             "contentLength": 9,
+             "hexData": "06035504070c02424a",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 11,
+           "hexData": "300906035504070c02424a",
+           "index": 2,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "55040a",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.10"
+              },
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "434258",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "CBX"
+              }
+             ],
+             "contentLength": 10,
+             "hexData": "060355040a0c03434258",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 12,
+           "hexData": "300a060355040a0c03434258",
+           "index": 3,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "55040b",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.11"
+              },
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "434258",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "CBX"
+              }
+             ],
+             "contentLength": 10,
+             "hexData": "060355040b0c03434258",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 12,
+           "hexData": "300a060355040b0c03434258",
+           "index": 4,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "550403",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.4.3"
+              },
+              {
+               "children": [],
+               "contentLength": 8,
+               "hexData": "63726f737376616c",
+               "index": 1,
+               "level": 5,
+               "type": "UTF8String",
+               "value": "crossval"
+              }
+             ],
+             "contentLength": 15,
+             "hexData": "06035504030c0863726f737376616c",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 17,
+           "hexData": "300f06035504030c0863726f737376616c",
+           "index": 5,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          },
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 9,
+               "hexData": "2a864886f70d010901",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "1.2.840.113549.1.9.1"
+              },
+              {
+               "children": [],
+               "contentLength": 5,
+               "hexData": "6140622e63",
+               "index": 1,
+               "level": 5,
+               "type": "IA5String",
+               "value": "a@b.c"
+              }
+             ],
+             "contentLength": 18,
+             "hexData": "06092a864886f70d01090116056140622e63",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 20,
+           "hexData": "301206092a864886f70d01090116056140622e63",
+           "index": 6,
+           "level": 3,
+           "type": "SET",
+           "value": ""
+          }
+         ],
+         "contentLength": 108,
+         "hexData": "310b300906035504061302434e310b300906035504080c02424a310b300906035504070c02424a310c300a060355040a0c03434258310c300a060355040b0c034342583111300f06035504030c0863726f737376616c3114301206092a864886f70d01090116056140622e63",
+         "index": 5,
+         "level": 2,
+         "type": "SEQUENCE",
+         "value": ""
+        },
+        {
+         "children": [
+          {
+           "children": [
+            {
+             "children": [],
+             "contentLength": 7,
+             "hexData": "2a8648ce3d0201",
+             "index": 0,
+             "level": 4,
+             "type": "OBJECT IDENTIFIER",
+             "value": "1.2.840.10045.2.1"
+            },
+            {
+             "children": [],
+             "contentLength": 8,
+             "hexData": "2a811ccf5501822d",
+             "index": 1,
+             "level": 4,
+             "type": "OBJECT IDENTIFIER",
+             "value": "1.2.156.10197.1.301"
+            }
+           ],
+           "contentLength": 19,
+           "hexData": "06072a8648ce3d020106082a811ccf5501822d",
+           "index": 0,
+           "level": 3,
+           "type": "SEQUENCE",
+           "value": ""
+          },
+          {
+           "children": [],
+           "contentLength": 66,
+           "hexData": "00041a1f470afd7374e02c4fc86d024146ac8af1c4e216c0967ae3fcf7d59eb7d7eb5d0ed31e70638175bbdb90e24a8ce436126b8173362ea3aac47244a283644f81",
+           "index": 1,
+           "level": 3,
+           "type": "BIT STRING",
+           "value": "<66 bytes>"
+          }
+         ],
+         "contentLength": 89,
+         "hexData": "301306072a8648ce3d020106082a811ccf5501822d034200041a1f470afd7374e02c4fc86d024146ac8af1c4e216c0967ae3fcf7d59eb7d7eb5d0ed31e70638175bbdb90e24a8ce436126b8173362ea3aac47244a283644f81",
+         "index": 6,
+         "level": 2,
+         "type": "SEQUENCE",
+         "value": ""
+        },
+        {
+         "children": [
+          {
+           "children": [
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d13",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.19"
+              },
+              {
+               "children": [],
+               "contentLength": 1,
+               "hexData": "ff",
+               "index": 1,
+               "level": 5,
+               "type": "BOOLEAN",
+               "value": "TRUE"
+              },
+              {
+               "children": [],
+               "contentLength": 2,
+               "hexData": "3000",
+               "index": 2,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "3000"
+              }
+             ],
+             "contentLength": 12,
+             "hexData": "0603551d130101ff04023000",
+             "index": 0,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            },
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d0f",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.15"
+              },
+              {
+               "children": [],
+               "contentLength": 1,
+               "hexData": "ff",
+               "index": 1,
+               "level": 5,
+               "type": "BOOLEAN",
+               "value": "TRUE"
+              },
+              {
+               "children": [],
+               "contentLength": 4,
+               "hexData": "030205e0",
+               "index": 2,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "030205e0"
+              }
+             ],
+             "contentLength": 14,
+             "hexData": "0603551d0f0101ff0404030205e0",
+             "index": 1,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            },
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d25",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.37"
+              },
+              {
+               "children": [],
+               "contentLength": 22,
+               "hexData": "301406082b0601050507030206082b06010505070304",
+               "index": 1,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "301406082b0601050507030206082b06010505070304"
+              }
+             ],
+             "contentLength": 29,
+             "hexData": "0603551d250416301406082b0601050507030206082b06010505070304",
+             "index": 2,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            },
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d11",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.17"
+              },
+              {
+               "children": [],
+               "contentLength": 9,
+               "hexData": "300781056140622e63",
+               "index": 1,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "300781056140622e63"
+              }
+             ],
+             "contentLength": 16,
+             "hexData": "0603551d110409300781056140622e63",
+             "index": 3,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            },
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d0e",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.14"
+              },
+              {
+               "children": [],
+               "contentLength": 22,
+               "hexData": "0414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b",
+               "index": 1,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "0414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b"
+              }
+             ],
+             "contentLength": 29,
+             "hexData": "0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b",
+             "index": 4,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            },
+            {
+             "children": [
+              {
+               "children": [],
+               "contentLength": 3,
+               "hexData": "551d23",
+               "index": 0,
+               "level": 5,
+               "type": "OBJECT IDENTIFIER",
+               "value": "2.5.29.35"
+              },
+              {
+               "children": [],
+               "contentLength": 24,
+               "hexData": "30168014f98e2fba145e17180ec7e6c9f351e7895136afd8",
+               "index": 1,
+               "level": 5,
+               "type": "OCTET STRING",
+               "value": "30168014f98e2fba145e17180ec7e6c9f351e7895136afd8"
+              }
+             ],
+             "contentLength": 31,
+             "hexData": "0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8",
+             "index": 5,
+             "level": 4,
+             "type": "SEQUENCE",
+             "value": ""
+            }
+           ],
+           "contentLength": 143,
+           "hexData": "300c0603551d130101ff04023000300e0603551d0f0101ff0404030205e0301d0603551d250416301406082b0601050507030206082b0601050507030430100603551d110409300781056140622e63301d0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b301f0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8",
+           "index": 0,
+           "level": 3,
+           "type": "SEQUENCE",
+           "value": ""
+          }
+         ],
+         "contentLength": 146,
+         "hexData": "30818f300c0603551d130101ff04023000300e0603551d0f0101ff0404030205e0301d0603551d250416301406082b0601050507030206082b0601050507030430100603551d110409300781056140622e63301d0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b301f0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8",
+         "index": 7,
+         "level": 2,
+         "type": "[3]",
+         "value": ""
+        }
+       ],
+       "contentLength": 529,
+       "hexData": "a00302010202103136d3a26155bbd42194d1c2b895348c300a06082a811ccf55018375306e310b300906035504061302434e31223020060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b69743111300f060355040b0c084c6f63616c2043413128302606035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89301e170d3236313130313034353434325a170d3237313130313034353934325a306c310b300906035504061302434e310b300906035504080c02424a310b300906035504070c02424a310c300a060355040a0c03434258310c300a060355040b0c034342583111300f06035504030c0863726f737376616c3114301206092a864886f70d01090116056140622e633059301306072a8648ce3d020106082a811ccf5501822d034200041a1f470afd7374e02c4fc86d024146ac8af1c4e216c0967ae3fcf7d59eb7d7eb5d0ed31e70638175bbdb90e24a8ce436126b8173362ea3aac47244a283644f81a3819230818f300c0603551d130101ff04023000300e0603551d0f0101ff0404030205e0301d0603551d250416301406082b0601050507030206082b0601050507030430100603551d110409300781056140622e63301d0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b301f0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8",
+       "index": 0,
+       "level": 1,
+       "type": "SEQUENCE",
+       "value": ""
+      },
+      {
+       "children": [
+        {
+         "children": [],
+         "contentLength": 8,
+         "hexData": "2a811ccf55018375",
+         "index": 0,
+         "level": 2,
+         "type": "OBJECT IDENTIFIER",
+         "value": "1.2.156.10197.1.501"
+        }
+       ],
+       "contentLength": 10,
+       "hexData": "06082a811ccf55018375",
+       "index": 1,
+       "level": 1,
+       "type": "SEQUENCE",
+       "value": ""
+      },
+      {
+       "children": [],
+       "contentLength": 71,
+       "hexData": "00304402201943f6bf35cfadede1640fea40a6a25532b822bde36f9fa77069289c1b0382a9022047473f1b4102d3cf95e8d539a10f25e51b57e6ad74a9492936acdd1c2a393d7d",
+       "index": 2,
+       "level": 1,
+       "type": "BIT STRING",
+       "value": "<71 bytes>"
+      }
+     ],
+     "contentLength": 618,
+     "hexData": "30820211a00302010202103136d3a26155bbd42194d1c2b895348c300a06082a811ccf55018375306e310b300906035504061302434e31223020060355040a0c19436970686572426f78204f66666c696e6520546f6f6c6b69743111300f060355040b0c084c6f63616c2043413128302606035504030c1f436970686572426f7820e69cace59cb0e6a0b9204341efbc88534d32efbc89301e170d3236313130313034353434325a170d3237313130313034353934325a306c310b300906035504061302434e310b300906035504080c02424a310b300906035504070c02424a310c300a060355040a0c03434258310c300a060355040b0c034342583111300f06035504030c0863726f737376616c3114301206092a864886f70d01090116056140622e633059301306072a8648ce3d020106082a811ccf5501822d034200041a1f470afd7374e02c4fc86d024146ac8af1c4e216c0967ae3fcf7d59eb7d7eb5d0ed31e70638175bbdb90e24a8ce436126b8173362ea3aac47244a283644f81a3819230818f300c0603551d130101ff04023000300e0603551d0f0101ff0404030205e0301d0603551d250416301406082b0601050507030206082b0601050507030430100603551d110409300781056140622e63301d0603551d0e04160414da94dd7eb2adaa4f60a82c7c7261aa9553c1010b301f0603551d23041830168014f98e2fba145e17180ec7e6c9f351e7895136afd8300a06082a811ccf55018375034700304402201943f6bf35cfadede1640fea40a6a25532b822bde36f9fa77069289c1b0382a9022047473f1b4102d3cf95e8d539a10f25e51b57e6ad74a9492936acdd1c2a393d7d",
+     "index": 0,
+     "level": 0,
+     "type": "SEQUENCE",
+     "value": ""
+    }
+   },
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "时间戳解析",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": {
+    "version": "1",
+    "policy": "1.3.6.1.4.1.55555.1.1",
+    "hashAlgorithm": "SHA-256 (2.16.840.1.101.3.4.2.1)",
+    "messageImprint": "028E0AA10360EE60B9EC26F27190CBE21AA8AB2C334C265BD8DBC88F1CC5AA77",
+    "serialNumber": 2026060100001,
+    "genTime": "2026-06-01T09:30:00.000+00:00",
+    "genTimeStr": "2026-06-01 17:30:00",
+    "accuracy": 100000,
+    "ordering": false,
+    "nonce": "5a5a5a5a",
+    "tsaName": "4: O=CipherBox 测试时间戳服务中心,CN=CipherBox 测试 TSA",
+    "signatureAlgorithm": "SHA256withRSA",
+    "valid": true,
+    "errorMessage": null,
+    "certificateDetails": [
+     {
+      "certInfo": "证书版本: V3\n序列号: 815F3A071104F7A54463F9611E0BB17757BC7A0\n使用者: CN=CipherBox 测试 TSA,O=CipherBox 测试时间戳服务中心,C=CN\n颁发者: CN=CipherBox 测试 TSA,O=CipherBox 测试时间戳服务中心,C=CN\n有效期: 2024年01月01日 08:00:00-2036年01月01日 08:00:00\n签名算法: SHA256WITHRSA\n密钥用法: 数字签名；防止否认；密钥加密\n",
+      "certificateBase64": "MIIDezCCAmOgAwIBAgIUCBXzoHEQT3pURj+WEeC7F3V7x6AwDQYJKoZIhvcNAQELBQAwXDELMAkGA1UEBhMCQ04xLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bpl7TmiLPmnI3liqHkuK3lv4MxHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNBMB4XDTI0MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowXDELMAkGA1UEBhMCQ04xLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bpl7TmiLPmnI3liqHkuK3lv4MxHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlLCny9FuwbvTxbvmgjznsxqFI/sGd1Vk7Bd39LhtZu+Rzo5XZMRlUPEgrTcfsYxI+rHzyyg/sINXUpA3koHgouuSG/ogCT0IxWwenIB3b2rmy6xIKr/5iK4gdVAgPHfGa1DoVsFCRX/bTcLItc3BzAx2CnzmGJ6NWfUOovsFqBenE67s+3jVvNvq1zg4z1NNU8yWb5FXQLTZ5hpr912Nv6nBg0VicMPUoZE2mWjkDGCoJPECj+Ncnf7L3w26OzCzyrtmL377duK2fGOTB3dUVHhW2iroXZUWAgCFODLwL77LYNXpFccajub9J+jR054Zf3XvsJQUokjpYn/QipaFmQIDAQABozUwMzAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIF4DATBgNVHSUEDDAKBggrBgEFBQcDAzANBgkqhkiG9w0BAQsFAAOCAQEAiYGuPn3evA8aO44ZUgsMFFeVaQmfyQiA7JNcEiaB/oX0+9sHHFMbOFkLktyiFIfCcaSV/U/Qf6NUQQFciQtl+XrOvWT7UwBagc4WOSLcYGqp6OggtRTh52I2PvpWxEviKmabGmCLNCDflnWBXLM/vUmz41DEFyeSQ+zbSRhfhp1GfPRlc+n49VN6MRS0dXATjD3UFVlqV34gWljy9LzJJM/rUoDNAQE2ww19vK8fIhexOihv1Y9gRcnZMTEPCsrIyi2NEM7zPVXDbcmVOCkVA/yJ5tRGlXHuRLaNSMxmYCjGZW1WalpJZE0thBEJdwe8cf4BUpyCojo0BZsz4Y46WA=="
+     }
+    ]
+   }
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "accuracy": 100000,
+    "accuracyMicros": 100000,
+    "accuracyText": "100 毫秒",
+    "certificateDetails": [
+     {
+      "base64": "MIIDezCCAmOgAwIBAgIUCBXzoHEQT3pURj+WEeC7F3V7x6AwDQYJKoZIhvcNAQELBQAwXDELMAkGA1UEBhMCQ04xLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bpl7TmiLPmnI3liqHkuK3lv4MxHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNBMB4XDTI0MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowXDELMAkGA1UEBhMCQ04xLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bpl7TmiLPmnI3liqHkuK3lv4MxHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlLCny9FuwbvTxbvmgjznsxqFI/sGd1Vk7Bd39LhtZu+Rzo5XZMRlUPEgrTcfsYxI+rHzyyg/sINXUpA3koHgouuSG/ogCT0IxWwenIB3b2rmy6xIKr/5iK4gdVAgPHfGa1DoVsFCRX/bTcLItc3BzAx2CnzmGJ6NWfUOovsFqBenE67s+3jVvNvq1zg4z1NNU8yWb5FXQLTZ5hpr912Nv6nBg0VicMPUoZE2mWjkDGCoJPECj+Ncnf7L3w26OzCzyrtmL377duK2fGOTB3dUVHhW2iroXZUWAgCFODLwL77LYNXpFccajub9J+jR054Zf3XvsJQUokjpYn/QipaFmQIDAQABozUwMzAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIF4DATBgNVHSUEDDAKBggrBgEFBQcDAzANBgkqhkiG9w0BAQsFAAOCAQEAiYGuPn3evA8aO44ZUgsMFFeVaQmfyQiA7JNcEiaB/oX0+9sHHFMbOFkLktyiFIfCcaSV/U/Qf6NUQQFciQtl+XrOvWT7UwBagc4WOSLcYGqp6OggtRTh52I2PvpWxEviKmabGmCLNCDflnWBXLM/vUmz41DEFyeSQ+zbSRhfhp1GfPRlc+n49VN6MRS0dXATjD3UFVlqV34gWljy9LzJJM/rUoDNAQE2ww19vK8fIhexOihv1Y9gRcnZMTEPCsrIyi2NEM7zPVXDbcmVOCkVA/yJ5tRGlXHuRLaNSMxmYCjGZW1WalpJZE0thBEJdwe8cf4BUpyCojo0BZsz4Y46WA==",
+      "certInfo": "主体：Common Name: CipherBox 测试 TSA, Organization: CipherBox 测试时间戳服务中心, Country: CN\n颁发者：Common Name: CipherBox 测试 TSA, Organization: CipherBox 测试时间戳服务中心, Country: CN\n序列号：815F3A071104F7A54463F9611E0BB17757BC7A0\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA",
+      "issuer": "Common Name: CipherBox 测试 TSA, Organization: CipherBox 测试时间戳服务中心, Country: CN",
+      "notAfter": "2036-01-01 00:00:00 UTC",
+      "notBefore": "2024-01-01 00:00:00 UTC",
+      "pem": "-----BEGIN CERTIFICATE-----\nMIIDezCCAmOgAwIBAgIUCBXzoHEQT3pURj+WEeC7F3V7x6AwDQYJKoZIhvcNAQEL\nBQAwXDELMAkGA1UEBhMCQ04xLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bp\nl7TmiLPmnI3liqHkuK3lv4MxHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNB\nMB4XDTI0MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowXDELMAkGA1UEBhMCQ04x\nLjAsBgNVBAoMJUNpcGhlckJveCDmtYvor5Xml7bpl7TmiLPmnI3liqHkuK3lv4Mx\nHTAbBgNVBAMMFENpcGhlckJveCDmtYvor5UgVFNBMIIBIjANBgkqhkiG9w0BAQEF\nAAOCAQ8AMIIBCgKCAQEAlLCny9FuwbvTxbvmgjznsxqFI/sGd1Vk7Bd39LhtZu+R\nzo5XZMRlUPEgrTcfsYxI+rHzyyg/sINXUpA3koHgouuSG/ogCT0IxWwenIB3b2rm\ny6xIKr/5iK4gdVAgPHfGa1DoVsFCRX/bTcLItc3BzAx2CnzmGJ6NWfUOovsFqBen\nE67s+3jVvNvq1zg4z1NNU8yWb5FXQLTZ5hpr912Nv6nBg0VicMPUoZE2mWjkDGCo\nJPECj+Ncnf7L3w26OzCzyrtmL377duK2fGOTB3dUVHhW2iroXZUWAgCFODLwL77L\nYNXpFccajub9J+jR054Zf3XvsJQUokjpYn/QipaFmQIDAQABozUwMzAMBgNVHRMB\nAf8EAjAAMA4GA1UdDwEB/wQEAwIF4DATBgNVHSUEDDAKBggrBgEFBQcDAzANBgkq\nhkiG9w0BAQsFAAOCAQEAiYGuPn3evA8aO44ZUgsMFFeVaQmfyQiA7JNcEiaB/oX0\n+9sHHFMbOFkLktyiFIfCcaSV/U/Qf6NUQQFciQtl+XrOvWT7UwBagc4WOSLcYGqp\n6OggtRTh52I2PvpWxEviKmabGmCLNCDflnWBXLM/vUmz41DEFyeSQ+zbSRhfhp1G\nfPRlc+n49VN6MRS0dXATjD3UFVlqV34gWljy9LzJJM/rUoDNAQE2ww19vK8fIhex\nOihv1Y9gRcnZMTEPCsrIyi2NEM7zPVXDbcmVOCkVA/yJ5tRGlXHuRLaNSMxmYCjG\nZW1WalpJZE0thBEJdwe8cf4BUpyCojo0BZsz4Y46WA==\n-----END CERTIFICATE-----\n",
+      "serialNumber": "815F3A071104F7A54463F9611E0BB17757BC7A0",
+      "sha256": "50f46fe8c069407cbf78f8a05c67d51616edc96c028f5194ec4b5a2c4950ed7e",
+      "subject": "Common Name: CipherBox 测试 TSA, Organization: CipherBox 测试时间戳服务中心, Country: CN",
+      "subjectCn": "CipherBox 测试 TSA"
+     }
+    ],
+    "contentTypeOid": "1.2.840.113549.1.9.16.1.4",
+    "extensions": [],
+    "genTime": "2026-06-01T09:30:00+00:00",
+    "genTimeLocal": "2026-06-01 17:30:00",
+    "genTimeStr": "2026-06-01 09:30:00 UTC",
+    "hashAlgorithm": "SHA-256",
+    "hashAlgorithmOid": "2.16.840.1.101.3.4.2.1",
+    "messageImprint": "028e0aa10360ee60b9ec26f27190cbe21aa8ab2c334c265bd8dbc88f1cc5aa77",
+    "messageImprintLength": 32,
+    "nonce": "5A5A5A5A",
+    "ordering": false,
+    "policy": "1.3.6.1.4.1.55555.1.1",
+    "serialNumber": 2026060100001,
+    "serialNumberHex": "1D7BA97B1A1",
+    "signatureAlgorithm": "SHA256withRSA",
+    "tokenType": "id-ct-TSTInfo（RFC 3161）",
+    "tsaName": "CipherBox 测试 TSA",
+    "version": 1,
+    "wrapped": "ContentInfo"
+   },
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "电子签章校验（PDF）",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "sigFormatData": false,
+     "sigFormatDataMsg": "签章格式不符合GB/T 38540-2020及GM/T 0031-2014标准",
+     "signDataValid": null,
+     "signDataValidMsg": null,
+     "signCertAndSeal": null,
+     "signCertAndSealMsg": null,
+     "sealValid": null,
+     "sealValidMsg": null,
+     "signCertValid": null,
+     "signCertValidMsg": null,
+     "signTimeValid": null,
+     "signTimeValidMsg": null,
+     "digestValid": null,
+     "digestValidMsg": null,
+     "publicKey": null,
+     "orgData": null,
+     "signData": null,
+     "orgDataDigest": null,
+     "signCert": null,
+     "signCertString": null,
+     "makeSignatureCert": null,
+     "makeSignatureCertString": null,
+     "signCertList": null,
+     "signCertListString": [],
+     "sealVersion": null,
+     "sealType": null,
+     "sealName": null,
+     "sealCreateTime": null,
+     "sealStartTime": null,
+     "sealEndTime": null,
+     "signVersion": null,
+     "signTime": null
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "fileName": "signed.pdf",
+    "fileType": "PDF",
+    "signatureCount": 1,
+    "signatures": [
+     {
+      "allPassed": true,
+      "allValid": true,
+      "checks": [
+       {
+        "key": "sigFormatData",
+        "message": "/ByteRange 合法，签名覆盖 1425 字节；CMS SignedData 结构合法（SignerInfo 1 个，证书 2 张，签名算法 SHA256withRSA）；SubFilter=/adbe.pkcs7.detached",
+        "name": "电子签章数据格式正确性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "signDataValid",
+        "message": "SHA256withRSA 验签通过；已按 signedAttrs 的 DER 编码（SET OF Attribute）验签；signedAttrs 含 messageDigest；contentType 与 eContentType 一致",
+        "name": "电子签章签名值正确性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "signCertAndSeal",
+        "message": "印章信息绑定证书 SHA-256 与签章者证书一致（6559321a779b4b8d…）",
+        "name": "签章者证书与电子印章的匹配性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "sealValid",
+        "message": "印章有效期 2025-01-10 08:00:00 UTC 至 2035-01-10 08:00:00 UTC",
+        "name": "电子印章有效性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "signCertValid",
+        "message": "证书在有效期内（2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC）；证书链完整（0 级），根证书为自签根，未接入系统信任库",
+        "name": "签章者证书有效性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "signTimeValid",
+        "message": "签章时间 2026-11-01 04:04:26 UTC 位于证书有效期（2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC）内",
+        "name": "签章时间有效性",
+        "ok": true,
+        "status": "pass"
+       },
+       {
+        "key": "digestValid",
+        "message": "SHA-256 原文摘要 fa5dd74b0a0a6c24a15454d667d7e1b3… 与 signedAttrs messageDigest 一致；覆盖 1425 字节（/ByteRange [0, 920, 10990, 505]）",
+        "name": "原文摘要匹配",
+        "ok": true,
+        "status": "pass"
+       }
+      ],
+      "details": {
+       "byteRange": [
+        0,
+        920,
+        10990,
+        505
+       ],
+       "chain": {
+        "broken": null,
+        "certs": [
+         {
+          "base64": "MIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQELBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInpmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcNMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMGA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lwaGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPhRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDMS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvBmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/M3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4q9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdiBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVIs/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstUKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ2qiWA9+6686LLRNsBEMiPLsN2n5ogzs=",
+          "curve": null,
+          "isCa": false,
+          "issuer": "Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN",
+          "keyUsage": [
+           "digital_signature",
+           "key_encipherment",
+           "non_repudiation"
+          ],
+          "notAfter": "2036-01-01 00:00:00 UTC",
+          "notAfterRaw": "Tue, 01 Jan 2036 00:00:00 GMT",
+          "notBefore": "2024-01-01 00:00:00 UTC",
+          "notBeforeRaw": "Mon, 01 Jan 2024 00:00:00 GMT",
+          "pem": "-----BEGIN CERTIFICATE-----\nMIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQEL\nBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInp\nmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcN\nMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMG\nA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lw\naGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\nAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPh\nRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu\n4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDM\nS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvB\nmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/\nM3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAO\nBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQEL\nBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4\nq9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdi\nBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVI\ns/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstU\nKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ\n2qiWA9+6686LLRNsBEMiPLsN2n5ogzs=\n-----END CERTIFICATE-----\n",
+          "publicKeyAlgorithm": "rsa",
+          "serialNumber": "5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA",
+          "sha256": "6559321a779b4b8dbf7634acf5e5fd5c88c38576c2ecc1e84a2a7cfd40475743",
+          "signatureAlgorithm": "SHA256withRSA",
+          "subject": "Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN",
+          "subjectCn": "CipherBox 测试签章者",
+          "text": "主体：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n颁发者：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n序列号：5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA"
+         }
+        ],
+        "depth": 0,
+        "rootSelfSigned": true
+       },
+       "digestAlgorithm": "SHA-256",
+       "fieldName": "Signature1",
+       "index": 0,
+       "makerCert": "MIIDYTCCAkmgAwIBAgIUaDYJi1pjGTHdjys27VQzaxr5qE4wDQYJKoZIhvcNAQELBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInpmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5XliLbnq6DogIUwHhcNMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMGA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lwaGVyQm94IOa1i+ivleWItueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOjSmOFJcsrGnPLmeWjIAWDo4YYzkVrEI41cfCeXrfjgNR72Luon98sTURRdIGLkdBeXbBAAVP1KCDsgOHTmAtDQj06qR1EMa7b/crWFRE6AftGTH5tUsPQqjMWxl/hAHXU1sh7myJfNLhQw6RsH8PEqO+zM6ZUb29GjCd4P70lubOMLji/vai3Zk2EJa5r7prpYeO3dlj3A3bmj1nRLg5w20U9Zu72webwve/M5ZroOAhSt4Ze5Jl5Fdo4vL4pis+FRE2X0sBEB8puBvoG9Qnupxf1fNPsLbdUb75maChBzViD7/So57d/2tuQZVkAIK39XOkraKP7kpIkDWO7xx20CAwEAAaMjMCEwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAYYwDQYJKoZIhvcNAQELBQADggEBALlbHBIbk9Ttccbu0kHF/1vY2kUrzioQWWsjONV0l8y5RuT/KhEXLSR3RY11XNVE3GRzU0bH+WWydRkN7FajOvEO28UYzvte9cUWCM5oExLzB7il3jzEn7FpzxY+yZTmcBwk4gKpbrHlaVN8/a5XUYd4P4od/p4aqV3wQgjZV36H7fvZnDa8qckkD94/XcZj47yiGJ0lCa8GzJBo9msElPmtynBJCFYmPZxAI0cHLrjRqXLVUuHi4zazsO3Z6/soIWaO+Ie2Gdp+HWtfX8B8p4vjtk2dfB/G1ZA3ZWck4nxjC0CO7e+iySOleDIwjeLrEIXXL12IZe1HFNLceGtAUJE=",
+       "makerCertString": "主体：Common Name: CipherBox 测试制章者, Organization: CipherBox 测试有限公司, Country: CN\n颁发者：Common Name: CipherBox 测试制章者, Organization: CipherBox 测试有限公司, Country: CN\n序列号：6836098B5A631931DD8F2B36ED54336B1AF9A84E\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA",
+       "orgData": "255044462d312e330a25e2e3cfd30a312030206f626a0a3c3c0a2f50726f647563657220287079706466290a3e3e0a656e646f626a0a322030206f626a0a3c3c0a2f54797065202f50616765730a2f436f756e7420310a2f4b696473205b203420302052205d0a3e3e0a656e646f626a0a332030206f626a0a3c3c0a2f54797065202f436174616c6f670a2f50616765732032203020520a3e3e0a656e646f626a0a342030206f626a0a3c3c0a2f54797065202f506167650a2f5265736f7572636573203c3c0a3e3e0a2f4d65646961426f78205b20302e3020302e302035393520383432205d0a2f506172656e742032203020520a3e3e0a656e646f626a0a787265660a3020350a303030303030303030302036353533352066200a30303030303030303135203030303030206e200a30303030303030303534203030303030206e200a30303030303030313133203030303030206e200a30303030303030313632203030303030206e200a747261696c65720a3c3c0a2f53697a6520350a2f526f6f742033203020520a2f496e666f2031203020520a3e3e0a7374617274787265660a3235360a2525454f460a312030206f626a0a3c3c0a2f50726f6475636572202870797064665c30373320707948616e6b6f20305c30353633385c30353630290a2f4d6f64446174652028445c30373232303236313130313132303432365c30353330385c30343730305c303437290a3e3e0a656e646f626a0a332030206f626a0a3c3c0a2f54797065202f436174616c6f670a2f50616765732032203020520a2f56657273696f6e202f312e370a2f4163726f466f726d2036203020520a3e3e0a656e646f626a0a342030206f626a0a3c3c0a2f54797065202f506167650a2f5265736f7572636573203c3c0a3e3e0a2f4d65646961426f78205b203020302035393520383432205d0a2f506172656e742032203020520a2f416e6e6f7473205b203720302052205d0a3e3e0a656e646f626a0a362030206f626a0a3c3c0a2f4669656c6473205b203720302052205d0a2f536967466c61677320330a3e3e0a656e646f626a0a372030206f626a0a3c3c0a2f4654202f5369670a2f5420285369676e617475726531290a2f54797065202f416e6e6f740a2f53756274797065202f5769646765740a2f46203133320a2f52656374205b2030203020302030205d0a2f502034203020520a2f562038203020520a3e3e0a656e646f626a0a382030206f626a0a3c3c0a2f436f6e74656e7473200a2f4279746552616e6765205b3020393230203130393930203530355d2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200a2f54797065202f5369670a2f46696c746572202f41646f62652e50504b4c6974650a2f53756246696c746572202f616462652e706b6373372e64657461636865640a2f4d2028445c30373232303236313130313132303432365c30353330385c30343730305c303437290a3e3e0a656e646f626a0a787265660a3020320a303030303030303030302036353533352066200a30303030303030343331203030303030206e200a3320320a30303030303030353432203030303030206e200a30303030303030363231203030303030206e200a3620330a30303030303030373239203030303030206e200a30303030303030373830203030303030206e200a30303030303030383939203030303030206e200a747261696c65720a3c3c0a2f53697a6520390a2f526f6f742033203020520a2f496e666f2031203020520a2f4944205b203c66326534666561616564643236626565333063623765633230323036633138643e203c62383436633164373763643033306433343437643738316539663636343065313e205d0a2f50726576203235360a3e3e0a7374617274787265660a31313138320a2525454f460a",
+       "orgDataDigest": "fa5dd74b0a0a6c24a15454d667d7e1b3fbfe6f9cf3434945aa9d4a57265ef502",
+       "orgDataDigestExpected": "fa5dd74b0a0a6c24a15454d667d7e1b3fbfe6f9cf3434945aa9d4a57265ef502",
+       "orgDataFormat": "HEX",
+       "orgDataLength": 1425,
+       "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp2AiLW2BJH8GuiY0taZ+ckcU9pYaZPHayyZYlAS3EZndgZq5FLUk8+FG76tTz4Cs5PTsFMoxvc68cRBiQHLvOQ0jKZr/XGSXeitwnpCfTU8hOhed7PwrZ+7iS/FXMD22Yqc3B1NPr7oo/nLd0TPnk8i/2npgr61YHqceqx+PLcLMRn2V6nJJoMxLnkk2tDbVoKRRAf1mSuyh7VxkSBUJTJdK6G2ZkajqIDUs/KlJAJFG/dNyqJ6US8GaySa59BndPNqvJg5wKQwG40j8VP8xQ6WZhSWHC6C2VoEdVlQxo317UqmWiCqgRn8zd72EUYmun/sE7OY/dXj6lvTDE6bYYQIDAQAB",
+       "publicKeyAlg": "rsa",
+       "sealCreateTime": "2025-01-10 08:00:00 UTC",
+       "sealEndTime": "2035-01-10 08:00:00 UTC",
+       "sealName": "CipherBox 测试电子印章",
+       "sealStartTime": "2025-01-10 08:00:00 UTC",
+       "sealType": "企业公章",
+       "sealVersion": 1,
+       "signAlgorithm": "SHA256withRSA",
+       "signCert": "MIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQELBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInpmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcNMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMGA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lwaGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPhRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDMS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvBmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/M3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4q9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdiBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVIs/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstUKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ2qiWA9+6686LLRNsBEMiPLsN2n5ogzs=",
+       "signCertInfo": {
+        "base64": "MIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQELBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInpmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcNMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMGA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lwaGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPhRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDMS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvBmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/M3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4q9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdiBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVIs/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstUKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ2qiWA9+6686LLRNsBEMiPLsN2n5ogzs=",
+        "curve": null,
+        "isCa": false,
+        "issuer": "Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN",
+        "keyUsage": [
+         "digital_signature",
+         "key_encipherment",
+         "non_repudiation"
+        ],
+        "notAfter": "2036-01-01 00:00:00 UTC",
+        "notAfterRaw": "Tue, 01 Jan 2036 00:00:00 GMT",
+        "notBefore": "2024-01-01 00:00:00 UTC",
+        "notBeforeRaw": "Mon, 01 Jan 2024 00:00:00 GMT",
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQEL\nBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInp\nmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcN\nMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMG\nA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lw\naGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\nAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPh\nRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu\n4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDM\nS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvB\nmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/\nM3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAO\nBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQEL\nBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4\nq9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdi\nBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVI\ns/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstU\nKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ\n2qiWA9+6686LLRNsBEMiPLsN2n5ogzs=\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "rsa",
+        "serialNumber": "5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA",
+        "sha256": "6559321a779b4b8dbf7634acf5e5fd5c88c38576c2ecc1e84a2a7cfd40475743",
+        "signatureAlgorithm": "SHA256withRSA",
+        "subject": "Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN",
+        "subjectCn": "CipherBox 测试签章者",
+        "text": "主体：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n颁发者：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n序列号：5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA"
+       },
+       "signCertList": [
+        "MIIDczCCAlugAwIBAgIUW3r3oE7QO/JXyWXuuGDCDWncDdowDQYJKoZIhvcNAQELBQAwWDELMAkGA1UEBhMCQ04xJTAjBgNVBAoMHENpcGhlckJveCDmtYvor5XmnInpmZDlhazlj7gxIjAgBgNVBAMMGUNpcGhlckJveCDmtYvor5Xnrb7nq6DogIUwHhcNMjQwMTAxMDAwMDAwWhcNMzYwMTAxMDAwMDAwWjBYMQswCQYDVQQGEwJDTjElMCMGA1UECgwcQ2lwaGVyQm94IOa1i+ivleaciemZkOWFrOWPuDEiMCAGA1UEAwwZQ2lwaGVyQm94IOa1i+ivleetvueroOiAhTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKdgIi1tgSR/BromNLWmfnJHFPaWGmTx2ssmWJQEtxGZ3YGauRS1JPPhRu+rU8+ArOT07BTKMb3OvHEQYkBy7zkNIyma/1xkl3orcJ6Qn01PIToXnez8K2fu4kvxVzA9tmKnNwdTT6+6KP5y3dEz55PIv9p6YK+tWB6nHqsfjy3CzEZ9lepySaDMS55JNrQ21aCkUQH9Zkrsoe1cZEgVCUyXSuhtmZGo6iA1LPypSQCRRv3TcqielEvBmskmufQZ3TzaryYOcCkMBuNI/FT/MUOlmYUlhwugtlaBHVZUMaN9e1KplogqoEZ/M3e9hFGJrp/7BOzmP3V4+pb0wxOm2GECAwEAAaM1MDMwDAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBeAwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQADggEBAGxtnCwZbIePk5rTyBfF8inr8brT+Y5Nm0w/ODK2YiMPdY/P9YEgLQx4q9AB2bCtoOzDXmqRXciDBUxwmIl6hsNSlj+mFf+rbgAEQiIqYABrBvb2fqsofIdiBfB4h6XVqiAFdMCWb59chWfPIupPyfx4SOY7SQGMBILvi3V+XGrR6ep2Q0Ep0xVIs/++bbmog6e9f5vuARlZI1SIoNbFe/6h14mXLtpUHEumzGaUYX/rekQEJYXvZstUKFdyRvSZC6kC5F+mSGbjuwwBWs0Fj0iKjyOm/UscsZYXB4M0PlWHavjXX9Py9tfJ2qiWA9+6686LLRNsBEMiPLsN2n5ogzs="
+       ],
+       "signCertListString": [
+        "主体：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n颁发者：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n序列号：5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA"
+       ],
+       "signCertString": "主体：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n颁发者：Common Name: CipherBox 测试签章者, Organization: CipherBox 测试有限公司, Country: CN\n序列号：5B7AF7A04ED03BF257C965EEB860C20D69DC0DDA\n有效期：2024-01-01 00:00:00 UTC 至 2036-01-01 00:00:00 UTC\n公钥算法：rsa\n签名算法：SHA256withRSA",
+       "signData": "4e8df63fc247e0f9a0147bb7335ea8c701162ada37a18957758bf4467672615abbef6c304163f8d1bd3d597c1627d5bc18adc8b4a67d5703c337604b0fe5e56fa84eef1b11499a125f3666c2c8e0a7ba81ffde69c0089feb55342527d32a8f3075286198fbc2c6168e9c7e776e6c914865738182ae2d83b39074d7a449be3615fdff7e1a68da934d351c4e39298089687b6c76276c2bb450a15dc7e108242fb4f0fc17557da8691a70de56036464b7faca529db98943a95df6468f3fe1137ca50096383d1de5f45a274adae268eea106f385096f04849ca594632b7c575bb3f465bc5d0ea50715f980b0c6f8e79829139082ba63d0583f68a5a100573f9e2a5b",
+       "signTime": "2026-11-01 04:04:26 UTC",
+       "signTimeRaw": "2026-11-01T04:04:26+00:00",
+       "signVersion": 1,
+       "subFilter": "/adbe.pkcs7.detached"
+      },
+      "fieldName": "Signature1",
+      "format": "PDF",
+      "index": 0,
+      "subFilter": "/adbe.pkcs7.detached",
+      "warnCount": 0,
+      "warnings": []
+     }
+    ]
+   },
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "TLS 流量包解析（tls_session.pcap）",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "extensions": {},
+     "warnings": [],
+     "protocol": "TLS 1.2",
+     "clientRandom": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
+     "clientCipherSuiteList": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(0xC02B), TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256(0xC02F), TLS_RSA_WITH_AES_128_GCM_SHA256(0x009C), TLS_AES_128_GCM_SHA256(0x1301), TLS_AES_256_GCM_SHA384(0x1302)",
+     "serverRandom": "202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F",
+     "serverCipherSuite": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(0xC02B)",
+     "identityAuthAlgorithm": "ECDHE_ECDSA",
+     "confidentialityAlgorithm": "AES_128_GCM",
+     "integrityAlgorithm": "SHA256",
+     "serverCertBase64List": [
+      "MIIBqzCCAVKgAwIBAgIUXJpgtea6bFuOQ9FaUTEVi+9lH5UwCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEwMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRQwEgYDVQQDDAt0ZXN0LXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEnFncbYCJCs6KKui5pVGsyUI+Ohzujhmx6iuhthJtkfLNCZ2xy2DpRPE1f+QfpXcnPAl/qu1RtxeoW2T65WF72jJzAlMAwGA1UdEwEB/wQCMAAwFQYDVR0RBA4wDIIKdGVzdC5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiATUZtyYJFA0DkpitF5z38lYnkZgYFJenia3lMqUUMEtQIgCJBsofX2YnX2WEeaTH+FID1xujRtRlRdtelq10d7kXw=",
+      "MIIBszCCAVmgAwIBAgIUAY16Va2bN2m2yXDZzRt9eWSkIBgwCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTAwMDAwMFoXDTM1MTIzMDAwMDAwMFowRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+C/6DvQF6VdUJq+9LWpHmqLdaVj4lpbuCy1MADclRsHWJzn/mp4+7tegyyzYzIts9l+oVvbmGhExK2n7N2+KNqMjMCEwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAYYwCgYIKoZIzj0EAwIDSAAwRQIgOGOfumR0kMLdq02qjIUkzfLjFk2Wc/sBSGrsqjgHEdICIQDzLQkzMqrLQ7YpXNyyviq2zLhAPN6dIj4HGqw8c8Uogw=="
+     ],
+     "serverCertTextList": [
+      "证书版本: V3\n序列号: 5C9A60B5E6BA6C5B8E43D15A5131158BEF651F95\n使用者: CN=test-server,O=CipherBox Test,C=CN\n颁发者: CN=CipherBox Test Root CA,O=CipherBox Test,C=CN\n有效期: 2026年01月01日 07:00:00-2027年01月01日 08:00:00\n签名算法: SHA256WITHECDSA\n密钥用法: <span style='color:#f5222d;'>证书没有指定密钥用法，请检查证书使用场景！</span>\n",
+      "证书版本: V3\n序列号: 18D7A55AD9B3769B6C970D9CD1B7D7964A42018\n使用者: CN=CipherBox Test Root CA,O=CipherBox Test,C=CN\n颁发者: CN=CipherBox Test Root CA,O=CipherBox Test,C=CN\n有效期: 2025年12月31日 08:00:00-2035年12月30日 08:00:00\n签名算法: SHA256WITHECDSA\n密钥用法: 数字签名；证书签名；CRL签名\n"
+     ],
+     "serverSign": null,
+     "bilateralAuth": true,
+     "clientCertBase64List": [
+      "MIIBlTCCATugAwIBAgIUKE9WMlE2HoneLmVZmvkjUZ6/K3owCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEwMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRQwEgYDVQQDDAt0ZXN0LWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABAgzXVdqpnF0fe5wP9Nx+jXpcRlNF0ISgovdnfdKoVs6GCCLLghPCglC5h1n83HbK/EUqmUiOE6io4RoUi9XaUWjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDSAAwRQIgLiIL2TmTdOGL0FJ+56vJku1NvPvW6uz1oIC0niQxakgCIQD57/0ra35IrV73GnpwtsogfT4NHHHAAY/i3Px+g2EqPw=="
+     ],
+     "clientCertTextList": [
+      "证书版本: V3\n序列号: 284F563251361E89DE2E65599AF923519EBF2B7A\n使用者: CN=test-client,O=CipherBox Test,C=CN\n颁发者: CN=CipherBox Test Root CA,O=CipherBox Test,C=CN\n有效期: 2026年01月01日 07:00:00-2027年01月01日 08:00:00\n签名算法: SHA256WITHECDSA\n密钥用法: <span style='color:#f5222d;'>证书没有指定密钥用法，请检查证书使用场景！</span>\n"
+     ],
+     "clientSign": null,
+     "preMasterKey": null,
+     "keyExchangeParams": "03001741043C8CB48D3EF981D7165BAE1EB0AD7F3E16DDDE201F4AB677599D874401ABD2A9DB5C8CB12DDF72F009686ED0DC43EC0EA7EF258D97CC1C493FCD3FBB30378043",
+     "serverIdentity": null,
+     "serverIbcParams": null,
+     "clientIdentity": null,
+     "clientIbcParams": null,
+     "successHandshake": true,
+     "addressInfo": {
+      "srcAddr": "10.10.1.5",
+      "dstAddr": "10.10.2.10",
+      "srcPort": "51234",
+      "dstPort": "443",
+      "linkIdenStr": "10.10.1.510.10.2.1044351234"
+     },
+     "address": "10.10.1.5:51234----->10.10.2.10:443",
+     "allMessageHex": "010000a10303000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f201111111111111111111111111111111111111111111111111111111111111111000ac02bc02f009c130113020100004e0000000f000d00000a746573742e6c6f63616c000a00060004001d0017000b00020100000d000800060403040105030010000e000e02683208687474702f312e3100170000002b00050403040303020000570303202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f201111111111111111111111111111111111111111111111111111111111111111c02b00000f000b0002010000170000ff010001000b00036f00036c0001af308201ab30820152a00302010202145c9a60b5e6ba6c5b8e43d15a5131158bef651f95300a06082a8648ce3d0403023047310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311f301d06035504030c16436970686572426f78205465737420526f6f74204341301e170d3235313233313233303030305a170d3237303130313030303030305a303c310b300906035504061302434e31173015060355040a0c0e436970686572426f7820546573743114301206035504030c0b746573742d7365727665723059301306072a8648ce3d020106082a8648ce3d0301070342000449c59dc6d80890ace8a2ae8b9a551acc9423e3a1cee8e19b1ea2ba1b6126d91f2cd099db1cb60e944f1357fe41fa577273c097faaed51b717a85b64fae5617bda3273025300c0603551d130101ff0402300030150603551d11040e300c820a746573742e6c6f63616c300a06082a8648ce3d0403020347003044022013519b72609140d039298ad179cf7f256279198181497a789ade532a514304b5022008906ca1f5f66275f658479a4c7f85203d71ba346d46545db5e96ad7477b917c0001b7308201b330820159a0030201020214018d7a55ad9b3769b6c970d9cd1b7d7964a42018300a06082a8648ce3d0403023047310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311f301d06035504030c16436970686572426f78205465737420526f6f74204341301e170d3235313233313030303030305a170d3335313233303030303030305a3047310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311f301d06035504030c16436970686572426f78205465737420526f6f742043413059301306072a8648ce3d020106082a8648ce3d03010703420004f82ffa0ef405e9575426afbd2d6a479aa2dd6958f89696ee0b2d4c00372546c1d62739ff9a9e3eeed7a0cb2cd8cc8b6cf65fa856f6e61a11312b69fb376f8a36a3233021300f0603551d130101ff040530030101ff300e0603551d0f0101ff040403020186300a06082a8648ce3d0403020348003045022038639fba647490c2ddab4daa8c8524cdf2e3164d9673fb01486aecaa380711d2022100f32d093332aacb43b6295cdcb2be2ab6ccb8403cde9d223e071aac3c73c528830c00008f03001741043c8cb48d3ef981d7165bae1eb0ad7f3e16ddde201f4ab677599d874401abd2a9db5c8cb12ddf72f009686ed0dc43ec0ea7ef258d97cc1c493fcd3fbb303780430403004630440220194672964cbcd8d00615c330aa2ad82ab4867df6242e39f820f0084f632df680022062a9491d8c07eeaacdfdae841b1aba576d080f0882195e03709ecc6a7b7efc600d00000b02014000040403040100000e0000000b00019f00019c000199308201953082013ba0030201020214284f563251361e89de2e65599af923519ebf2b7a300a06082a8648ce3d0403023047310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311f301d06035504030c16436970686572426f78205465737420526f6f74204341301e170d3235313233313233303030305a170d3237303130313030303030305a303c310b300906035504061302434e31173015060355040a0c0e436970686572426f7820546573743114301206035504030c0b746573742d636c69656e743059301306072a8648ce3d020106082a8648ce3d0301070342000408335d576aa671747dee703fd371fa35e971194d174212828bdd9df74aa15b3a18208b2e084f0a0942e61d67f371db2bf114aa6522384ea2a38468522f576945a310300e300c0603551d130101ff04023000300a06082a8648ce3d040302034800304502202e220bd9399374e18bd0527ee7abc992ed4dbcfbd6eaecf5a080b49e24316a48022100f9effd2b6b7e48ad5ef71a7a70b6ca207d3e0d1c71c0018fe2dcfc7e83612a3f100000424104d76a9da1f44fa58945891d56214dd09f81a87e0a3fc7640af1581d7bb83214cb63b71c90e246925ffc62b5252f62ced31d7e978d83e326eab6cfdd6b90fbe2b1",
+     "clientTlcpSignResult": null,
+     "serverTlcpSignResult": null
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "count": 2,
+    "meta": {
+     "elapsedMs": 1,
+     "fileName": "",
+     "filter": {
+      "dstIp": "",
+      "dstPort": null,
+      "srcIp": "",
+      "srcPort": null
+     },
+     "format": "pcap",
+     "linkTypes": [
+      "Ethernet"
+     ],
+     "packets": 24,
+     "tlsFlows": 2
+    },
+    "parsedAt": "2026-11-01 12:59:47",
+    "sessions": [
+     {
+      "address": "10.10.1.5:51234-10.10.2.10:443",
+      "addressInfo": {
+       "dstAddr": "10.10.2.10",
+       "dstPort": 443,
+       "srcAddr": "10.10.1.5",
+       "srcPort": 51234
+      },
+      "alpn": [
+       "h2",
+       "http/1.1"
+      ],
+      "authMode": "双向认证",
+      "bilateralAuth": true,
+      "cipherSuiteCode": "0xC02B",
+      "clientCertChain": [
+       "CN=test-client,O=CipherBox Test,C=CN"
+      ],
+      "clientCertList": [
+       {
+        "base64": "MIIBlTCCATugAwIBAgIUKE9WMlE2HoneLmVZmvkjUZ6/K3owCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEwMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRQwEgYDVQQDDAt0ZXN0LWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABAgzXVdqpnF0fe5wP9Nx+jXpcRlNF0ISgovdnfdKoVs6GCCLLghPCglC5h1n83HbK/EUqmUiOE6io4RoUi9XaUWjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDSAAwRQIgLiIL2TmTdOGL0FJ+56vJku1NvPvW6uz1oIC0niQxakgCIQD57/0ra35IrV73GnpwtsogfT4NHHHAAY/i3Px+g2EqPw==",
+        "daysLeft": 60,
+        "isCA": false,
+        "issuer": "CN=CipherBox Test Root CA,O=CipherBox Test,C=CN",
+        "keyBits": 256,
+        "length": 409,
+        "notAfter": "2027-01-01 00:00:00",
+        "notBefore": "2025-12-31 23:00:00",
+        "parsed": true,
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIBlTCCATugAwIBAgIUKE9WMlE2HoneLmVZmvkjUZ6/K3owCgYIKoZIzj0EAwIw\nRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQD\nDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEw\nMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0\nMRQwEgYDVQQDDAt0ZXN0LWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBAgzXVdqpnF0fe5wP9Nx+jXpcRlNF0ISgovdnfdKoVs6GCCLLghPCglC5h1n83Hb\nK/EUqmUiOE6io4RoUi9XaUWjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwID\nSAAwRQIgLiIL2TmTdOGL0FJ+56vJku1NvPvW6uz1oIC0niQxakgCIQD57/0ra35I\nrV73GnpwtsogfT4NHHHAAY/i3Px+g2EqPw==\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "ECC/secp256r1",
+        "san": [],
+        "selfSigned": false,
+        "serial": "284F563251361E89DE2E65599AF923519EBF2B7A",
+        "sha256": "8488c8096aa91198f9819dbd1e150f4d23d8024793c97d7301dc8867e909d2d9",
+        "signatureAlgorithm": "ecdsa-with-SHA256",
+        "subject": "CN=test-client,O=CipherBox Test,C=CN"
+       }
+      ],
+      "clientCertVerify": {
+       "checked": true,
+       "plaintext": "在此之前全部握手报文的拼接（1794 字节，8 条消息）",
+       "present": true,
+       "publicKey": "ECC secp256r1, x=8335d576aa671747dee703fd371fa35e971194d174212828bdd9df74aa15b3a",
+       "reason": "验签通过（ECDSA）",
+       "result": true,
+       "side": "客户端",
+       "signature": "30460221008eb49cc55829f883f568241b11d2bfb418c2dbf5a3bdbb60c40687dfb65ab309022100e20ef213904b4e928e9f00257eafe8c5866f1e30d93997c4ed5fa056dedab90a",
+       "signatureAlgCode": "0x0403",
+       "signatureAlgorithm": "ecdsa_secp256r1_sha256",
+       "signatureLength": 72
+      },
+      "clientCipherSuiteCodes": [
+       "0xC02B",
+       "0xC02F",
+       "0x009C",
+       "0x1301",
+       "0x1302"
+      ],
+      "clientCipherSuites": [
+       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xC02B)",
+       "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xC02F)",
+       "TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009C)",
+       "TLS_AES_128_GCM_SHA256 (0x1301)",
+       "TLS_AES_256_GCM_SHA384 (0x1302)"
+      ],
+      "clientRandom": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "clientSign": "30460221008eb49cc55829f883f568241b11d2bfb418c2dbf5a3bdbb60c40687dfb65ab309022100e20ef213904b4e928e9f00257eafe8c5866f1e30d93997c4ed5fa056dedab90a",
+      "firstPacket": "08:00:00.009",
+      "index": 1,
+      "lastPacket": "08:00:00.056",
+      "notes": [],
+      "protocol": "TLS 1.2",
+      "protocolVersionCode": "0x0303",
+      "recordCount": 12,
+      "serverCertChain": [
+       "CN=test-server,O=CipherBox Test,C=CN",
+       "CN=CipherBox Test Root CA,O=CipherBox Test,C=CN"
+      ],
+      "serverCertList": [
+       {
+        "base64": "MIIBqzCCAVKgAwIBAgIUXJpgtea6bFuOQ9FaUTEVi+9lH5UwCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEwMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRQwEgYDVQQDDAt0ZXN0LXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEnFncbYCJCs6KKui5pVGsyUI+Ohzujhmx6iuhthJtkfLNCZ2xy2DpRPE1f+QfpXcnPAl/qu1RtxeoW2T65WF72jJzAlMAwGA1UdEwEB/wQCMAAwFQYDVR0RBA4wDIIKdGVzdC5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiATUZtyYJFA0DkpitF5z38lYnkZgYFJenia3lMqUUMEtQIgCJBsofX2YnX2WEeaTH+FID1xujRtRlRdtelq10d7kXw=",
+        "daysLeft": 60,
+        "isCA": false,
+        "issuer": "CN=CipherBox Test Root CA,O=CipherBox Test,C=CN",
+        "keyBits": 256,
+        "length": 431,
+        "notAfter": "2027-01-01 00:00:00",
+        "notBefore": "2025-12-31 23:00:00",
+        "parsed": true,
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVKgAwIBAgIUXJpgtea6bFuOQ9FaUTEVi+9lH5UwCgYIKoZIzj0EAwIw\nRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQD\nDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTIzMDAwMFoXDTI3MDEw\nMTAwMDAwMFowPDELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0\nMRQwEgYDVQQDDAt0ZXN0LXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBEnFncbYCJCs6KKui5pVGsyUI+Ohzujhmx6iuhthJtkfLNCZ2xy2DpRPE1f+QfpX\ncnPAl/qu1RtxeoW2T65WF72jJzAlMAwGA1UdEwEB/wQCMAAwFQYDVR0RBA4wDIIK\ndGVzdC5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiATUZtyYJFA0DkpitF5z38lYnkZ\ngYFJenia3lMqUUMEtQIgCJBsofX2YnX2WEeaTH+FID1xujRtRlRdtelq10d7kXw=\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "ECC/secp256r1",
+        "san": [
+         "test.local"
+        ],
+        "selfSigned": false,
+        "serial": "5C9A60B5E6BA6C5B8E43D15A5131158BEF651F95",
+        "sha256": "3c1dfabe33ede6c1acf8d573e4ff33d39e7d6db6cdb7ba45f024d2414b6b2cfd",
+        "signatureAlgorithm": "ecdsa-with-SHA256",
+        "subject": "CN=test-server,O=CipherBox Test,C=CN"
+       },
+       {
+        "base64": "MIIBszCCAVmgAwIBAgIUAY16Va2bN2m2yXDZzRt9eWSkIBgwCgYIKoZIzj0EAwIwRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTAwMDAwMFoXDTM1MTIzMDAwMDAwMFowRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+C/6DvQF6VdUJq+9LWpHmqLdaVj4lpbuCy1MADclRsHWJzn/mp4+7tegyyzYzIts9l+oVvbmGhExK2n7N2+KNqMjMCEwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAYYwCgYIKoZIzj0EAwIDSAAwRQIgOGOfumR0kMLdq02qjIUkzfLjFk2Wc/sBSGrsqjgHEdICIQDzLQkzMqrLQ7YpXNyyviq2zLhAPN6dIj4HGqw8c8Uogw==",
+        "daysLeft": 3345,
+        "isCA": true,
+        "issuer": "CN=CipherBox Test Root CA,O=CipherBox Test,C=CN",
+        "keyBits": 256,
+        "length": 439,
+        "notAfter": "2035-12-30 00:00:00",
+        "notBefore": "2025-12-31 00:00:00",
+        "parsed": true,
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIBszCCAVmgAwIBAgIUAY16Va2bN2m2yXDZzRt9eWSkIBgwCgYIKoZIzj0EAwIw\nRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MR8wHQYDVQQD\nDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMB4XDTI1MTIzMTAwMDAwMFoXDTM1MTIz\nMDAwMDAwMFowRzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0\nMR8wHQYDVQQDDBZDaXBoZXJCb3ggVGVzdCBSb290IENBMFkwEwYHKoZIzj0CAQYI\nKoZIzj0DAQcDQgAE+C/6DvQF6VdUJq+9LWpHmqLdaVj4lpbuCy1MADclRsHWJzn/\nmp4+7tegyyzYzIts9l+oVvbmGhExK2n7N2+KNqMjMCEwDwYDVR0TAQH/BAUwAwEB\n/zAOBgNVHQ8BAf8EBAMCAYYwCgYIKoZIzj0EAwIDSAAwRQIgOGOfumR0kMLdq02q\njIUkzfLjFk2Wc/sBSGrsqjgHEdICIQDzLQkzMqrLQ7YpXNyyviq2zLhAPN6dIj4H\nGqw8c8Uogw==\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "ECC/secp256r1",
+        "san": [],
+        "selfSigned": true,
+        "serial": "18D7A55AD9B3769B6C970D9CD1B7D7964A42018",
+        "sha256": "1367790b2ad2188c85b7933bb3d2f169ffb1c332f4567bb4b595f0f2abfc5c29",
+        "signatureAlgorithm": "ecdsa-with-SHA256",
+        "subject": "CN=CipherBox Test Root CA,O=CipherBox Test,C=CN"
+       }
+      ],
+      "serverCertVerify": {
+       "present": false
+      },
+      "serverCipherSuite": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xC02B)",
+      "serverKeyExchange": {
+       "checked": true,
+       "curve": "secp256r1",
+       "note": "服务端密钥交换消息验签通过",
+       "plaintext": "client_random + server_random + 密钥交换参数（133 字节）",
+       "present": true,
+       "publicKey": "043c8cb48d3ef981d7165bae1eb0ad7f3e16ddde201f4ab677599d874401abd2a9db5c8cb12ddf72f009686ed0dc43ec0ea7ef258d97cc1c493fcd3fbb30378043",
+       "publicKeyText": "ECC secp256r1, x=49c59dc6d80890ace8a2ae8b9a551acc9423e3a1cee8e19b1ea2ba1b6126d91f",
+       "raw": "03001741043c8cb48d3ef981d7165bae1eb0ad7f3e16ddde201f4ab677599d874401abd2a9db5c8cb12ddf72f009686ed0dc43ec0ea7ef258d97cc1c493fcd3fbb303780430403004630440220194672964cbcd8d00615c330aa2ad82ab4867df6242e39f820f0084f632df680022062a9491d8c07eeaacdfdae841b1aba576d080f0882195e03709ecc6a7b7efc60",
+       "reason": "验签通过（ECDSA）",
+       "result": true,
+       "signature": "30440220194672964cbcd8d00615c330aa2ad82ab4867df6242e39f820f0084f632df680022062a9491d8c07eeaacdfdae841b1aba576d080f0882195e03709ecc6a7b7efc60",
+       "signatureAlgorithm": "ecdsa_secp256r1_sha256"
+      },
+      "serverRandom": "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+      "serverSign": "30440220194672964cbcd8d00615c330aa2ad82ab4867df6242e39f820f0084f632df680022062a9491d8c07eeaacdfdae841b1aba576d080f0882195e03709ecc6a7b7efc60",
+      "sni": "test.local",
+      "successHandshake": true,
+      "timeline": [
+       {
+        "detail": "支持 5 个密码套件，SNI=test.local",
+        "from": "客户端",
+        "message": "ClientHello",
+        "time": "08:00:00.009"
+       },
+       {
+        "detail": "选定 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xC02B)",
+        "from": "服务端",
+        "message": "ServerHello",
+        "time": "08:00:00.017"
+       },
+       {
+        "detail": "",
+        "from": "客户端",
+        "message": "ChangeCipherSpec",
+        "time": "08:00:00.045"
+       },
+       {
+        "detail": "",
+        "from": "服务端",
+        "message": "ChangeCipherSpec",
+        "time": "08:00:00.052"
+       },
+       {
+        "detail": "长度 879 字节",
+        "from": "服务端",
+        "message": "Certificate",
+        "time": "08:00:00.021"
+       },
+       {
+        "detail": "长度 143 字节",
+        "from": "服务端",
+        "message": "ServerKeyExchange",
+        "time": "08:00:00.025"
+       },
+       {
+        "detail": "长度 11 字节",
+        "from": "服务端",
+        "message": "CertificateRequest",
+        "time": "08:00:00.029"
+       },
+       {
+        "detail": "长度 0 字节",
+        "from": "服务端",
+        "message": "ServerHelloDone",
+        "time": "08:00:00.029"
+       },
+       {
+        "detail": "长度 415 字节",
+        "from": "客户端",
+        "message": "Certificate",
+        "time": "08:00:00.033"
+       },
+       {
+        "detail": "长度 66 字节",
+        "from": "客户端",
+        "message": "ClientKeyExchange",
+        "time": "08:00:00.037"
+       },
+       {
+        "detail": "长度 76 字节",
+        "from": "客户端",
+        "message": "CertificateVerify",
+        "time": "08:00:00.041"
+       },
+       {
+        "detail": "长度 12 字节",
+        "from": "客户端",
+        "message": "Finished",
+        "time": "08:00:00.049"
+       },
+       {
+        "detail": "长度 12 字节",
+        "from": "服务端",
+        "message": "Finished",
+        "time": "08:00:00.056"
+       }
+      ]
+     },
+     {
+      "address": "10.10.1.6:40122-10.10.2.10:443",
+      "addressInfo": {
+       "dstAddr": "10.10.2.10",
+       "dstPort": 443,
+       "srcAddr": "10.10.1.6",
+       "srcPort": 40122
+      },
+      "alpn": [],
+      "authMode": "单向认证",
+      "bilateralAuth": false,
+      "cipherSuiteCode": "0x1301",
+      "clientCertChain": [],
+      "clientCertList": [],
+      "clientCertVerify": {
+       "present": false
+      },
+      "clientCipherSuiteCodes": [
+       "0x1301",
+       "0x1302"
+      ],
+      "clientCipherSuites": [
+       "TLS_AES_128_GCM_SHA256 (0x1301)",
+       "TLS_AES_256_GCM_SHA384 (0x1302)"
+      ],
+      "clientRandom": "404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f",
+      "clientSign": "",
+      "firstPacket": "08:00:30.009",
+      "index": 2,
+      "lastPacket": "08:00:30.025",
+      "notes": [
+       "TLS 1.3 的 Finished 位于加密记录中，本工具依据 ServerHello 之后的应用数据推断握手已完成",
+       "TLS 1.3 的 Certificate / CertificateVerify 为加密报文，被动抓包无法解析证书链与签名"
+      ],
+      "protocol": "TLS 1.3",
+      "protocolVersionCode": "0x0304",
+      "recordCount": 5,
+      "serverCertChain": [],
+      "serverCertList": [],
+      "serverCertVerify": {
+       "present": false
+      },
+      "serverCipherSuite": "TLS_AES_128_GCM_SHA256 (0x1301)",
+      "serverKeyExchange": {},
+      "serverRandom": "606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f",
+      "serverSign": "",
+      "sni": "tls13.local",
+      "successHandshake": true,
+      "timeline": [
+       {
+        "detail": "支持 2 个密码套件，SNI=tls13.local",
+        "from": "客户端",
+        "message": "ClientHello",
+        "time": "08:00:30.009"
+       },
+       {
+        "detail": "选定 TLS_AES_128_GCM_SHA256 (0x1301)",
+        "from": "服务端",
+        "message": "ServerHello",
+        "time": "08:00:30.013"
+       }
+      ]
+     }
+    ]
+   },
+   "msg": "解析成功"
+  }
+ },
+ {
+  "name": "SSH 流量包解析（ssh_session.pcap）",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "extensions": {},
+     "warnings": [],
+     "protocolVersion": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+     "kexAlgorithms": "curve25519-sha256",
+     "negotiatedKexAlgorithm": "curve25519-sha256",
+     "serverKexAlgorithms": "curve25519-sha256；diffie-hellman-group14-sha256",
+     "clientKexAlgorithms": "curve25519-sha256；ecdh-sha2-nistp256；diffie-hellman-group14-sha256",
+     "serverEncryptAlgorithms": "aes128-ctr；aes256-gcm@openssh.com",
+     "serverMacAlgorithms": "hmac-sha2-256",
+     "clientEncryptAlgorithms": "aes128-ctr；aes256-ctr",
+     "clientMacAlgorithms": "hmac-sha2-256；hmac-sha1",
+     "encryptAlgorithm": "aes128-ctr",
+     "negotiatedEncryptAlgorithm": "aes128-ctr",
+     "macAlgorithm": "hmac-sha2-256",
+     "negotiatedMacAlgorithm": "hmac-sha2-256",
+     "clientDHQc": "0CF3DF176E97C8C11A610089DED0B63AB5F44D1A4BBD5202F3C4B4F114F4C84B",
+     "serverDHQc": "C8A245F8B645EC555E323CF7E05AA6BC89535B62839483DBB626DACEDD068169",
+     "signature": "F5F8E10145504FE1F46412564F32944943E475B7327DC2129E17EA4962370CA3299BA233CBF40C9D7AF6E3616133F78DAB486D89DC1E7D687A1337CD4AA49B0A",
+     "signAlgorithm": "ssh-ed25519",
+     "addressInfo": {
+      "srcAddr": "10.20.0.9",
+      "dstAddr": "10.20.0.80",
+      "srcPort": "55022",
+      "dstPort": "22",
+      "linkIdenStr": "10.20.0.8010.20.0.92255022"
+     },
+     "address": "10.20.0.9:55022----->10.20.0.80:22",
+     "success": true
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "count": 1,
+    "meta": {
+     "elapsedMs": 0,
+     "fileName": "",
+     "filter": {
+      "dstIp": "",
+      "dstPort": null,
+      "srcIp": "",
+      "srcPort": null
+     },
+     "format": "pcap",
+     "linkTypes": [
+      "Ethernet"
+     ],
+     "packets": 11
+    },
+    "parsedAt": "2026-11-01 12:59:49",
+    "sessions": [
+     {
+      "address": "10.20.0.9:55022-10.20.0.80:22",
+      "addressInfo": {
+       "dstAddr": "10.20.0.80",
+       "dstPort": 22,
+       "srcAddr": "10.20.0.9",
+       "srcPort": 55022
+      },
+      "clientDHParam": "0cf3df176e97c8c11a610089ded0b63ab5f44d1a4bbd5202f3c4b4f114f4c84b",
+      "clientDHQc": "0cf3df176e97c8c11a610089ded0b63ab5f44d1a4bbd5202f3c4b4f114f4c84b",
+      "clientEncryptAlgorithms": [
+       "aes128-ctr",
+       "aes256-ctr"
+      ],
+      "clientHostKeyAlgorithms": [
+       "ssh-ed25519",
+       "rsa-sha2-256"
+      ],
+      "clientKexAlgorithms": [
+       "curve25519-sha256",
+       "ecdh-sha2-nistp256",
+       "diffie-hellman-group14-sha256"
+      ],
+      "clientMacAlgorithms": [
+       "hmac-sha2-256",
+       "hmac-sha1"
+      ],
+      "clientVersion": "SSH-2.0-OpenSSH_9.6p1",
+      "compression": "none",
+      "encryptAlgorithm": "aes128-ctr",
+      "encryptAlgorithmSC": "aes128-ctr",
+      "hostKeyAlgorithm": "ssh-ed25519",
+      "hostKeyBits": 256,
+      "hostKeyFingerprint": "SHA256:V8bPc6QlLoh3wSaRqYCSMTRLmrnKdlPyUlK+xIAq7do",
+      "hostKeyPublic": "d0f5417b6cf131e4eaaaddd27105839691783b48feb06935c06cc41583963241",
+      "hostKeyType": "ssh-ed25519",
+      "index": 1,
+      "kexAlgorithms": "curve25519-sha256",
+      "macAlgorithm": "hmac-sha2-256",
+      "macAlgorithmSC": "hmac-sha2-256",
+      "notes": [
+       "SSH 主机密钥签名需共享秘密 K 才能复算交换哈希，被动抓包默认无法验签"
+      ],
+      "protocolVersion": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+      "serverDHParam": "c8a245f8b645ec555e323cf7e05aa6bc89535b62839483dbb626dacedd068169",
+      "serverDHQc": "c8a245f8b645ec555e323cf7e05aa6bc89535b62839483dbb626dacedd068169",
+      "serverEncryptAlgorithms": [
+       "aes128-ctr",
+       "aes256-gcm@openssh.com"
+      ],
+      "serverHostKeyAlgorithms": [
+       "ssh-ed25519"
+      ],
+      "serverKexAlgorithms": [
+       "curve25519-sha256",
+       "diffie-hellman-group14-sha256"
+      ],
+      "serverMacAlgorithms": [
+       "hmac-sha2-256"
+      ],
+      "serverVersion": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+      "signAlgorithm": "ssh-ed25519",
+      "signVerify": {
+       "algorithm": "ssh-ed25519",
+       "checked": false,
+       "reason": "被动抓包无法获得共享秘密 K，无法复算交换哈希；如需验签请在“共享密钥 K”中填写",
+       "result": null
+      },
+      "signature": "f5f8e10145504fe1f46412564f32944943e475b7327dc2129e17ea4962370ca3299ba233cbf40c9d7af6e3616133f78dab486d89dc1e7d687a1337cd4aa49b0a",
+      "signatureAlgorithm": "ssh-ed25519",
+      "timeline": [
+       {
+        "detail": "SSH-2.0-OpenSSH_9.6p1",
+        "from": "客户端",
+        "message": "版本交换",
+        "time": ""
+       },
+       {
+        "detail": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+        "from": "服务端",
+        "message": "版本交换",
+        "time": ""
+       },
+       {
+        "detail": "KEX 算法 3 个",
+        "from": "客户端",
+        "message": "KEXINIT",
+        "time": ""
+       },
+       {
+        "detail": "KEX 算法 2 个",
+        "from": "服务端",
+        "message": "KEXINIT",
+        "time": ""
+       },
+       {
+        "detail": "32 字节公钥",
+        "from": "客户端",
+        "message": "KEXDH_INIT",
+        "time": ""
+       },
+       {
+        "detail": "主机密钥 ssh-ed25519",
+        "from": "服务端",
+        "message": "KEXDH_REPLY",
+        "time": ""
+       }
+      ]
+     }
+    ]
+   },
+   "msg": "解析成功"
+  }
+ },
+ {
+  "name": "IPSEC 流量包解析（ipsec_ikev2.pcap）",
+  "same": true,
+  "known_diff": "原站拒绝该样例（需额外参数/更完整抓包），本地解析正常，已用独立实现与自测验证",
+  "remote": {
+   "code": 500,
+   "msg": "No IPsec protocol data found",
+   "data": null
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "count": 1,
+    "meta": {
+     "elapsedMs": 0,
+     "fileName": "",
+     "filter": {
+      "dstIp": "",
+      "dstPort": null,
+      "srcIp": "",
+      "srcPort": null
+     },
+     "format": "pcap",
+     "ikeMessages": 4,
+     "linkTypes": [
+      "Ethernet"
+     ],
+     "packets": 4
+    },
+    "parsedAt": "2026-11-01 12:59:50",
+    "sessions": [
+     {
+      "addressInfo": {
+       "dstAddr": "10.30.0.1",
+       "dstPort": 500,
+       "srcAddr": "10.30.0.2",
+       "srcPort": 500
+      },
+      "asymmetricAlg": "MODP-2048",
+      "authAlgorithm": "HMAC-SHA2-256",
+      "authList": [
+       {
+        "data": "872a0a9d9e5027b1dfe837a206b42bd107877dc0235d94ade16000722ee83489a56f900311c1cc0bfaf9b394329ac29fbd9b498ad150b9dad4f6ae4fc472432d485f90e2bdf9ea61e11c366039d7c626ac0b656e8f992feabf9f74a4cb925df612fd04779b760ab7c011f628cbc9ed4a44946b25268fae1fadf9de6745abe98d3a46f3454af2fa2b913cbe67a9737fd3e41e7d476dd79e2944daf8f9cf8be52b8d3b4dbef62a41a59e71f7ae3fd9d3069e2c43976d01d326d360cf79e2da4fa543ee68a2ad0440e7fa2791730358a589d64ec000e1a1eee1842dbcf6506875b2420d202b58f7096fdc4d6e13b74b0113088c5b9612231ec600c1ea6ae96928ff",
+        "method": "RSA 数字签名",
+        "methodCode": 1,
+        "side": "发起方"
+       },
+       {
+        "data": "872a0a9d9e5027b1dfe837a206b42bd107877dc0235d94ade16000722ee83489a56f900311c1cc0bfaf9b394329ac29fbd9b498ad150b9dad4f6ae4fc472432d485f90e2bdf9ea61e11c366039d7c626ac0b656e8f992feabf9f74a4cb925df612fd04779b760ab7c011f628cbc9ed4a44946b25268fae1fadf9de6745abe98d3a46f3454af2fa2b913cbe67a9737fd3e41e7d476dd79e2944daf8f9cf8be52b8d3b4dbef62a41a59e71f7ae3fd9d3069e2c43976d01d326d360cf79e2da4fa543ee68a2ad0440e7fa2791730358a589d64ec000e1a1eee1842dbcf6506875b2420d202b58f7096fdc4d6e13b74b0113088c5b9612231ec600c1ea6ae96928ff",
+        "method": "RSA 数字签名",
+        "methodCode": 1,
+        "side": "响应方"
+       }
+      ],
+      "clientCertBase64List": [
+       "MIIBkTCCATigAwIBAgIUC3l+dCDdh7ogJ8D5IFu+GzjAW5AwCgYIKoZIzj0EAwIwQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQDDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAwMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTATBgNVBAMMDGlwc2VjLWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKn32wepC5z8+/0Vls9I7QfbImUlnewutTCa5yhKk42mtEQIfPEsj0WaELk83Pa8ghRxCkvpabQNa9bRY8ZijqGjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDRwAwRAIgD/Rb+fm13pLGHPlr04PTBl1SPUk7EhdFW3iqo3lC3FkCIDtE5biKgyplCXHSJhC5w0nnlpxD2xSv0Fphga//Puc3"
+      ],
+      "clientCertList": [
+       {
+        "base64": "MIIBkTCCATigAwIBAgIUC3l+dCDdh7ogJ8D5IFu+GzjAW5AwCgYIKoZIzj0EAwIwQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQDDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAwMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTATBgNVBAMMDGlwc2VjLWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKn32wepC5z8+/0Vls9I7QfbImUlnewutTCa5yhKk42mtEQIfPEsj0WaELk83Pa8ghRxCkvpabQNa9bRY8ZijqGjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDRwAwRAIgD/Rb+fm13pLGHPlr04PTBl1SPUk7EhdFW3iqo3lC3FkCIDtE5biKgyplCXHSJhC5w0nnlpxD2xSv0Fphga//Puc3",
+        "daysLeft": 60,
+        "encoding": "X.509 证书-签名",
+        "isCA": false,
+        "issuer": "CN=IPSec Test Root CA,O=CipherBox Test,C=CN",
+        "keyBits": 256,
+        "length": 405,
+        "notAfter": "2027-01-01 00:00:00",
+        "notBefore": "2025-12-31 23:00:00",
+        "parsed": true,
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIBkTCCATigAwIBAgIUC3l+dCDdh7ogJ8D5IFu+GzjAW5AwCgYIKoZIzj0EAwIw\nQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQD\nDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAw\nMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTAT\nBgNVBAMMDGlwc2VjLWNsaWVudDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABKn3\n2wepC5z8+/0Vls9I7QfbImUlnewutTCa5yhKk42mtEQIfPEsj0WaELk83Pa8ghRx\nCkvpabQNa9bRY8ZijqGjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDRwAw\nRAIgD/Rb+fm13pLGHPlr04PTBl1SPUk7EhdFW3iqo3lC3FkCIDtE5biKgyplCXHS\nJhC5w0nnlpxD2xSv0Fphga//Puc3\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "ECC/secp256r1",
+        "san": [],
+        "selfSigned": false,
+        "serial": "B797E7420DD87BA2027C0F9205BBE1B38C05B90",
+        "sha256": "c92c4e97fa393802690d5d34a1faf985eb2c10692357e069950f63f10a2ae8b7",
+        "signatureAlgorithm": "ecdsa-with-SHA256",
+        "subject": "CN=ipsec-client,O=CipherBox Test,C=CN"
+       }
+      ],
+      "clientCertTextList": [
+       "CN=ipsec-client,O=CipherBox Test,C=CN"
+      ],
+      "clientIdentity": "client@ipsec.test(FQDN)",
+      "clientNonce": "ff614b3ca9e842ee9f3f0a09df8239581d082ba0186f4e4c0630cd457a54ced5",
+      "clientSign": "872a0a9d9e5027b1dfe837a206b42bd107877dc0235d94ade16000722ee83489a56f900311c1cc0bfaf9b394329ac29fbd9b498ad150b9dad4f6ae4fc472432d485f90e2bdf9ea61e11c366039d7c626ac0b656e8f992feabf9f74a4cb925df612fd04779b760ab7c011f628cbc9ed4a44946b25268fae1fadf9de6745abe98d3a46f3454af2fa2b913cbe67a9737fd3e41e7d476dd79e2944daf8f9cf8be52b8d3b4dbef62a41a59e71f7ae3fd9d3069e2c43976d01d326d360cf79e2da4fa543ee68a2ad0440e7fa2791730358a589d64ec000e1a1eee1842dbcf6506875b2420d202b58f7096fdc4d6e13b74b0113088c5b9612231ec600c1ea6ae96928ff",
+      "dhGroup": "MODP-2048",
+      "encAlgorithm": "AES-CBC",
+      "encKeyLength": 256,
+      "index": 1,
+      "initiatorCookie": "8cf75ac6c8a8108d",
+      "initiatorSPI": "8cf75ac6c8a8108d",
+      "keData": "71d53c5bc92e845c3e49bc7b7c0abc58e81f5eef31d4128fa6685a37440d4f00205eb98f10e8c7740d4147d42d50bc5101ee9c25146025588b9725a7e8c8bd88",
+      "keGroup": "MODP-2048",
+      "label": "会话 1",
+      "lifeDuration": 28800,
+      "lifeType": "秒",
+      "macAlgorithm": "HMAC-SHA2-256-128",
+      "messages": [
+       {
+        "exchange": "IKE_SA_INIT",
+        "from": "发起方",
+        "messageId": 0,
+        "payloads": [
+         "SA",
+         "KE",
+         "Ni/Nonce"
+        ],
+        "time": "08:02:00.000"
+       },
+       {
+        "exchange": "IKE_SA_INIT",
+        "from": "响应方",
+        "messageId": 0,
+        "payloads": [
+         "SA",
+         "KE",
+         "Ni/Nonce"
+        ],
+        "time": "08:02:00.010"
+       },
+       {
+        "exchange": "IKE_AUTH",
+        "from": "发起方",
+        "messageId": 1,
+        "payloads": [
+         "IDi",
+         "CERT",
+         "AUTH",
+         "SK"
+        ],
+        "time": "08:02:00.020"
+       },
+       {
+        "exchange": "IKE_AUTH",
+        "from": "响应方",
+        "messageId": 1,
+        "payloads": [
+         "IDr",
+         "CERT",
+         "AUTH"
+        ],
+        "time": "08:02:00.030"
+       }
+      ],
+      "nonceClient": "ff614b3ca9e842ee9f3f0a09df8239581d082ba0186f4e4c0630cd457a54ced5",
+      "nonceServer": "97ee3d71594cb4604e1c1e29b55776627f562dbf933c16e8b3deee9b552c1140",
+      "notes": [
+       "IKE_AUTH 的 SK 载荷已加密，其中的 ID/证书/AUTH 无法解密。证书链仅能从未加密 CERT 载荷中提取",
+       "SA 中共有 2 组提案（proposal），表格展示第一组"
+      ],
+      "prfAlgorithm": "HMAC-SHA2-256",
+      "proposals": [
+       {
+        "dh": "MODP-2048",
+        "enc": "AES-CBC",
+        "encLen": 256,
+        "integ": "HMAC-SHA2-256-128",
+        "lifeDuration": 28800,
+        "lifeType": "秒",
+        "prf": "HMAC-SHA2-256",
+        "protocol": "IKE",
+        "spi": ""
+       },
+       {
+        "dh": "MODP-2048",
+        "enc": "AES-CBC",
+        "encLen": 256,
+        "integ": "HMAC-SHA2-256-128",
+        "lifeDuration": 3600,
+        "lifeType": "秒",
+        "prf": "HMAC-SHA2-256",
+        "protocol": "IKE",
+        "spi": ""
+       }
+      ],
+      "protocol": "IKEv2",
+      "responderCookie": "1b421357d9cf2cb4",
+      "responderSPI": "1b421357d9cf2cb4",
+      "serverCertBase64List": [
+       "MIIBkjCCATigAwIBAgIUcrfjzo79bK6+gC8fVG+u0M41OSEwCgYIKoZIzj0EAwIwQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQDDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAwMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTATBgNVBAMMDGlwc2VjLXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPuMjRlE3L1fn1x8FhMlvkMxjZitkK8PYHKLlYT95RNefEHXlKQqskKguD2OF245U1tSXHIvPuR+lJW9wblHZEOjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDSAAwRQIhAIaJ1IwUqoTEG1PlAPJQfqxXQ76Iwuqt8qL3dDhpDkj0AiBcflnirgDf/YirT1eotAoLrJ3IttAhVDa/YLcYRAGOqQ=="
+      ],
+      "serverCertList": [
+       {
+        "base64": "MIIBkjCCATigAwIBAgIUcrfjzo79bK6+gC8fVG+u0M41OSEwCgYIKoZIzj0EAwIwQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQDDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAwMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTATBgNVBAMMDGlwc2VjLXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPuMjRlE3L1fn1x8FhMlvkMxjZitkK8PYHKLlYT95RNefEHXlKQqskKguD2OF245U1tSXHIvPuR+lJW9wblHZEOjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDSAAwRQIhAIaJ1IwUqoTEG1PlAPJQfqxXQ76Iwuqt8qL3dDhpDkj0AiBcflnirgDf/YirT1eotAoLrJ3IttAhVDa/YLcYRAGOqQ==",
+        "daysLeft": 60,
+        "encoding": "X.509 证书-签名",
+        "isCA": false,
+        "issuer": "CN=IPSec Test Root CA,O=CipherBox Test,C=CN",
+        "keyBits": 256,
+        "length": 406,
+        "notAfter": "2027-01-01 00:00:00",
+        "notBefore": "2025-12-31 23:00:00",
+        "parsed": true,
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIBkjCCATigAwIBAgIUcrfjzo79bK6+gC8fVG+u0M41OSEwCgYIKoZIzj0EAwIw\nQzELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRswGQYDVQQD\nDBJJUFNlYyBUZXN0IFJvb3QgQ0EwHhcNMjUxMjMxMjMwMDAwWhcNMjcwMTAxMDAw\nMDAwWjA9MQswCQYDVQQGEwJDTjEXMBUGA1UECgwOQ2lwaGVyQm94IFRlc3QxFTAT\nBgNVBAMMDGlwc2VjLXNlcnZlcjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPuM\njRlE3L1fn1x8FhMlvkMxjZitkK8PYHKLlYT95RNefEHXlKQqskKguD2OF245U1tS\nXHIvPuR+lJW9wblHZEOjEDAOMAwGA1UdEwEB/wQCMAAwCgYIKoZIzj0EAwIDSAAw\nRQIhAIaJ1IwUqoTEG1PlAPJQfqxXQ76Iwuqt8qL3dDhpDkj0AiBcflnirgDf/Yir\nT1eotAoLrJ3IttAhVDa/YLcYRAGOqQ==\n-----END CERTIFICATE-----\n",
+        "publicKeyAlgorithm": "ECC/secp256r1",
+        "san": [],
+        "selfSigned": false,
+        "serial": "72B7E3CE8EFD6CAEBE802F1F546FAED0CE353921",
+        "sha256": "d425580229717097a54964b67cb73be114172339965a32e552d98882339bc5e1",
+        "signatureAlgorithm": "ecdsa-with-SHA256",
+        "subject": "CN=ipsec-server,O=CipherBox Test,C=CN"
+       }
+      ],
+      "serverCertTextList": [
+       "CN=ipsec-server,O=CipherBox Test,C=CN"
+      ],
+      "serverIdentity": "vpn.ipsec.test(FQDN)",
+      "serverNonce": "97ee3d71594cb4604e1c1e29b55776627f562dbf933c16e8b3deee9b552c1140",
+      "serverSign": "872a0a9d9e5027b1dfe837a206b42bd107877dc0235d94ade16000722ee83489a56f900311c1cc0bfaf9b394329ac29fbd9b498ad150b9dad4f6ae4fc472432d485f90e2bdf9ea61e11c366039d7c626ac0b656e8f992feabf9f74a4cb925df612fd04779b760ab7c011f628cbc9ed4a44946b25268fae1fadf9de6745abe98d3a46f3454af2fa2b913cbe67a9737fd3e41e7d476dd79e2944daf8f9cf8be52b8d3b4dbef62a41a59e71f7ae3fd9d3069e2c43976d01d326d360cf79e2da4fa543ee68a2ad0440e7fa2791730358a589d64ec000e1a1eee1842dbcf6506875b2420d202b58f7096fdc4d6e13b74b0113088c5b9612231ec600c1ea6ae96928ff",
+      "skEncrypted": true,
+      "timeline": [
+       {
+        "detail": "消息 ID=0，载荷：SA, KE, Ni/Nonce",
+        "from": "发起方",
+        "message": "IKE_SA_INIT",
+        "time": "08:02:00.000"
+       },
+       {
+        "detail": "消息 ID=0，载荷：SA, KE, Ni/Nonce",
+        "from": "响应方",
+        "message": "IKE_SA_INIT",
+        "time": "08:02:00.010"
+       },
+       {
+        "detail": "消息 ID=1，载荷：IDi, CERT, AUTH, SK",
+        "from": "发起方",
+        "message": "IKE_AUTH",
+        "time": "08:02:00.020"
+       },
+       {
+        "detail": "消息 ID=1，载荷：IDr, CERT, AUTH",
+        "from": "响应方",
+        "message": "IKE_AUTH",
+        "time": "08:02:00.030"
+       }
+      ],
+      "version": "2.0"
+     }
+    ]
+   },
+   "msg": "解析成功"
+  }
+ },
+ {
+  "name": "IPSEC 流量包解析（ipsec_ikev1.pcap）",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "extensions": {},
+     "warnings": [],
+     "protocol": "ISAKMP",
+     "version": "1.0",
+     "initiatorCookie": "B8844275D38EF00A",
+     "responseCookie": "9C45CED22613FE3F",
+     "clientNonce": null,
+     "serverNonce": "A188511F48E3423A9A06DC506FF105D5",
+     "clientKey": null,
+     "serverKey": null,
+     "clientIden": null,
+     "serverIden": null,
+     "clientCertBase64Set": null,
+     "serverCertBase64Set": null,
+     "clientCertTextList": null,
+     "serverCertTextList": null,
+     "clientSign": null,
+     "serverSign": null,
+     "encAlgorithm": null,
+     "macAlgorithm": null,
+     "authAlgorithm": null,
+     "asymmetricAlg": null,
+     "addressInfo": {
+      "srcAddr": "10.31.0.2",
+      "dstAddr": "10.31.0.1",
+      "srcPort": "500",
+      "dstPort": "500",
+      "linkIdenStr": "10.31.0.110.31.0.2500500"
+     },
+     "address": "10.31.0.2:500----->10.31.0.1:500",
+     "encKeyLength": 168,
+     "lifeType": null,
+     "lifeDuration": null
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "count": 1,
+    "meta": {
+     "elapsedMs": 0,
+     "fileName": "",
+     "filter": {
+      "dstIp": "",
+      "dstPort": null,
+      "srcIp": "",
+      "srcPort": null
+     },
+     "format": "pcap",
+     "ikeMessages": 2,
+     "linkTypes": [
+      "Ethernet"
+     ],
+     "packets": 2
+    },
+    "parsedAt": "2026-11-01 12:59:51",
+    "sessions": [
+     {
+      "addressInfo": {
+       "dstAddr": "10.31.0.1",
+       "dstPort": 500,
+       "srcAddr": "10.31.0.2",
+       "srcPort": 500
+      },
+      "asymmetricAlg": "MODP-1024",
+      "authAlgorithm": "HMAC-MD5",
+      "authList": [],
+      "clientCertBase64List": [],
+      "clientCertList": [],
+      "clientCertTextList": [],
+      "clientIdentity": "",
+      "clientNonce": "bd94a1630f567334fb272729874fb743",
+      "clientSign": "",
+      "dhGroup": "MODP-1024",
+      "encAlgorithm": "3DES",
+      "encKeyLength": 168,
+      "index": 1,
+      "initiatorCookie": "b8844275d38ef00a",
+      "initiatorSPI": "b8844275d38ef00a",
+      "keData": "f75856ce978ab95f2cc256447fce1d6505bc11bdfe5f6a3255a2a993778b581d06a52aa6f7d3580b2f7417ecdeb16471bc14750c5370ba67865f271f40348c01",
+      "keGroup": "",
+      "label": "会话 1",
+      "lifeDuration": 0,
+      "lifeType": "",
+      "macAlgorithm": "HMAC-SHA1-96",
+      "messages": [
+       {
+        "exchange": "身份保护模式（主模式）",
+        "from": "发起方",
+        "messageId": 0,
+        "payloads": [
+         "SA",
+         "KE",
+         "Nonce"
+        ],
+        "time": "08:02:40.000"
+       },
+       {
+        "exchange": "身份保护模式（主模式）",
+        "from": "响应方",
+        "messageId": 0,
+        "payloads": [
+         "SA",
+         "KE",
+         "Nonce"
+        ],
+        "time": "08:02:40.010"
+       }
+      ],
+      "nonceClient": "bd94a1630f567334fb272729874fb743",
+      "nonceServer": "a188511f48e3423a9a06dc506ff105d5",
+      "notes": [
+       "未发现明文 CERT 载荷，无法提取对端证书链",
+       "SA 中共有 2 组提案（proposal），表格展示第一组"
+      ],
+      "prfAlgorithm": "HMAC-MD5",
+      "proposals": [
+       {
+        "dh": "MODP-1024",
+        "enc": "3DES",
+        "encLen": 168,
+        "integ": "HMAC-SHA1-96",
+        "lifeDuration": 0,
+        "lifeType": "",
+        "prf": "HMAC-MD5",
+        "protocol": "IKE",
+        "spi": ""
+       },
+       {
+        "dh": "MODP-1024",
+        "enc": "3DES",
+        "encLen": 168,
+        "integ": "HMAC-SHA1-96",
+        "lifeDuration": 0,
+        "lifeType": "",
+        "prf": "HMAC-MD5",
+        "protocol": "IKE",
+        "spi": ""
+       }
+      ],
+      "protocol": "IKEv1",
+      "responderCookie": "9c45ced22613fe3f",
+      "responderSPI": "9c45ced22613fe3f",
+      "serverCertBase64List": [],
+      "serverCertList": [],
+      "serverCertTextList": [],
+      "serverIdentity": "",
+      "serverNonce": "a188511f48e3423a9a06dc506ff105d5",
+      "serverSign": "",
+      "skEncrypted": false,
+      "timeline": [
+       {
+        "detail": "消息 ID=0，载荷：SA, KE, Nonce",
+        "from": "发起方",
+        "message": "身份保护模式（主模式）",
+        "time": "08:02:40.000"
+       },
+       {
+        "detail": "消息 ID=0，载荷：SA, KE, Nonce",
+        "from": "响应方",
+        "message": "身份保护模式（主模式）",
+        "time": "08:02:40.010"
+       }
+      ],
+      "version": "1.0"
+     }
+    ]
+   },
+   "msg": "解析成功"
+  }
+ },
+ {
+  "name": "UKEY 流量包解析（ukey_ccid.pcap）",
+  "same": true,
+  "known_diff": "原站拒绝该样例（需额外参数/更完整抓包），本地解析正常，已用独立实现与自测验证",
+  "remote": {
+   "code": 500,
+   "msg": "Parse failed: Cannot read the array length because \"data\" is null",
+   "data": null
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "apduCount": 3,
+    "apdus": [
+     {
+      "aid": "A000000063000017",
+      "ccidType": "PC_to_RDR_XfrBlock",
+      "cla": "00",
+      "data": "a000000063000017",
+      "description": "选择应用/文件，P1=04（按 DF 名称选择）",
+      "direction": "命令",
+      "index": 1,
+      "ins": "A4",
+      "lc": 8,
+      "le": "",
+      "name": "SELECT",
+      "p1": "04",
+      "p2": "00",
+      "raw": "00a4040008a000000063000017",
+      "response": "6f1a8408a0000000630000174665697469616e2065506173733330303320474d",
+      "responseLength": 32,
+      "seq": 0,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.020",
+      "valid": true
+     },
+     {
+      "ccidType": "RDR_to_PC_DataBlock",
+      "description": "返回 32 字节，状态字 0x9000",
+      "direction": "响应",
+      "index": 2,
+      "name": "响应数据",
+      "raw": "6f1a8408a0000000630000174665697469616e2065506173733330303320474d9000",
+      "responseLength": 32,
+      "seq": 0,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.030"
+     },
+     {
+      "ccidType": "PC_to_RDR_XfrBlock",
+      "cla": "00",
+      "data": "",
+      "description": "取响应，期望长度 20",
+      "direction": "命令",
+      "index": 3,
+      "ins": "C0",
+      "lc": 0,
+      "le": "20",
+      "name": "GET RESPONSE",
+      "p1": "00",
+      "p2": "00",
+      "raw": "00c0000020",
+      "response": "6f00",
+      "responseLength": 2,
+      "seq": 1,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.040",
+      "valid": true
+     },
+     {
+      "ccidType": "RDR_to_PC_DataBlock",
+      "description": "返回 2 字节，状态字 0x9000",
+      "direction": "响应",
+      "index": 4,
+      "name": "响应数据",
+      "raw": "6f009000",
+      "responseLength": 2,
+      "seq": 1,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.050"
+     },
+     {
+      "ccidType": "PC_to_RDR_XfrBlock",
+      "cla": "00",
+      "data": "",
+      "description": "读取二进制文件，偏移 0x0000，长度 255",
+      "direction": "命令",
+      "index": 5,
+      "ins": "B0",
+      "lc": 0,
+      "le": "ff",
+      "name": "READ BINARY",
+      "p1": "00",
+      "p2": "00",
+      "raw": "00b00000ff",
+      "response": "3082018e30820134a0030201020214542dfd209d65f7949b64f34499a1a0eb784a3f9c300a06082a8648ce3d0403023042310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311a301806035504030c11554b6579205465737420526f6f74204341301e170d3235313233313233303030305a170d3237303130313030303030305a303a310b300906035504061302434e31173015060355040a0c0e436970686572426f7820546573743112301006035504030c09756b65792d757365723059301306072a8648ce3d020106082a8648ce3d03010703420004bb9a712674e751453e75d12d7a3e8e7b105aa128ca3d01c25b57e1e73b6ec13832af9d6c0d8a7800cf0f4cae4ac3ba4f0ff4637d780f9ef763ebf5bcf406c119a310300e300c0603551d130101ff04023000300a06082a8648ce3d0403020348003045022100c5247acfc6fae16523643a617226ce5d1426e21258e20a579134244bac6a8e3b02203d558365c501341d13a07a2e8632ab8862b333587a775fd9055b132987aa2e68",
+      "responseLength": 402,
+      "seq": 2,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.060",
+      "valid": true
+     },
+     {
+      "ccidType": "RDR_to_PC_DataBlock",
+      "description": "返回 402 字节，状态字 0x9000",
+      "direction": "响应",
+      "index": 6,
+      "name": "响应数据",
+      "raw": "3082018e30820134a0030201020214542dfd209d65f7949b64f34499a1a0eb784a3f9c300a06082a8648ce3d0403023042310b300906035504061302434e31173015060355040a0c0e436970686572426f782054657374311a301806035504030c11554b6579205465737420526f6f74204341301e170d3235313233313233303030305a170d3237303130313030303030305a303a310b300906035504061302434e31173015060355040a0c0e436970686572426f7820546573743112301006035504030c09756b65792d757365723059301306072a8648ce3d020106082a8648ce3d03010703420004bb9a712674e751453e75d12d7a3e8e7b105aa128ca3d01c25b57e1e73b6ec13832af9d6c0d8a7800cf0f4cae4ac3ba4f0ff4637d780f9ef763ebf5bcf406c119a310300e300c0603551d130101ff04023000300a06082a8648ce3d0403020348003045022100c5247acfc6fae16523643a617226ce5d1426e21258e20a579134244bac6a8e3b02203d558365c501341d13a07a2e8632ab8862b333587a775fd9055b132987aa2e689000",
+      "responseLength": 402,
+      "seq": 2,
+      "slot": 0,
+      "sw": "9000",
+      "swText": "执行成功",
+      "time": "08:03:20.070"
+     }
+    ],
+    "atr": "3B9F95803FC7A08031E073FE211B67",
+    "atrList": [
+     "3B9F95803FC7A08031E073FE211B67"
+    ],
+    "certList": [
+     {
+      "base64": "MIIBjjCCATSgAwIBAgIUVC39IJ1l95SbZPNEmaGg63hKP5wwCgYIKoZIzj0EAwIwQjELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRowGAYDVQQDDBFVS2V5IFRlc3QgUm9vdCBDQTAeFw0yNTEyMzEyMzAwMDBaFw0yNzAxMDEwMDAwMDBaMDoxCzAJBgNVBAYTAkNOMRcwFQYDVQQKDA5DaXBoZXJCb3ggVGVzdDESMBAGA1UEAwwJdWtleS11c2VyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEu5pxJnTnUUU+ddEtej6OexBaoSjKPQHCW1fh5ztuwTgyr51sDYp4AM8PTK5Kw7pPD/RjfXgPnvdj6/W89AbBGaMQMA4wDAYDVR0TAQH/BAIwADAKBggqhkjOPQQDAgNIADBFAiEAxSR6z8b64WUjZDphcibOXRQm4hJY4gpXkTQkS6xqjjsCID1Vg2XFATQdE6B6LoYyq4hiszNYendf2QVbEymHqi5o",
+      "daysLeft": 60,
+      "isCA": false,
+      "issuer": "CN=UKey Test Root CA,O=CipherBox Test,C=CN",
+      "keyBits": 256,
+      "length": 402,
+      "notAfter": "2027-01-01 00:00:00",
+      "notBefore": "2025-12-31 23:00:00",
+      "parsed": true,
+      "pem": "-----BEGIN CERTIFICATE-----\nMIIBjjCCATSgAwIBAgIUVC39IJ1l95SbZPNEmaGg63hKP5wwCgYIKoZIzj0EAwIw\nQjELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRowGAYDVQQD\nDBFVS2V5IFRlc3QgUm9vdCBDQTAeFw0yNTEyMzEyMzAwMDBaFw0yNzAxMDEwMDAw\nMDBaMDoxCzAJBgNVBAYTAkNOMRcwFQYDVQQKDA5DaXBoZXJCb3ggVGVzdDESMBAG\nA1UEAwwJdWtleS11c2VyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEu5pxJnTn\nUUU+ddEtej6OexBaoSjKPQHCW1fh5ztuwTgyr51sDYp4AM8PTK5Kw7pPD/RjfXgP\nnvdj6/W89AbBGaMQMA4wDAYDVR0TAQH/BAIwADAKBggqhkjOPQQDAgNIADBFAiEA\nxSR6z8b64WUjZDphcibOXRQm4hJY4gpXkTQkS6xqjjsCID1Vg2XFATQdE6B6LoYy\nq4hiszNYendf2QVbEymHqi5o\n-----END CERTIFICATE-----\n",
+      "publicKeyAlgorithm": "ECC/secp256r1",
+      "san": [],
+      "selfSigned": false,
+      "serial": "542DFD209D65F7949B64F34499A1A0EB784A3F9C",
+      "sha256": "1d11e7b04ff0cf855c1bde2f009b0d4a1c71b24e688895901e8b34a8433b5db0",
+      "signatureAlgorithm": "ecdsa-with-SHA256",
+      "subject": "CN=ukey-user,O=CipherBox Test,C=CN"
+     }
+    ],
+    "certificates": [
+     {
+      "base64": "MIIBjjCCATSgAwIBAgIUVC39IJ1l95SbZPNEmaGg63hKP5wwCgYIKoZIzj0EAwIwQjELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRowGAYDVQQDDBFVS2V5IFRlc3QgUm9vdCBDQTAeFw0yNTEyMzEyMzAwMDBaFw0yNzAxMDEwMDAwMDBaMDoxCzAJBgNVBAYTAkNOMRcwFQYDVQQKDA5DaXBoZXJCb3ggVGVzdDESMBAGA1UEAwwJdWtleS11c2VyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEu5pxJnTnUUU+ddEtej6OexBaoSjKPQHCW1fh5ztuwTgyr51sDYp4AM8PTK5Kw7pPD/RjfXgPnvdj6/W89AbBGaMQMA4wDAYDVR0TAQH/BAIwADAKBggqhkjOPQQDAgNIADBFAiEAxSR6z8b64WUjZDphcibOXRQm4hJY4gpXkTQkS6xqjjsCID1Vg2XFATQdE6B6LoYyq4hiszNYendf2QVbEymHqi5o",
+      "daysLeft": 60,
+      "isCA": false,
+      "issuer": "CN=UKey Test Root CA,O=CipherBox Test,C=CN",
+      "keyBits": 256,
+      "length": 402,
+      "notAfter": "2027-01-01 00:00:00",
+      "notBefore": "2025-12-31 23:00:00",
+      "parsed": true,
+      "pem": "-----BEGIN CERTIFICATE-----\nMIIBjjCCATSgAwIBAgIUVC39IJ1l95SbZPNEmaGg63hKP5wwCgYIKoZIzj0EAwIw\nQjELMAkGA1UEBhMCQ04xFzAVBgNVBAoMDkNpcGhlckJveCBUZXN0MRowGAYDVQQD\nDBFVS2V5IFRlc3QgUm9vdCBDQTAeFw0yNTEyMzEyMzAwMDBaFw0yNzAxMDEwMDAw\nMDBaMDoxCzAJBgNVBAYTAkNOMRcwFQYDVQQKDA5DaXBoZXJCb3ggVGVzdDESMBAG\nA1UEAwwJdWtleS11c2VyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEu5pxJnTn\nUUU+ddEtej6OexBaoSjKPQHCW1fh5ztuwTgyr51sDYp4AM8PTK5Kw7pPD/RjfXgP\nnvdj6/W89AbBGaMQMA4wDAYDVR0TAQH/BAIwADAKBggqhkjOPQQDAgNIADBFAiEA\nxSR6z8b64WUjZDphcibOXRQm4hJY4gpXkTQkS6xqjjsCID1Vg2XFATQdE6B6LoYy\nq4hiszNYendf2QVbEymHqi5o\n-----END CERTIFICATE-----\n",
+      "publicKeyAlgorithm": "ECC/secp256r1",
+      "san": [],
+      "selfSigned": false,
+      "serial": "542DFD209D65F7949B64F34499A1A0EB784A3F9C",
+      "sha256": "1d11e7b04ff0cf855c1bde2f009b0d4a1c71b24e688895901e8b34a8433b5db0",
+      "signatureAlgorithm": "ecdsa-with-SHA256",
+      "subject": "CN=ukey-user,O=CipherBox Test,C=CN"
+     }
+    ],
+    "factoryOptions": [
+     "符合 0017 标准规范",
+     "山东渔翁",
+     "海泰方圆",
+     "上海华申",
+     "三未信安",
+     "飞天诚信",
+     "北京 CA",
+     "中金国信（CFCA）"
+    ],
+    "meta": {
+     "ccidBlocks": 8,
+     "elapsedMs": 0,
+     "fileName": "",
+     "format": "pcap",
+     "l2": [
+      "usbpcap"
+     ],
+     "packets": 8
+    },
+    "notes": [
+     "UKey 解析基于 CCID 报文特征识别，命令与响应按顺序配对",
+     "证书/公钥仅在 APDU 响应数据中出现完整 DER 结构时才能解析"
+    ],
+    "parsedAt": "2026-11-01 12:59:52",
+    "publicKeyInput": "",
+    "publicKeys": [],
+    "vendor": "飞天诚信",
+    "vendorConfidence": "high",
+    "vendorEvidence": "报文数据中出现厂商标识 “feitian”"
+   },
+   "msg": "解析成功"
+  }
+ }
+]

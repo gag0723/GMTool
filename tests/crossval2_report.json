@@ -1,0 +1,248 @@
+[
+ {
+  "name": "MAC CBCMAC (SM4)",
+  "same": true,
+  "remote": {
+   "code": -1,
+   "msg": "HTTP 502"
+  },
+  "local": {
+   "code": 0,
+   "data": "D0249FA9996014E6",
+   "msg": "成功"
+  },
+  "known_diff": "原站该接口持续 502 网关错误，无法对拍；本地已用标准向量（RFC4493 等）替代验证"
+ },
+ {
+  "name": "MAC CMAC (SM4)",
+  "same": true,
+  "remote": {
+   "code": -1,
+   "msg": "HTTP 502"
+  },
+  "local": {
+   "code": 0,
+   "data": "8E75238AC2672A6A",
+   "msg": "成功"
+  },
+  "known_diff": "原站该接口持续 502 网关错误，无法对拍；本地已用标准向量（RFC4493 等）替代验证"
+ },
+ {
+  "name": "PRF (SM3)",
+  "same": true,
+  "remote": {
+   "code": -1,
+   "msg": "HTTP 502"
+  },
+  "local": {
+   "code": 0,
+   "data": "7a1e162497f8f6f557a622f0225543ff045368610b2fafd81a0bd1f7028d06e137982c420ec6bad4689c25ec828067efb942da6335ed221fd52fe5c22d915bd84d3d35305f7cbcf2a7ddc883c5e403210e692307484b4ee5cc165e63bfc8fd10e0ec386e5a05dd433896bf9f7c3c7f3b434e8d0a8b4489dd510e1122039f6a8d",
+   "msg": "成功"
+  },
+  "known_diff": "原站该接口持续 502 网关错误，无法对拍；本地已用标准向量（RFC4493 等）替代验证"
+ },
+ {
+  "name": "KDF (SM3)",
+  "same": true,
+  "remote": {
+   "code": -1,
+   "msg": "HTTP 502"
+  },
+  "local": {
+   "code": 0,
+   "data": "d2b76dfe52cf70f6e2d21bda1896a4d1d372b6ef09c5230fa422e744a71aa32f",
+   "msg": "成功"
+  },
+  "known_diff": "原站该接口持续 502 网关错误，无法对拍；本地已用标准向量（RFC4493 等）替代验证"
+ },
+ {
+  "name": "PBKDF2 (SM3)",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "4CD3BF927C63B20CF181C3D992A4F933CE1F6776400F199969C163A004DE855E"
+  },
+  "local": {
+   "code": 0,
+   "data": "4cd3bf927c63b20cf181c3d992a4f933ce1f6776400f199969c163a004de855e",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "点运算 kP",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "0456CEFD60D7C87C000D58EF57FA73BA4D9C0DFA08C08A7331495C2E1DA3F2BD5231B7E7E6CC8189F668535CE0F8EAF1BD6DE84C182F6C8E716F780D3A970A23C3"
+  },
+  "local": {
+   "code": 0,
+   "data": "0456cefd60d7c87c000d58ef57fa73ba4d9c0dfa08c08a7331495c2e1da3f2bd5231b7e7e6cc8189f668535ce0f8eaf1bd6de84c182f6c8e716f780d3a970a23c3",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "SM2 原站加密→本地解密",
+  "same": true,
+  "enc": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "8EF1418ED21F5AA20642D16B249D751EBD408CBC020CD42C7282DA0AF28E509F5C6D40996D4B6EEE76B7ECBEBC1D385A0CCD3ABDD45B9A7183F800150425E24905A0FA3DD9BD54173D3BC43445DA2B65466FA9DA11F82DA2A9B9DC69558674180760907B433B"
+  },
+  "dec": {
+   "code": 0,
+   "data": "abc123",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "SM2 本地加密→原站解密",
+  "same": true,
+  "dec2": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "abc123"
+  }
+ },
+ {
+  "name": "SM2 本地签名→原站验签",
+  "same": true,
+  "ver": {
+   "code": 0,
+   "msg": "验签通过",
+   "data": null
+  }
+ },
+ {
+  "name": "SM2 原站签名→本地验签",
+  "same": true,
+  "lver": {
+   "code": 0,
+   "data": {
+    "e": "AB03545A351366E56AA81D6087539A4BB62573FDEFCF56D472E8CE58AFD59FA7",
+    "valid": true
+   },
+   "msg": "验签通过"
+  }
+ },
+ {
+  "name": "SM2 e值计算",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": {
+    "zHash": "DF1843FCA1504495E59FF86E389A6159B0F5198A4469C19B55C438E679DF2950",
+    "eHash": "252863575188A9A20692FE837CB8C24123ED42A89FBB346597BD976F64977D6C"
+   }
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "eHash": "252863575188A9A20692FE837CB8C24123ED42A89FBB346597BD976F64977D6C",
+    "entl": "0080",
+    "userId": "31323334353637383132333435363738",
+    "zHash": "DF1843FCA1504495E59FF86E389A6159B0F5198A4469C19B55C438E679DF2950"
+   },
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "RSA 原站加密→本地解密",
+  "same": true
+ },
+ {
+  "name": "RSA 本地签名→原站验签",
+  "same": true,
+  "rver": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "验签通过"
+  }
+ },
+ {
+  "name": "ECDSA 本地签名→原站验签",
+  "same": true,
+  "rver": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "验签通过"
+  }
+ },
+ {
+  "name": "SM9 用户私钥派生(签名)",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "0499642E9F98577FF9C24C938E6E82908B0625FF7B5C0B63056E4AECFDE2147B24AD5A9C898720C3CAE6525367EDBECB4F8F1337295F4184705D61613553196CBE"
+  },
+  "local": {
+   "code": 0,
+   "data": "0499642E9F98577FF9C24C938E6E82908B0625FF7B5C0B63056E4AECFDE2147B24AD5A9C898720C3CAE6525367EDBECB4F8F1337295F4184705D61613553196CBE",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "SM9 用户私钥派生(加密)",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "047C86DA6D2A594A23D834D7A99D64EA5BE0A74300FFF73C46510CD897AF5E167C695A9C4B08B8CF3C8F67986D08BF8B929930955509CFC051A10AE118C7FEFD8360AF5287FB220506D78043FA67A043C1A7BDB3629395282A2E09E0AAC37E833C7C51B67FA370AD71BF9F20BA6FF5E52412F200369477C892EB29EEC77DA234B2"
+  },
+  "local": {
+   "code": 0,
+   "data": "047C86DA6D2A594A23D834D7A99D64EA5BE0A74300FFF73C46510CD897AF5E167C695A9C4B08B8CF3C8F67986D08BF8B929930955509CFC051A10AE118C7FEFD8360AF5287FB220506D78043FA67A043C1A7BDB3629395282A2E09E0AAC37E833C7C51B67FA370AD71BF9F20BA6FF5E52412F200369477C892EB29EEC77DA234B2",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "SM9 原站加密→本地解密",
+  "same": true,
+  "enc": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "30E8133E7FF477203875E1AB356D362C546454C1DFD15F53FB518EA346CCF7C37159A26C0F032BB047415004ACAF509CAF6C3E01627B4D601642FC7A14E8293158EAB726C64CFF3BA21AAEAAD7C3A3B12A581FE83A9062D31D444B18BE533A1BF7E1E3308F28"
+  },
+  "dec": {
+   "code": 0,
+   "data": "abc123",
+   "msg": "成功"
+  }
+ },
+ {
+  "name": "SM9 本地加密→原站解密",
+  "same": true,
+  "enc": {
+   "code": 0,
+   "data": "215B2598EAAA49A1BB91938C8C760AE33EB48575E607932EB4D2E306D2AE3B182685145CE16E6A1DB4950758FFAA014FA6CDBDBF668F98037936EA625B7CD22ADD87D3FBEFAE30CFE29F1EB3522134E3188A395DDD0BFC4E7F5E528857B08D8E1995D8C330F2",
+   "msg": "成功"
+  },
+  "dec": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "abc123"
+  }
+ },
+ {
+  "name": "SM9 本地签名→原站验签",
+  "same": true,
+  "ver": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "验证通过"
+  }
+ },
+ {
+  "name": "AES-CMAC RFC4493 标准向量",
+  "same": true,
+  "local": {
+   "code": 0,
+   "data": "BB1D6929E95937287FA37D129B756746",
+   "msg": "成功"
+  }
+ }
+]

@@ -1,0 +1,586 @@
+[
+ {
+  "name": "SM4-CBC-PKCS7 加密",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "4301693C448C7DA7CFF13F84690F7DEA"
+  },
+  "local": {
+   "code": 0,
+   "data": "4301693c448c7da7cff13f84690f7dea",
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/encrypt",
+  "local_path": "/sym/encrypt",
+  "note": ""
+ },
+ {
+  "name": "AES128-CBC-PKCS7 加密",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "D38056410E705ABA96B177C4AB4725D6"
+  },
+  "local": {
+   "code": 0,
+   "data": "d38056410e705aba96b177c4ab4725d6",
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/encrypt",
+  "local_path": "/sym/encrypt",
+  "note": ""
+ },
+ {
+  "name": "SM4-CTR-NOPADDING 加密",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "67FAFF"
+  },
+  "local": {
+   "code": 0,
+   "data": "67faff",
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/encrypt",
+  "local_path": "/sym/encrypt",
+  "note": ""
+ },
+ {
+  "name": "ZUC-128 加密",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "F5CA4C"
+  },
+  "local": {
+   "code": 0,
+   "data": "f5ca4c",
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/zuc/encrypt",
+  "local_path": "/sym/zuc/encrypt",
+  "note": ""
+ },
+ {
+  "name": "ZUC-128 MAC",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "359CD417"
+  },
+  "local": {
+   "code": 0,
+   "data": "359cd417",
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/zuc/mac",
+  "local_path": "/sym/zuc/mac",
+  "note": ""
+ },
+ {
+  "name": "GCM-SM4 加密",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": {
+    "cipher": "353265",
+    "tag": "3B90CD3D6CD16DB1726F5ED17BC12899"
+   }
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "cipher": "353265",
+    "length": 3,
+    "tag": "3b90cd3d6cd16db1726f5ed17bc12899",
+    "tagLength": 16
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/cipher/gcm/encrypt",
+  "local_path": "/sym/gcm/encrypt",
+  "note": ""
+ },
+ {
+  "name": "SM3 摘要",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "66C7F0F462EEEDD9D1F2D46BDC10E4E24167C4875CF2F7A2297DA02B8F4BA8E0"
+  },
+  "local": {
+   "code": 0,
+   "data": "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0",
+   "msg": "成功"
+  },
+  "remote_path": "/hash/digest",
+  "local_path": "/hash/digest",
+  "note": ""
+ },
+ {
+  "name": "HMAC-SM3",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "28E63256E7C5A087B1F073265DC53092163F7B82729735D06F28F10AF9D52393"
+  },
+  "local": {
+   "code": 0,
+   "data": "28e63256e7c5a087b1f073265dc53092163f7b82729735d06f28f10af9d52393",
+   "msg": "成功"
+  },
+  "remote_path": "/hash/hmac",
+  "local_path": "/hash/hmac",
+  "note": ""
+ },
+ {
+  "name": "哈希算法猜测",
+  "same": false,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": [
+    {
+     "type": "SM3",
+     "hash": "66C7F0F462EEEDD9D1F2D46BDC10E4E24167C4875CF2F7A2297DA02B8F4BA8E0",
+     "flag": false
+    },
+    {
+     "type": "SHA",
+     "hash": "A9993E364706816ABA3E25717850C26C9CD0D89D",
+     "flag": false
+    },
+    {
+     "type": "MD5",
+     "hash": "900150983CD24FB0D6963F7D28E17F72",
+     "flag": false
+    },
+    {
+     "type": "SHA224",
+     "hash": "23097D223405D8228642A477BDA255B32AADBCE4BDA0B3F7E36C9DA7",
+     "flag": false
+    },
+    {
+     "type": "SHA256",
+     "hash": "BA7816BF8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD",
+     "flag": false
+    },
+    {
+     "type": "SHA384",
+     "hash": "CB00753F45A35E8BB5A03D699AC65007272C32AB0EDED1631A8B605A43FF5BED8086072BA1E7CC2358BAECA134C825A7",
+     "flag": false
+    },
+    {
+     "type": "SHA512",
+     "hash": "DDAF35A193617ABACC417349AE20413112E6FA4E89A97EA20A9EEEE64B55D39A2192992A274FC1A836BA3C23A3FEEBBD454D4423643CE80E2A9AC94FA54CA49F",
+     "flag": false
+    },
+    {
+     "type": "SHA3_224",
+     "hash": "E642824C3F8CF24AD09234EE7D3C766FC9A3A5168D0C94AD73B46FDF",
+     "flag": false
+    },
+    {
+     "type": "SHA3_256",
+     "hash": "3A985DA74FE225B2045C172D6BD390BD855F086E3E9D525B46BFE24511431532",
+     "flag": false
+    },
+    {
+     "type": "SHA3_384",
+     "hash": "EC01498288516FC926459F58E2C6AD8DF9B473CB0FC08C2596DA7CF0E49BE4B298D88CEA927AC7F539F1EDF228376D25",
+     "flag": false
+    },
+    {
+     "type": "SHA3_512",
+     "hash": "B751850B1A57168A5693CD924B6B096E08F621827444F70D884F5D0240D2712E10E116E9192AF3C91A7EC57647E3934057340B4CF408D5A56592F8274EEC53F0",
+     "flag": false
+    },
+    {
+     "type": "RIPEMD_160",
+     "hash": "8EB208F7E05D987A9B044A8E98C6B087F15A0BFC",
+     "flag": false
+    },
+    {
+     "type": "BLAKE2B_512",
+     "hash": "BA80A53F981C4D0D6A2797B69F12F6E94C212F14685AC4B74B12BB6FDBFFA2D17D87C5392AAB792DC252D5DE4533CC9518D38AA8DBF1925AB92386EDD4009923",
+     "flag": false
+    },
+    {
+     "type": "BLAKE2S_256",
+     "hash": "508C5E8C327C14E2E1A72BA34EEB452F37458B209ED63A294D999B4C86675982",
+     "flag": false
+    },
+    {
+     "type": "WHIRLPOOL",
+     "hash": "4E2448A4C6F486BB16B6562C73B4020BF3043E3A731BCE721AE1B303D97E6D4C7181EEBDB6C57E277D0E34957114CBD6C797FC9D95D8B582D225292076D4EEF5",
+     "flag": false
+    },
+    {
+     "type": "SHAKE128",
+     "hash": "5881092DD818BF5CF8A3DDB793FBCBA7",
+     "flag": false
+    },
+    {
+     "type": "SHAKE256",
+     "hash": "483366601360A8771C6863080CC4114D8DB44530F8F1E1EE4F94EA37E78B5739",
+     "flag": false
+    },
+    {
+     "type": "GOST3411",
+     "hash": "B285056DBF18D7392D7677369524DD14747459ED8143997E163B2986F92FD42C",
+     "flag": false
+    },
+    {
+     "type": "KECCAK_224",
+     "hash": "C30411768506EBE1C2871B1EE2E87D38DF342317300A9B97A95EC6A8",
+     "flag": false
+    },
+    {
+     "type": "KECCAK_256",
+     "hash": "4E03657AEA45A94FC7D47BA826C8D667C0D1E6E33A64A036EC44F58FA12D6C45",
+     "flag": false
+    },
+    {
+     "type": "KECCAK_384",
+     "hash": "F7DF1165F033337BE098E7D288AD6A2F74409D7A60B49C36642218DE161B1F99F8C681E4AFAF31A34DB29FB763E3C28E",
+     "flag": false
+    },
+    {
+     "type": "KECCAK_512",
+     "hash": "18587DC2EA106B9A1563E32B3312421CA164C7F1F07BC922A9C83D77CEA3A1E5D0C69910739025372DC14AC9642629379540C17E2A65B19D77AA511A9D00BB96",
+     "flag": false
+    },
+    {
+     "type": "TIGER",
+     "hash": "2AAB1484E8C158F2BFB8C5FF41B57A525129131C957B5F93",
+     "flag": false
+    },
+    {
+     "type": "SKEIN_256",
+     "hash": "258BDEC343B9FDE1639221A5AE0144A96E552E5288753C5FEC76C05FC2FC1870",
+     "flag": false
+    },
+    {
+     "type": "SKEIN_512",
+     "hash": "8F5DD9EC798152668E35129496B029A960C9A9B88662F7F9482F110B31F9F93893ECFB25C009BAAD9E46737197D5630379816A886AA05526D3A70DF272D96E75",
+     "flag": false
+    },
+    {
+     "type": "SKEIN_1024",
+     "hash": "35A599A0F91ABCDB4CB73C19B8CB8D947742D82C309137A7CAED29E8E0A2CA7A9FF9A90C34C1908CC7E7FD99BB15032FB86E76DF21B72628399B5F7C3CC209D7BB31C99CD4E19465622A049AFBB87C03B5CE3888D17E6E667279EC0AA9B3E2712624C01B5F5BBE1A564220BDCF6990AF0C2539019F313FDD7406CCA3892A1F1F",
+     "flag": false
+    },
+    {
+     "type": "DSTU7564_256",
+     "hash": "0BD1B36109F1318411A0517315AA46B8839DF06622A278676F5487996C9CFC04",
+     "flag": false
+    },
+    {
+     "type": "DSTU7564_512",
+     "hash": "9E5BE7DAF7B68B49D2ECBD04C7A5B3AF72945012B0820C3132846DDC90DA511F80BB7B70ABD0CB1AB8DF785D600C187B9D0AC567E8B6F76FDE8A0B417A2EBF88",
+     "flag": false
+    }
+   ]
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "length": 3,
+    "rows": [
+     {
+      "algo": "SM3",
+      "bits": 256,
+      "value": "66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0"
+     },
+     {
+      "algo": "SHA-224",
+      "bits": 224,
+      "value": "23097d223405d8228642a477bda255b32aadbce4bda0b3f7e36c9da7"
+     },
+     {
+      "algo": "SHA-256",
+      "bits": 256,
+      "value": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+     },
+     {
+      "algo": "SHA-384",
+      "bits": 384,
+      "value": "cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7"
+     },
+     {
+      "algo": "SHA-512",
+      "bits": 512,
+      "value": "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"
+     },
+     {
+      "algo": "SHA3-224",
+      "bits": 224,
+      "value": "e642824c3f8cf24ad09234ee7d3c766fc9a3a5168d0c94ad73b46fdf"
+     },
+     {
+      "algo": "SHA3-256",
+      "bits": 256,
+      "value": "3a985da74fe225b2045c172d6bd390bd855f086e3e9d525b46bfe24511431532"
+     },
+     {
+      "algo": "SHA3-384",
+      "bits": 384,
+      "value": "ec01498288516fc926459f58e2c6ad8df9b473cb0fc08c2596da7cf0e49be4b298d88cea927ac7f539f1edf228376d25"
+     },
+     {
+      "algo": "SHA3-512",
+      "bits": 512,
+      "value": "b751850b1a57168a5693cd924b6b096e08f621827444f70d884f5d0240d2712e10e116e9192af3c91a7ec57647e3934057340b4cf408d5a56592f8274eec53f0"
+     },
+     {
+      "algo": "SHA-1",
+      "bits": 160,
+      "value": "a9993e364706816aba3e25717850c26c9cd0d89d"
+     },
+     {
+      "algo": "MD5",
+      "bits": 128,
+      "value": "900150983cd24fb0d6963f7d28e17f72"
+     }
+    ]
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/hash/digest/all",
+  "local_path": "/hash/digest/all",
+  "note": "返回数组，比对算法集合与摘要值"
+ },
+ {
+  "name": "逻辑运算 XOR",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "0206"
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "bits": 16,
+    "bytes": 2,
+    "hex": "0206",
+    "note": "",
+    "op": "XOR",
+    "result": "0206"
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/other/logic",
+  "local_path": "/other/logic",
+  "note": ""
+ },
+ {
+  "name": "大数运算 MUL",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "030A08"
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "bits": 24,
+    "bytes": 3,
+    "decimal": "199176",
+    "format": "HEX",
+    "hex": "030A08",
+    "note": "",
+    "op": "mul",
+    "result": "030A08"
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/other/math",
+  "local_path": "/other/math",
+  "note": ""
+ },
+ {
+  "name": "字节逆序",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": "0807060504030201"
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "bytes": 8,
+    "groups": 1,
+    "hex": "0807060504030201",
+    "label": "整段逆序",
+    "mode": "all",
+    "result": "0807060504030201"
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/other/byte/reverse",
+  "local_path": "/other/byte/reverse",
+  "note": ""
+ },
+ {
+  "name": "工作模式检测",
+  "same": true,
+  "remote": {
+   "code": 0,
+   "msg": "操作成功",
+   "data": {
+    "detailedAnalysis": "=== 密文分析报告 ===\n密文长度: 32 字节\n总分组数: 2\n最后分组是否完整: 是\n最后分组大小: 16 字节\n相同分组数: 2\n完全不同分组数: 0\n部分不同分组数: 0\n是否有错误传播: 否\n\n各分组差异情况:\n分组 1: 相同\n分组 2: 相同\n\n=== 模式猜测结果 ===\n   判定依据: ECB特征分析：2个相同分组；无错误传播(支持并行)；密文长度为分组整数倍(需要填充)；无流密码特征；\n\n=== 各模式特征说明 ===\n分组密码模式（需要填充）：\n- ECB: 电子密码本模式（相同明文产生相同密文，分组独立，不安全）\n- CBC: 密码分组链接模式（有错误传播，需要填充，串行处理）\n- BC: 分组链接模式（类似CBC，有错误传播，需要填充）\n\n流密码模式（不需要填充）：\n- CFB: 密码反馈模式（流密码特征，有错误传播，不需要填充）\n- OFB: 输出反馈模式（流密码特征，无错误传播，不需要填充）\n- CTR: 计数器模式（流密码特征，无错误传播，支持并行处理，不需要填充）\n\n可调分组密码模式：\n- XTS: 带密文窃取的XEX可调分组密码模式（使用Tweak值，支持并行处理，密文长度等于明文长度）\n\n认证加密模式：\n- GCM: 伽罗瓦计数器模式（认证加密，基于CTR，有认证标签，无错误传播，支持并行处理）\n- CCM: 计数器与CBC-MAC模式（认证加密，有认证标签，可能有轻微错误传播，串行处理）\n\n特殊模式：\n- OFBNLF: 输出反馈非线性反馈模式（特殊周期性模式，基于OFB，需要填充）\n- HCTR: 哈希计数器模式（强扩散特性，所有分组不同，无需填充，支持并行处理）\n",
+    "analysisData": {
+     "partiallyDifferentBlocks": 0,
+     "blockDifferences": [
+      {
+       "blockIndex": 0,
+       "totalBytes": 16,
+       "differentBytes": 0,
+       "type": "IDENTICAL"
+      },
+      {
+       "blockIndex": 1,
+       "totalBytes": 16,
+       "differentBytes": 0,
+       "type": "IDENTICAL"
+      }
+     ],
+     "identicalBlocks": 2,
+     "lastBlockSize": 16,
+     "completelyDifferentBlocks": 0,
+     "isLastBlockFull": true,
+     "errorPropagation": false,
+     "totalBlocks": 2,
+     "hasAuthenticationTag": true
+    },
+    "guesses": [
+     {
+      "mode": "ECB",
+      "reasoning": "ECB特征分析：2个相同分组；无错误传播(支持并行)；密文长度为分组整数倍(需要填充)；无流密码特征；",
+      "description": "ECB模式 - 电子密码本模式"
+     }
+    ]
+   }
+  },
+  "local": {
+   "code": 0,
+   "data": {
+    "aligned": true,
+    "analysisData": {
+     "blockDifferences": [
+      {
+       "blockIndex": 0,
+       "differentBytes": 0,
+       "totalBytes": 16,
+       "type": "IDENTICAL"
+      },
+      {
+       "blockIndex": 1,
+       "differentBytes": 0,
+       "totalBytes": 16,
+       "type": "IDENTICAL"
+      }
+     ],
+     "completelyDifferentBlocks": 0,
+     "errorPropagation": false,
+     "hasAuthenticationTag": false,
+     "identicalBlocks": 2,
+     "isLastBlockFull": true,
+     "lastBlockSize": 16,
+     "partiallyDifferentBlocks": 0,
+     "totalBlocks": 2
+    },
+    "blockSize": 16,
+    "crossSameBlocks": 2,
+    "detailedAnalysis": "===== 工作模式检测报告 =====\n密文 1：32 字节（0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef）\n密文 2：32 字节（0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef）\n分组长度推断：16 字节（SM4 / AES 分组）\n分组数量：2，不重复分组：1，重复分组：1，两组同偏移相同分组：2\n逐字节差异：0/32（0.0%），相同字节：32，公共前缀：32 字节\n\n===== 证据与置信度 =====\n[BC] +0.05  密文长度 32 字节是 16 的整数倍，符合分组密码整块输出特征\n[ECB] +0.25  第一组密文出现 1 个重复分组（共 2 块），ECB 对相同明文块产生相同密文块\n[CBC] -0.20  出现重复分组，与 CBC 的链式随机化特征不符（CBC 除 IV 碰撞外极少重复）\n[CFB] -0.10  出现重复分组，与 CFB 的反馈随机化特征不符\n[ECB] +0.30  两组密文在相同偏移处有 2 个完全相同的分组，说明相同明文块被确定性加密\n[BC] +0.15  相同偏移处出现相同密文块，说明加密过程不含随机化（确定性）\n[ECB] +0.35  两组密文完全一致：在明文不同或 IV 不同的假设下，只有确定性模式（ECB/BC）才会如此\n[BC] +0.25  两组密文完全一致，也可能是相同 IV 的分组模式，需要改用不同 IV 再测一次\n[ECB] +0.05  两组密文逐字节相同，差异分布无信息量\n\n===== 可能的工作模式 =====\n1. ECB（电子密码本）  置信度 67.9%（得分 0.95）\n2. BC（分组密码，模式未定）  置信度 32.1%（得分 0.45）\n\n===== 结论与建议 =====\n最可能的模式：ECB（电子密码本）。\n检测结果基于密文统计特征推断，仅供参考；建议补充以下验证：\n1) 用相同密钥与 IV、不同明文再加密一组，观察差异是否只出现在首块（ECB 为块内局部化）。\n2) 固定明文、更换 IV 再加密：CBC/CFB 首块会变化，ECB 完全不变。\n3) 构造两个仅首字节不同的明文块：ECB 只影响对应块，CBC 影响其后续全部块。\n4) 若密文长度始终为 16 的整数倍且存在重复块，基本可以判定 ECB。",
+    "diffBytes": 0,
+    "diffRatio": 0.0,
+    "dupBlocks": 1,
+    "evidence": [
+     {
+      "mode": "BC",
+      "text": "密文长度 32 字节是 16 的整数倍，符合分组密码整块输出特征",
+      "weight": 0.05
+     },
+     {
+      "mode": "ECB",
+      "text": "第一组密文出现 1 个重复分组（共 2 块），ECB 对相同明文块产生相同密文块",
+      "weight": 0.25
+     },
+     {
+      "mode": "CBC",
+      "text": "出现重复分组，与 CBC 的链式随机化特征不符（CBC 除 IV 碰撞外极少重复）",
+      "weight": -0.2
+     },
+     {
+      "mode": "CFB",
+      "text": "出现重复分组，与 CFB 的反馈随机化特征不符",
+      "weight": -0.1
+     },
+     {
+      "mode": "ECB",
+      "text": "两组密文在相同偏移处有 2 个完全相同的分组，说明相同明文块被确定性加密",
+      "weight": 0.3
+     },
+     {
+      "mode": "BC",
+      "text": "相同偏移处出现相同密文块，说明加密过程不含随机化（确定性）",
+      "weight": 0.15
+     },
+     {
+      "mode": "ECB",
+      "text": "两组密文完全一致：在明文不同或 IV 不同的假设下，只有确定性模式（ECB/BC）才会如此",
+      "weight": 0.35
+     },
+     {
+      "mode": "BC",
+      "text": "两组密文完全一致，也可能是相同 IV 的分组模式，需要改用不同 IV 再测一次",
+      "weight": 0.25
+     },
+     {
+      "mode": "ECB",
+      "text": "两组密文逐字节相同，差异分布无信息量",
+      "weight": 0.05
+     }
+    ],
+    "guesses": [
+     {
+      "confidence": 0.679,
+      "description": "ECB模式 - 电子密码本模式（相同明文产生相同密文，分组独立）",
+      "label": "ECB（电子密码本）",
+      "mode": "ECB",
+      "reasoning": "ECB特征分析：第一组密文出现 1 个重复分组（共 2 块），ECB 对相同明文块产生相同密文块；两组密文在相同偏移处有 2 个完全相同的分组，说明相同明文块被确定性加密；两组密文完全一致：在明文不同或 IV 不同的假设下，只有确定性模式（ECB/BC）才会如此；两组密文逐字节相同，差异分布无信息量。",
+      "score": 0.95
+     },
+     {
+      "confidence": 0.321,
+      "description": "BC模式 - 分组链接模式（类似 CBC，有错误传播，需要填充）",
+      "label": "BC（分组密码，模式未定）",
+      "mode": "BC",
+      "reasoning": "BC特征分析：密文长度 32 字节是 16 的整数倍，符合分组密码整块输出特征；相同偏移处出现相同密文块，说明加密过程不含随机化（确定性）；两组密文完全一致，也可能是相同 IV 的分组模式，需要改用不同 IV 再测一次。",
+      "score": 0.45
+     }
+    ],
+    "prefix": 32,
+    "top": "ECB"
+   },
+   "msg": "成功"
+  },
+  "remote_path": "/cipher-mode-detector/detect",
+  "local_path": "/ops/mode/detect",
+  "note": "报告类结果，比对可能模式"
+ }
+]

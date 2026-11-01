@@ -1,0 +1,331 @@
+{
+  "origin": "https://cipher.huijusa.cn",
+  "generatedAt": "2026-11-01T12:02:29",
+  "rows": [
+    {
+      "module": "tls",
+      "field": "会话数",
+      "origin": "1",
+      "local": "2",
+      "match": false,
+      "note": "原站只返回 TLS 1.2 会话，未识别仅有加密握手的 TLS 1.3 流（本地返回 2 组）"
+    },
+    {
+      "module": "tls",
+      "field": "协议版本",
+      "origin": "TLS 1.2",
+      "local": "TLS 1.2",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "服务端密码套件",
+      "origin": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256(0xC02B)",
+      "local": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xC02B)",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "客户端随机数",
+      "origin": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
+      "local": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "服务端随机数",
+      "origin": "202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F",
+      "local": "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "是否完成握手",
+      "origin": "True",
+      "local": "True",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "认证方式",
+      "origin": "True",
+      "local": "True",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "源/目的地址",
+      "origin": "10.10.1.5:51234----->10.10.2.10:443",
+      "local": "10.10.1.5:51234----->10.10.2.10:443",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "服务端证书链",
+      "origin": "['CN=test-server,O=CipherBox Test,C=CN', 'CN=CipherBox Test Root CA,O=CipherBox Test,C=CN']",
+      "local": "['CN=test-server,O=CipherBox Test,C=CN', 'CN=CipherBox Test Root CA,O=CipherBox Test,C=CN']",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "客户端证书链",
+      "origin": "['CN=test-client,O=CipherBox Test,C=CN']",
+      "local": "['CN=test-client,O=CipherBox Test,C=CN']",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "tls",
+      "field": "密钥交换参数",
+      "origin": "03001741043C8CB48D3EF981D7165BAE1EB0AD7F3E16DDDE201F4AB677599D874401ABD2A9DB5C8CB12DDF72F009686ED0DC43EC0EA7EF258D97CC1C493FCD3FBB30378043",
+      "local": "03001741043c8cb48d3ef981d7165bae1eb0ad7f3e16ddde201f4ab677599d874401abd2a9db5c8cb12ddf72f009686ed0dc43ec0ea7ef258d97cc1c493fcd3fbb303780430403004630440220194672",
+      "match": true,
+      "note": "原站 = 曲线+公钥（69 字节）；本地额外附带签名算法与签名值，按前缀比对"
+    },
+    {
+      "module": "tls",
+      "field": "服务端证书 DER 一致",
+      "origin": "2 张 / 870 字节",
+      "local": "2 张 / 870 字节",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "会话数",
+      "origin": "1",
+      "local": "1",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "协议版本",
+      "origin": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+      "local": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "密钥交换算法",
+      "origin": "curve25519-sha256",
+      "local": "curve25519-sha256",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "对称加密算法",
+      "origin": "aes128-ctr",
+      "local": "aes128-ctr",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "MAC 算法",
+      "origin": "hmac-sha2-256",
+      "local": "hmac-sha2-256",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "服务端加密算法列表",
+      "origin": "aes128-ctr,aes256-gcm@openssh.com",
+      "local": "aes128-ctr,aes256-gcm@openssh.com",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "客户端加密算法列表",
+      "origin": "aes128-ctr,aes256-ctr",
+      "local": "aes128-ctr,aes256-ctr",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "服务端 KEX 算法列表",
+      "origin": "curve25519-sha256,diffie-hellman-group14-sha256",
+      "local": "curve25519-sha256,diffie-hellman-group14-sha256",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "服务端 MAC 算法列表",
+      "origin": "hmac-sha2-256",
+      "local": "hmac-sha2-256",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "客户端 MAC 算法列表",
+      "origin": "hmac-sha2-256,hmac-sha1",
+      "local": "hmac-sha2-256,hmac-sha1",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "客户端 DH 参数",
+      "origin": "0CF3DF176E97C8C11A610089DED0B63AB5F44D1A4BBD5202F3C4B4F114F4C84B",
+      "local": "0cf3df176e97c8c11a610089ded0b63ab5f44d1a4bbd5202f3c4b4f114f4c84b",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "服务端 DH 参数",
+      "origin": "C8A245F8B645EC555E323CF7E05AA6BC89535B62839483DBB626DACEDD068169",
+      "local": "c8a245f8b645ec555e323cf7e05aa6bc89535b62839483dbb626dacedd068169",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "签名算法",
+      "origin": "ssh-ed25519",
+      "local": "ssh-ed25519",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ssh",
+      "field": "签名值",
+      "origin": "F5F8E10145504FE1F46412564F32944943E475B7327DC2129E17EA4962370CA3299BA233CBF40C9D7AF6E3616133F78DAB486D89DC1E7D687A1337CD4AA49B0A",
+      "local": "f5f8e10145504fe1f46412564f32944943e475b7327dc2129e17ea4962370ca3299ba233cbf40c9d7af6e3616133f78dab486d89dc1e7d687a1337cd4aa49b0a",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "会话数(IKEv1)",
+      "origin": "1",
+      "local": "1",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "协议版本",
+      "origin": "1.0",
+      "local": "1.0",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "发起方 Cookie/SPI",
+      "origin": "B8844275D38EF00A",
+      "local": "b8844275d38ef00a",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "响应方 Cookie/SPI",
+      "origin": "9C45CED22613FE3F",
+      "local": "9c45ced22613fe3f",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "加密算法密钥长度",
+      "origin": "168",
+      "local": "168",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "服务端 Nonce",
+      "origin": "A188511F48E3423A9A06DC506FF105D5",
+      "local": "a188511f48e3423a9a06dc506ff105d5",
+      "match": true,
+      "note": ""
+    },
+    {
+      "module": "ipsec",
+      "field": "客户端 Nonce",
+      "origin": "null",
+      "local": "bd94a1630f567334fb272729874fb743",
+      "match": false,
+      "note": "原站返回 null（其实现未取到请求侧 Nonce）"
+    },
+    {
+      "module": "ipsec",
+      "field": "IKEv2 支持情况",
+      "origin": "No IPsec protocol data found",
+      "local": "1 组会话 / IKEv2",
+      "match": false,
+      "note": "原站仅解析 IKEv1，对 IKEv2 样例返回 No IPsec protocol data found"
+    },
+    {
+      "module": "ukey",
+      "field": "UKey 解析",
+      "origin": "Parse failed: Cannot invoke \"String.hashCode()\" because \"<local2>\" is null",
+      "local": "厂商=飞天诚信，APDU=3 条，证书=1 张",
+      "match": false,
+      "note": "原站 ukey 接口对该样例（以及任意输入）返回 500 NPE，无法交叉验证"
+    },
+    {
+      "module": "独立核对",
+      "field": "openssl 解析服务端证书",
+      "origin": "C=CN, O=CipherBox Test, CN=test-server | C=CN, O=CipherBox Test, CN=CipherBox Test Root CA | 5C9A60B5E6BA6C5B8E43D15A5131158BEF651F95",
+      "local": "CN=test-server,O=CipherBox Test,C=CN",
+      "match": true,
+      "note": "openssl x509 -inform DER 独立解析"
+    },
+    {
+      "module": "独立核对",
+      "field": "dpkt 报文数(TLS)",
+      "origin": 24,
+      "local": 24,
+      "match": true,
+      "note": "TCP=24 UDP=0"
+    },
+    {
+      "module": "独立核对",
+      "field": "dpkt 报文数(SSH)",
+      "origin": 11,
+      "local": 11,
+      "match": true,
+      "note": "TCP=11 UDP=0"
+    },
+    {
+      "module": "独立核对",
+      "field": "dpkt 报文数(IKEv2)",
+      "origin": 4,
+      "local": 4,
+      "match": true,
+      "note": "TCP=0 UDP=4"
+    },
+    {
+      "module": "独立核对",
+      "field": "openssl 解析 UKey 证书",
+      "origin": "C=CN, O=CipherBox Test, CN=ukey-user | C=CN, O=CipherBox Test, CN=UKey Test Root CA | 542DFD209D65F7949B64F34499A1A0EB784A3F9C",
+      "local": "CN=ukey-user,O=CipherBox Test,C=CN",
+      "match": true,
+      "note": ""
+    }
+  ],
+  "summary": {
+    "total": 40,
+    "match": 36,
+    "mismatch": 4
+  }
+}

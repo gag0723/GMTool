@@ -1,0 +1,45 @@
+{
+  "tls": {
+    "file": "/opt/cipherbox/tests/fixtures/tls_session.pcap",
+    "sessions": 2,
+    "serverSubject": "CN=test-server,O=CipherBox Test,C=CN",
+    "clientSubject": "CN=test-client,O=CipherBox Test,C=CN"
+  },
+  "ssh": {
+    "file": "/opt/cipherbox/tests/fixtures/ssh_session.pcap",
+    "kexSecret": "2d1e29600f70858990f33ce1b20928a5b28b36f1f08ce18e739a697131c3198f",
+    "hostKeyFingerprintPrefix": "SHA256:",
+    "clientVersion": "SSH-2.0-OpenSSH_9.6p1",
+    "serverVersion": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.5",
+    "negotiatedKex": "curve25519-sha256",
+    "negotiatedEnc": "aes128-ctr",
+    "negotiatedMac": "hmac-sha2-256"
+  },
+  "ipsec": {
+    "file": "/opt/cipherbox/tests/fixtures/ipsec_ikev2.pcap",
+    "initiatorSPI": "8cf75ac6c8a8108d",
+    "responderSPI": "1b421357d9cf2cb4",
+    "clientSubject": "CN=ipsec-client,O=CipherBox Test,C=CN",
+    "serverSubject": "CN=ipsec-server,O=CipherBox Test,C=CN",
+    "encAlgorithm": "AES-CBC",
+    "encKeyLength": 256
+  },
+  "ipsecV1": {
+    "file": "/opt/cipherbox/tests/fixtures/ipsec_ikev1.pcap",
+    "initiatorSPI": "b8844275d38ef00a",
+    "responderSPI": "9c45ced22613fe3f",
+    "clientNonce": "bd94a1630f567334fb272729874fb743",
+    "protocol": "IKEv1"
+  },
+  "ukey": {
+    "file": "/opt/cipherbox/tests/fixtures/ukey_ccid.pcap",
+    "vendor": "飞天诚信",
+    "subject": "CN=ukey-user,O=CipherBox Test,C=CN",
+    "atr": "3B9F95803FC7A08031E073FE211B67",
+    "apduCommands": [
+      "SELECT",
+      "GET RESPONSE",
+      "READ BINARY"
+    ]
+  }
+}
