@@ -266,7 +266,12 @@ kYYV3kIvBL+bIauekAyLLw==
       ctx.state.cert = node.cert || '';
       ctx.state.certFormat = node.certFormat || 'PEM';
       ctx.state.nodeName = node.name || '';
+      // 切换节点后展示该节点自己的验证结果，避免显示上一个节点的数据
+      formatData = node.formatData || null;
+      chainData = node.chainData || null;
       draw();
+      setFormatBox();
+      setChainBox();
     }
 
     function statusBadge(status, emptyText) {
@@ -356,12 +361,14 @@ kYYV3kIvBL+bIauekAyLLw==
           node.chainStatus = null;
           node.formatResults = null;
           node.chainResults = null;
+          node.formatData = null;
+          node.chainData = null;
           ctx.state.cert = '';
           formatData = null;
           chainData = null;
           draw();
-          if (formatBox) formatBox.innerHTML = '';
-          if (chainBox) chainBox.innerHTML = '';
+          setFormatBox();
+          setChainBox();
           CB.toast('当前节点已清空', 'success');
         }),
         button('重置证书链', () => {
@@ -438,6 +445,16 @@ kYYV3kIvBL+bIauekAyLLw==
       draw();
     }
 
+    function section(title, nodes) {
+      const box = el('div', { class: 'mt12' });
+      box.appendChild(el('div', {
+        class: 'card-title',
+        style: 'margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--border)'
+      }, [title]));
+      nodes.forEach((n) => box.appendChild(n));
+      return box;
+    }
+
     function setFormatBox() {
       if (!formatBox) return;
       formatBox.innerHTML = '';
@@ -445,12 +462,14 @@ kYYV3kIvBL+bIauekAyLLw==
         formatBox.appendChild(el('div', { class: 'muted' }, ['暂无格式验证结果，请选择节点后点击“格式验证”']));
         return;
       }
-      const node = ctxRef ? current(ctxRef) : null;
-      formatBox.appendChild(el('div', { class: 'mt8 mono' }, ['节点：' + (node ? node.name : '')]));
+      const name = formatData.nodeName ||
+        (ctxRef ? ((current(ctxRef) || {}).name || '') : '');
+      formatBox.appendChild(el('div', { class: 'mt8 mono' }, ['节点：' + (name || '未命名节点')]));
       formatBox.appendChild(summaryLine(formatData.summary, formatData.status));
-      formatBox.appendChild(el('div', { class: 'mt12' }, [certInfoTable(formatData.cert)]));
-      formatBox.appendChild(el('div', { class: 'mt12' }, [itemsTable(formatData.items)]));
-      formatBox.appendChild(el('div', { class: 'mt12' }, [extTable((formatData.cert || {}).extensions)]));
+      formatBox.appendChild(section('证书信息', [certInfoTable(formatData.cert)]));
+      formatBox.appendChild(section('检查项（' + ((formatData.items || []).length) + ' 项）', [itemsTable(formatData.items)]));
+      formatBox.appendChild(section('扩展项（' + (((formatData.cert || {}).extensions || []).length) + ' 项）',
+        [extTable((formatData.cert || {}).extensions)]));
     }
 
     function setChainBox() {
@@ -481,7 +500,7 @@ kYYV3kIvBL+bIauekAyLLw==
         if (kind === 'format') { formatBox = node; setFormatBox(); }
         else { chainBox = node; setChainBox(); }
       },
-      resetBoxes: () => { formatData = null; chainData = null; }
+      resetBoxes: () => { formatData = null; chainData = null; setFormatBox(); setChainBox(); }
     };
   })();
 
@@ -521,8 +540,9 @@ kYYV3kIvBL+bIauekAyLLw==
           node.formatResults = data.items;
           node.formatStatus = data.status;
           node.formatSummary = data.summary;
+          node.formatData = Object.assign({}, data, { nodeName: node.name || '' });
           chainUI.draw();
-          chainUI.setFormatData(data);
+          chainUI.setFormatData(node.formatData);
           CB.toast(data.status === 'success' ? '格式验证完成：全部符合' : '格式验证完成：存在需关注项', data.status === 'error' ? 'warn' : 'success');
         }
       },
@@ -570,6 +590,7 @@ kYYV3kIvBL+bIauekAyLLw==
             node.chainResults = res.chainResults;
             node.chainStatus = res.status;
             node.chainSummary = res.chainSummary;
+            node.chainData = data;
           });
           chainUI.draw();
           chainUI.setChainData(data);

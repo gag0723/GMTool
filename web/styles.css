@@ -302,8 +302,9 @@ a { color: inherit; text-decoration: none; }
 
 /* 通用表格 */
 table.grid { width: 100%; border-collapse: collapse; font-size: 13px; }
-table.grid th, table.grid td { border-bottom: 1px solid var(--border); padding: 9px 10px; text-align: left; vertical-align: top; }
+table.grid th, table.grid td { border-bottom: 1px solid var(--border); padding: 9px 10px; text-align: left; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; }
 table.grid th { background: #f7f9fc; color: var(--text-2); font-weight: 600; white-space: nowrap; }
+table.grid td.mono { word-break: break-all; }
 table.grid tr:hover td { background: #fafbfd; }
 .tree { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px; }
 .tree li { list-style: none; margin: 2px 0; }

@@ -11,3 +11,9 @@ echo "== 自定义页面巡检：编码转换工具 =="
 node e2e/encode_check.js
 echo "== 自定义页面巡检：量化评估 =="
 node e2e/scoring_check.js
+echo "== 全站下拉巡检 =="
+node e2e/options_check.js
+echo "== 全站页面格式校验 =="
+node e2e/format_check.js
+echo "== 证书格式检查页面（自签证书） =="
+node e2e/cert_format_check.js
