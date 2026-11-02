@@ -5,6 +5,17 @@
 
 ## 启动
 
+源码运行（Linux / macOS / Windows 均可，需 Python 3.13+）：
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m waitress --host=0.0.0.0 --port=18080 --call app.server:create_app
+# 或直接： ./run.sh
+```
+
+内网部署脚本（默认 0.0.0.0:18080）：
+
 ```bash
 /opt/cipherbox/run.sh                 # 默认 0.0.0.0:18080
 CIPHERBOX_PORT=9090 /opt/cipherbox/run.sh
@@ -19,6 +30,31 @@ rc-service cipherbox start
 rc-update add cipherbox default
 ```
 
+## Windows 运行
+
+**方式一：直接下载独立包（推荐，无需装 Python）**
+
+从 Release 下载 `GMTool-windows-x64.zip`，解压后双击 `start.bat`，浏览器自动打开
+`http://127.0.0.1:18080/`。包内已内置 Python 3.13 + 全部依赖。详见 `windows/使用说明.txt`。
+
+**方式二：自行打包独立包**
+
+```bash
+./scripts/package_win.sh                    # 产物 dist/cipherbox-windows/ 与 dist/GMTool-windows-x64.zip
+FORCE_DOWNLOAD=1 ./scripts/package_win.sh   # 重新下载内嵌 Python 与 wheels
+```
+
+脚本会下载 Windows embeddable Python（默认 3.13.9）与 win_amd64 依赖 wheels，组装成
+`GMTool/` 目录并压缩（UTF-8 文件名，中文不乱码）；`start.bat` 自动转为 CRLF 行尾。
+
+**方式三：已有 Python 环境**
+
+```powershell
+python -m venv .venv
+.venv\Scripts\pip install -r requirements.txt
+.venv\Scripts\python -m waitress --host=0.0.0.0 --port=18080 --call app.server:create_app
+```
+
 ## 目录
 
 ```
@@ -28,8 +64,11 @@ app/server.py 应用入口（静态资源 + API）
 web/          前端（原生 JS，无构建，hash 路由）
   kit.js      页面框架：表单引擎、结果渲染、toast、抽屉
   modules/    各工具模块（CB.register）
+windows/      Windows 独立包用启动脚本与说明（start.bat / 使用说明.txt）
+scripts/      打包脚本（package_win.sh）
 tests/        pytest 接口/算法测试 + jsdom E2E
 data/         本地 CA 与运行期数据
+requirements.txt / requirements-dev.txt  运行 / 开发依赖
 ```
 
 ## 模块清单
@@ -48,7 +87,9 @@ data/         本地 CA 与运行期数据
 ## 测试
 
 ```bash
-/opt/cipherbox/test_all.sh          # pytest + jsdom E2E（需先启动服务）
+python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+cd tests && npm install && cd ..          # E2E 需要 jsdom
+./test_all.sh                             # pytest + jsdom E2E（需先启动服务）
 ```
 
 - `tests/test_*.py`：以 Flask test client 调用每个接口，含标准向量与往返校验。

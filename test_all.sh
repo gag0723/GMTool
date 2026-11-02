@@ -1,6 +1,7 @@
 #!/bin/sh
+# pytest + jsdom E2E（E2E 需服务已在运行，可用 CB_BASE 指定地址）
 set -e
-cd /opt/cipherbox
+cd "$(dirname "$0")"
 echo "== 后端单元/接口测试 =="
 .venv/bin/python -m pytest tests -q
 echo "== 前端 E2E（jsdom）=="
