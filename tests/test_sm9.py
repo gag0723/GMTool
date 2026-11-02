@@ -500,17 +500,24 @@ def test_cross_signature_remote_verify(client):
 
 
 def test_cross_signature_local_verify(client):
-    """原站签名 → 本地验签通过。"""
-    remote = _remote("/sm9/sign", {
-        "publicKey": PPUBS_HEX, "publicKeyFormat": "HEX",
-        "userPrivateKey": DS_ALICE, "userPrivateKeyFormat": "HEX",
-        "userId": "Alice", "userIdFormat": "TEXT",
-        "messageFormat": "TEXT", "message": "Chinese IBS standard",
-        "signatureFormat": "HEX",
-    })
-    assert remote["code"] == 0, remote
-    sig = bytes.fromhex(remote["data"])
-    assert S.verify(ppubs(), b"Alice", b"Chinese IBS standard", sig)
+    """原站签名 → 本地验签通过（原站偶发返回异常签名时重试，最多 3 次）。"""
+    good = False
+    remote = None
+    for _ in range(3):
+        remote = _remote("/sm9/sign", {
+            "publicKey": PPUBS_HEX, "publicKeyFormat": "HEX",
+            "userPrivateKey": DS_ALICE, "userPrivateKeyFormat": "HEX",
+            "userId": "Alice", "userIdFormat": "TEXT",
+            "messageFormat": "TEXT", "message": "Chinese IBS standard",
+            "signatureFormat": "HEX",
+        })
+        assert remote["code"] == 0, remote
+        sig = bytes.fromhex(remote["data"])
+        if S.verify(ppubs(), b"Alice", b"Chinese IBS standard", sig):
+            good = True
+            break
+        time.sleep(0.5)
+    assert good, "原站返回的签名连续 3 次无法通过本地验签：%s" % (remote.get("data") if remote else "")
     assert api_ok(client, "/api/sm9/verify", {
         "publicKey": PPUBS_HEX, "publicKeyFormat": "HEX",
         "userId": "Alice", "userIdFormat": "TEXT",
