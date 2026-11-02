@@ -1,13 +1,9 @@
-"""量化评估（GB/T 39786-2021 四个技术层面）。
+"""量化评估（《商用密码应用安全性评估量化评估规则》2023 版）。
 
-评分规则交叉验证：原站量化评估为纯前端计算（scoringView chunk 中
-X / te / ne / oe 函数），本测试按原站同一套公式与分值复算层面得分率，
-与本地实现逐层比对，验证「单元分值 = 对象均值」「层面得分率 = 加权平均」
-「总分 = 各层面得分率 × 25%」三条规则一致。
+覆盖：按级别裁剪的指标模型、表1 分值映射（Ra/Rk）、弥补规则、单元算术平均、
+层面加权平均、技术要求 70 分 / 管理要求 30 分、60 分阈值与错误路径。
 """
 from __future__ import annotations
-
-import copy
 
 import pytest
 
@@ -26,219 +22,294 @@ def ok_data(client, path, payload):
     return body["data"]
 
 
-def full_objects(score: int) -> list:
-    objects = []
-    for layer in scoring.LAYERS:
-        scores = {item["key"]: score for item in layer["items"]}
-        objects.append({"layer": layer["key"], "name": layer["objectLabel"] + "1", "scores": scores})
-    return objects
+def rows_from_model(model, status="full"):
+    """按模型生成“所有对象全部同一判定”的 rows（管理层面自动映射为部分符合）。"""
+    rows = []
+    for layer in model["layers"]:
+        layer_status = status
+        if layer["kind"] == "manage" and status.startswith("partial"):
+            layer_status = "partial"
+        if layer["kind"] == "manage":
+            for unit in layer["units"]:
+                rows.append({"layer": layer["key"], "unit": unit["key"],
+                             "target": layer["target"], "status": layer_status})
+            continue
+        for name in scoring.default_targets(scoring.LAYER_MAP[layer["key"]]):
+            for unit in layer["units"]:
+                rows.append({"layer": layer["key"], "unit": unit["key"],
+                             "target": name, "status": layer_status})
+    return rows
+
+
+def layer_of(data, key):
+    return next(layer for layer in data["layers"] if layer["key"] == key)
 
 
 # ---------------------------------------------------------------------------
-# 指标模型
+# 指标模型（表4 裁剪）
 # ---------------------------------------------------------------------------
 
 def test_model_structure(client):
     model = ok_data(client, "/api/scoring/model", {"grade": 3})
-    assert model["grade"] == 3 and model["gradeLabel"] == "三级"
-    assert [layer["key"] for layer in model["layers"]] == ["physical", "network", "device", "app"]
-    assert all(layer["weight"] == 0.25 for layer in model["layers"])
-    counts = {layer["key"]: len(layer["items"]) for layer in model["layers"]}
-    assert counts == {"physical": 3, "network": 5, "device": 6, "app": 8}
-    assert model["thresholds"] == {"pass": 90.0, "basic": 70.0}
-    names = {item["name"] for layer in model["layers"] for item in layer["items"]}
-    for required in ("身份鉴别", "电子门禁记录数据存储完整性", "视频监控记录数据存储完整性",
-                     "通信数据完整性", "安全接入认证", "日志记录完整性", "远程管理通道安全",
-                     "重要可执行程序完整性、重要可执行程序来源真实性",
-                     "重要数据传输机密性", "重要数据存储完整性", "不可否认性"):
-        assert required in names
-
-
-def test_model_grade2_is_subset(client):
-    model2 = ok_data(client, "/api/scoring/model", {"grade": 2})
-    counts = {layer["key"]: len(layer["items"]) for layer in model2["layers"]}
-    assert counts == {"physical": 2, "network": 4, "device": 3, "app": 6}
-    keys3 = {layer["key"]: {i["key"] for i in layer["items"]}
-             for layer in ok_data(client, "/api/scoring/model", {"grade": 3})["layers"]}
-    for layer in model2["layers"]:
-        assert {i["key"] for i in layer["items"]} <= keys3[layer["key"]]
-
-
-def test_model_get_and_bad_grade(client):
-    assert client.get("/api/scoring/model?grade=4").get_json()["data"]["grade"] == 4
-    body = client.post("/api/scoring/model", json={"grade": 5}).get_json()
-    assert body["code"] == 1 and "等级" in body["msg"]
-
-
-def test_default_objects(client):
-    data = ok_data(client, "/api/scoring/default", {})
-    assert len(data["objects"]) == 4
-    assert {o["layer"] for o in data["objects"]} == {"physical", "network", "device", "app"}
-
-
-# ---------------------------------------------------------------------------
-# 评分计算
-# ---------------------------------------------------------------------------
-
-def test_evaluate_default_dataset(client):
-    data = ok_data(client, "/api/scoring/evaluate",
-                   {"grade": 3, "objects": copy.deepcopy(scoring.DEFAULT_OBJECTS)})
-    assert data["total"] == pytest.approx(87.15, abs=0.01)
-    assert data["grade"] == "基本符合"
-    assert len(data["layers"]) == 4
-    assert all(layer["weight"] == 0.25 for layer in data["layers"])
-    # 层面得分都应按 0~100 归一
-    for layer in data["layers"]:
-        assert 0 <= layer["score"] <= 100
-    # 明细条数 = 各层面「指标 × 对象」适用组合数
-    expected = 0
-    for layer in data["layers"]:
-        for item in layer["items"]:
-            if item["applicable"]:
-                expected += len([o for o in item["objects"] if o["score"] is not None])
-    assert len(data["details"]) == expected
-    assert data["suggestions"], "存在非满分指标时应给出整改建议"
-
-
-def test_evaluate_all_full_score(client):
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": full_objects(3)})
-    assert data["total"] == 100.0 and data["grade"] == "符合"
-    assert data["suggestions"] == []
-    for layer in data["layers"]:
-        assert layer["score"] == 100.0
-
-
-def test_evaluate_all_zero(client):
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": full_objects(0)})
-    assert data["total"] == 0.0 and data["grade"] == "不符合"
-    assert "得分为 0" in data["gradeReason"]
-
-
-def test_grade_thresholds(client):
-    # 构造 90 分附近：三层满分、一层 60% → (100*3 + 60)/4 = 90
-    objects = full_objects(3)
-    for obj in objects:
-        if obj["layer"] == "app":
-            obj["scores"] = {k: (3 if i % 5 else 0) for i, k in enumerate(obj["scores"])}
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": objects})
-    assert data["total"] < 100
-    # 一层 0 分直接判不符合
-    zero_layer = full_objects(3)
-    for obj in zero_layer:
-        if obj["layer"] == "network":
-            obj["scores"] = {k: 0 for k in obj["scores"]}
-    bad = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": zero_layer})
-    assert bad["grade"] == "不符合" and "网络和通信安全" in bad["gradeReason"]
-
-
-def test_multiple_objects_are_averaged(client):
-    objects = [
-        {"layer": "physical", "name": "机房A", "scores": {"identity": 3, "access_record": 3, "video_record": 3}},
-        {"layer": "physical", "name": "机房B", "scores": {"identity": 0, "access_record": 0, "video_record": 0}},
-        {"layer": "network", "name": "通道1", "scores": {i["key"]: 3 for i in scoring.LAYERS[1]["items"]}},
-        {"layer": "device", "name": "设备1", "scores": {i["key"]: 3 for i in scoring.LAYERS[2]["items"]}},
-        {"layer": "app", "name": "应用1", "scores": {i["key"]: 3 for i in scoring.LAYERS[3]["items"]}},
+    assert model["grade"] == 3 and model["gradeLabel"] == "第三级"
+    assert [layer["key"] for layer in model["layers"]] == [
+        "physical", "network", "device", "app",
+        "manage_policy", "manage_people", "manage_build", "manage_emergency",
     ]
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": objects})
-    physical = next(layer for layer in data["layers"] if layer["key"] == "physical")
-    assert physical["score"] == pytest.approx(50.0, abs=0.01)
-    assert physical["objectCount"] == 2
+    assert [layer["weight"] for layer in model["layers"]] == [10, 20, 10, 30, 8, 8, 8, 6]
+    assert model["techWeightSum"] == 70 and model["manageWeightSum"] == 30
+    assert model["threshold"] == 60
+    counts = [len(layer["units"]) for layer in model["layers"]]
+    assert counts == [3, 5, 6, 8, 6, 5, 5, 3]
 
 
-def test_not_applicable_item_excluded(client):
-    objects = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    for obj in objects:
-        if obj["layer"] == "device":
-            obj["scores"]["executable"] = None   # 整项不适用（只有一个对象）
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": objects})
-    device = next(layer for layer in data["layers"] if layer["key"] == "device")
-    item = next(i for i in device["items"] if i["key"] == "executable")
-    assert item["applicable"] is False and item["unitScore"] is None
-    assert device["applicableItems"] == 5
-    assert data["stats"]["notApplicableItems"] == 1
+@pytest.mark.parametrize("grade,tech,manage", [(1, 15, 9), (2, 15, 12), (3, 22, 19), (4, 22, 19)])
+def test_model_grade_trim(client, grade, tech, manage):
+    model = ok_data(client, "/api/scoring/model", {"grade": grade})
+    kinds = {"tech": 0, "manage": 0}
+    for layer in model["layers"]:
+        kinds[layer["kind"]] += len(layer["units"])
+    assert kinds["tech"] == tech and kinds["manage"] == manage
 
 
-def test_not_applicable_object_within_item(client):
-    objects = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    extra = {"layer": "physical", "name": "机房2",
-             "scores": {"identity": None, "access_record": None, "video_record": None}}
-    objects.append(extra)
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": objects})
-    physical = next(layer for layer in data["layers"] if layer["key"] == "physical")
-    identity = next(i for i in physical["items"] if i["key"] == "identity")
-    # 机房2 该项不适用，单元分值只按机房1 的 3 分计算
-    assert identity["unitScore"] == 3.0
+def test_model_grade2_excludes_grade3_units(client):
+    model2 = ok_data(client, "/api/scoring/model", {"grade": 2})
+    units = {(layer["key"], unit["key"]) for layer in model2["layers"] for unit in layer["units"]}
+    assert ("physical", "video_record") not in units
+    assert ("network", "access_auth") not in units
+    assert ("device", "remote_admin") not in units
+    assert ("device", "executable") not in units
+    assert ("app", "non_repudiation") not in units
+    assert ("manage_policy", "review") not in units
+    # 二级下这些指标的权重取自表4 第二级列
+    weights = {unit["key"]: unit["weight"]
+               for layer in model2["layers"] if layer["key"] == "network" for unit in layer["units"]}
+    assert weights["identity"] == 0.7 and weights["comm_integrity"] == 0.4
+
+
+def test_model_weight_table(client):
+    """抽查表4 中的权重取值。"""
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    w = {(layer["key"], unit["key"]): unit["weight"]
+         for layer in model["layers"] for unit in layer["units"]}
+    assert w[("physical", "identity")] == 1
+    assert w[("physical", "door_record")] == 0.7
+    assert w[("network", "boundary_acl")] == 0.4
+    assert w[("network", "access_auth")] == 0.4
+    assert w[("device", "executable")] == 0.7
+    assert w[("app", "non_repudiation")] == 1
+    assert w[("manage_emergency", "handle")] == 0.7
+
+
+def test_model_bad_grade(client):
+    body = client.post("/api/scoring/model", json={"grade": 5}).get_json()
+    assert body["code"] == 1 and "级别" in body["msg"]
+
+
+def test_default_rows(client):
+    data = ok_data(client, "/api/scoring/default", {"grade": 3})
+    assert data["grade"] == 3 and len(data["rows"]) > 0
+    assert {row["layer"] for row in data["rows"]} == {layer["key"] for layer in scoring.LAYERS}
+    # 默认数据可直接用于计算
+    result = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": data["rows"]})
+    assert 0 <= result["total"] <= 100
+
+
+# ---------------------------------------------------------------------------
+# 表2 / 表3 修正参数
+# ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize("grade,module,rk", [
+    (1, 0, 1.0), (2, 0, 1.0), (2, 1, 1.0),
+    (3, 0, 1.0), (3, 1, 1.2), (3, 2, 1.0),
+    (4, 1, 1.0), (4, 2, 1.5),
+])
+def test_rk_table(grade, module, rk):
+    assert scoring.rk_of(grade, module) == rk
+
+
+def test_status_scores_table1():
+    layer = scoring.LAYER_MAP["app"]
+    assert scoring.status_score({"status": "full"}, layer, 1, 1.2) == 1.0
+    assert scoring.status_score({"status": "none"}, layer, 1, 1.2) == 0.0
+    assert scoring.status_score({"status": "na"}, layer, 1, 1.2) is None
+    assert scoring.status_score({"status": "partial_compliance"}, layer, 0.5, 1.2) == 0.25
+    assert scoring.status_score({"status": "partial_key"}, layer, 0.5, 1.2) == 0.6
+    assert scoring.status_score({"status": "partial_both"}, layer, 0.5, 1.2) == 0.15
+    manage = scoring.LAYER_MAP["manage_policy"]
+    assert scoring.status_score({"status": "full"}, manage, 1, 1) == 1.0
+    assert scoring.status_score({"status": "partial"}, manage, 1, 1) == 0.5
+
+
+# ---------------------------------------------------------------------------
+# 计算规则
+# ---------------------------------------------------------------------------
+
+def test_all_full_is_100(client):
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows_from_model(model)})
+    assert data["total"] == 100.0
+    assert data["conclusion"] == "通过"
+    assert data["techScore"] == 100.0 and data["manageScore"] == 100.0
+    assert all(layer["score"] == 1.0 for layer in data["layers"])
+    assert data["suggestions"] == []
+
+
+def test_all_none_is_zero(client):
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows_from_model(model, "none")})
+    assert data["total"] == 0.0
+    assert data["conclusion"] == "不通过"
+
+
+def test_app_layer_zero_gives_70(client):
+    """应用和数据安全层面 0 分：技术要求 = (10+20+10)/70×70 = 40，管理 30 → 总分 70。"""
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    rows = rows_from_model(model)
+    for row in rows:
+        if row["layer"] == "app":
+            row["status"] = "none"
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows})
+    assert layer_of(data, "app")["score"] == 0.0
+    assert data["total"] == pytest.approx(70.0, abs=0.01)
+
+
+def test_manage_layer_zero_gives_70(client):
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    rows = rows_from_model(model)
+    for row in rows:
+        if row["layer"].startswith("manage_"):
+            row["status"] = "none"
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows})
+    assert data["manageScore"] == 0.0
+    assert data["total"] == pytest.approx(70.0, abs=0.01)
+
+
+def test_unit_average_and_layer_weighted(client):
+    """单对象场景：单元分值即对象分值；层面分值 = Σw·S/Σw。"""
+    rows = [
+        {"layer": "physical", "unit": "identity", "target": "机房1", "status": "full"},
+        {"layer": "physical", "unit": "door_record", "target": "机房1", "status": "none"},
+        {"layer": "physical", "unit": "video_record", "target": "机房1", "status": "partial_compliance"},
+        {"layer": "network", "unit": "identity", "target": "通道1", "status": "full"},
+        {"layer": "app", "unit": "identity", "target": "应用1", "status": "full"},
+        {"layer": "manage_policy", "unit": "policy", "target": "制度", "status": "full"},
+    ]
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows, "ra": 0.5})
+    physical = layer_of(data, "physical")
+    # 0.5Ra = 0.25；层面 = (1×1 + 0.7×0 + 0.7×0.25)/(1+0.7+0.7)
+    expected = (1 * 1 + 0.7 * 0 + 0.7 * 0.25) / 2.4
+    assert physical["score"] == pytest.approx(round(expected, 4), abs=1e-4)
+    units = {unit["key"]: unit for unit in physical["units"]}
+    assert units["identity"]["score"] == 1.0
+    assert units["video_record"]["score"] == 0.25
+    # 技术要求只有物理(10)、网络(20)、应用(30) 三层参与
+    assert data["techScore"] == pytest.approx(
+        round((10 * physical["score"] + 20 * 1 + 30 * 1) / 60 * 100, 4), abs=1e-3)
+
+
+def test_multiple_targets_averaged(client):
+    rows = [
+        {"layer": "physical", "unit": "identity", "target": "机房A", "status": "full"},
+        {"layer": "physical", "unit": "identity", "target": "机房B", "status": "none"},
+        {"layer": "network", "unit": "identity", "target": "通道1", "status": "full"},
+    ]
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows})
+    unit = next(u for u in layer_of(data, "physical")["units"] if u["key"] == "identity")
+    assert unit["score"] == 0.5 and unit["count"] == 2
+
+
+def test_not_applicable_excluded(client):
+    """整单元不适用时，该单元不参与层面加权。"""
+    rows = [
+        {"layer": "physical", "unit": "identity", "target": "机房1", "status": "full"},
+        {"layer": "physical", "unit": "door_record", "target": "机房1", "status": "na"},
+    ]
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows})
+    physical = layer_of(data, "physical")
+    assert [u["key"] for u in physical["units"]] == ["identity"]
+    assert physical["score"] == 1.0
+
+
+def test_compensation_rule(client):
+    """A 弥补 B：B = MAX(0.5×PA, PB)。"""
+    rows = [
+        {"layer": "physical", "unit": "identity", "target": "机房A", "status": "full"},
+        {"layer": "physical", "unit": "identity", "target": "机房B", "status": "none",
+         "compensate": "机房A"},
+    ]
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows})
+    unit = next(u for u in layer_of(data, "physical")["units"] if u["key"] == "identity")
+    assert unit["score"] == pytest.approx(0.75, abs=1e-4)
+    assert data["compensations"] and data["compensations"][0]["after"] == 0.5
+    detail = next(d for d in data["details"] if d["object"] == "机房B")
+    assert detail["score"] == 0.5 and detail["compensatedBy"] == "机房A"
+
+
+def test_partial_manage_and_key_is_50(client):
+    """技术要求与管理要求均为 0.5：总分 = 0.5×70 + 0.5×30 = 50 分，未达阈值。"""
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    rows = []
+    for layer in model["layers"]:
+        status = "partial" if layer["kind"] == "manage" else "partial_key"
+        if layer["kind"] == "manage":
+            for unit in layer["units"]:
+                rows.append({"layer": layer["key"], "unit": unit["key"],
+                             "target": layer["target"], "status": status})
+        else:
+            for name in scoring.default_targets(scoring.LAYER_MAP[layer["key"]]):
+                for unit in layer["units"]:
+                    rows.append({"layer": layer["key"], "unit": unit["key"],
+                                 "target": name, "status": status})
+    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows,
+                                                     "ra": 1, "moduleLevel": 0})
+    # Rk = 1（三级未使用一级密码模块）→ 部分符合（密钥管理问题）= 0.5
+    assert data["total"] == pytest.approx(50.0, abs=0.01)
+    assert data["conclusion"] == "不通过"
+
+
+def test_rk_affects_total(client):
+    model = ok_data(client, "/api/scoring/model", {"grade": 3})
+    rows = rows_from_model(model, "partial_key")
+    low = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows, "moduleLevel": 0})
+    high = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "rows": rows, "moduleLevel": 1})
+    assert low["rk"] == 1.0 and high["rk"] == 1.2
+    assert high["total"] > low["total"]
+    assert low["total"] == pytest.approx(50.0, abs=0.01)
+    # 技术要求 0.6×70 = 42 + 管理要求 0.5×30 = 15 → 57
+    assert high["total"] == pytest.approx(57.0, abs=0.01)
 
 
 def test_evaluate_errors(client):
-    assert client.post("/api/scoring/evaluate", json={"objects": []}).get_json()["code"] == 1
-    bad_layer = [{"layer": "未知层面", "name": "x", "scores": {}}]
-    body = client.post("/api/scoring/evaluate", json={"objects": bad_layer}).get_json()
+    assert client.post("/api/scoring/evaluate", json={"rows": []}).get_json()["code"] == 1
+    bad_layer = [{"layer": "未知层面", "unit": "identity", "target": "x", "status": "full"}]
+    body = client.post("/api/scoring/evaluate", json={"rows": bad_layer}).get_json()
     assert body["code"] == 1 and "层面" in body["msg"]
-    bad_score = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    bad_score[0]["scores"]["identity"] = 9
-    body = client.post("/api/scoring/evaluate", json={"objects": bad_score}).get_json()
-    assert body["code"] == 1 and "0~3" in body["msg"]
-    no_name = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    no_name[0]["name"] = " "
-    assert client.post("/api/scoring/evaluate", json={"objects": no_name}).get_json()["code"] == 1
-    too_few = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    for obj in too_few:
-        obj["scores"] = {k: None for k in obj["scores"]}
-    body = client.post("/api/scoring/evaluate", json={"objects": too_few}).get_json()
-    assert body["code"] == 1 and "不适用" in body["msg"]
+    bad_unit = [{"layer": "physical", "unit": "nope", "target": "x", "status": "full"}]
+    assert client.post("/api/scoring/evaluate", json={"rows": bad_unit}).get_json()["code"] == 1
+    bad_status = [{"layer": "physical", "unit": "identity", "target": "x", "status": "weird"}]
+    assert client.post("/api/scoring/evaluate", json={"rows": bad_status}).get_json()["code"] == 1
+    bad_ra = [{"layer": "physical", "unit": "identity", "target": "x", "status": "full"}]
+    body = client.post("/api/scoring/evaluate", json={"rows": bad_ra, "ra": 0.9}).get_json()
+    assert body["code"] == 1 and "Ra" in body["msg"]
+    bad_comp = [{"layer": "physical", "unit": "identity", "target": "x", "status": "none",
+                 "compensate": "不存在"}]
+    body = client.post("/api/scoring/evaluate", json={"rows": bad_comp}).get_json()
+    assert body["code"] == 1 and "弥补" in body["msg"]
+    all_na = [{"layer": "physical", "unit": "identity", "target": "x", "status": "na"}]
+    body = client.post("/api/scoring/evaluate", json={"rows": all_na}).get_json()
+    assert body["code"] == 1
 
 
-def test_evaluate_grade2_ignores_grade3_items(client):
-    objects = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    data2 = ok_data(client, "/api/scoring/evaluate", {"grade": 2, "objects": objects})
-    items = {(layer["key"], item["key"]) for layer in data2["layers"] for item in layer["items"]}
-    assert ("physical", "video_record") not in items
-    assert ("device", "remote_admin") not in items
-    assert ("app", "non_repudiation") not in items
-    assert len(items) == 15  # 2 + 4 + 3 + 6
-
-
-# ---------------------------------------------------------------------------
-# 与原站评分规则交叉复算
-# ---------------------------------------------------------------------------
-
-def original_layer_ratio(layer_key, objects, weights) -> float:
-    """复刻原站 scoringView 中的 X（单元分值）与 ne/oe（层面加权平均）。
-
-    原站对象分值范围为 0 / 0.25 / 0.5 / 1，本工具为 0~3 分，因此按 s/3 归一后
-    公式完全一致：unitScore = mean(targetScore)，层面得分率 = Σ(unit×w)/Σw。
-    """
-    ratio_sum = 0.0
-    weight_sum = 0.0
-    for item_key, weight in weights.items():
-        values = [o["scores"][item_key] / 3.0 for o in objects
-                  if o["layer"] == layer_key and o["scores"].get(item_key) is not None]
-        if not values:
-            continue
-        unit = sum(values) / len(values)
-        ratio_sum += unit * weight
-        weight_sum += weight
-    return 0.0 if weight_sum == 0 else ratio_sum / weight_sum
-
-
-def test_layer_scores_match_original_formula(client):
-    model = ok_data(client, "/api/scoring/model", {"grade": 3})
-    weights = {layer["key"]: {item["key"]: item["weight"] for item in layer["items"]}
-               for layer in model["layers"]}
-    objects = copy.deepcopy(scoring.DEFAULT_OBJECTS)
-    data = ok_data(client, "/api/scoring/evaluate", {"grade": 3, "objects": objects})
-    for layer in data["layers"]:
-        expected = original_layer_ratio(layer["key"], objects, weights[layer["key"]])
-        assert layer["ratio"] == pytest.approx(round(expected, 4), abs=1e-4)
-        assert layer["score"] == pytest.approx(round(expected * 100, 2), abs=0.01)
-    # 总分 = Σ(层面得分率 × 25%)
-    total = sum(layer["ratio"] * 0.25 for layer in data["layers"]) * 100
-    assert data["total"] == pytest.approx(round(total, 2), abs=0.01)
-
-
-def test_weights_cover_all_items(client):
-    model = ok_data(client, "/api/scoring/model", {"grade": 3})
-    for layer in model["layers"]:
-        assert all(item["weight"] in (1.0, 0.7) for item in layer["items"])
-        assert layer["weight"] * 4 == 1.0
+def test_rounding_4_and_2(client):
+    rows = [
+        {"layer": "physical", "unit": "identity", "target": "机房A", "status": "partial_both"},
+        {"layer": "physical", "unit": "identity", "target": "机房B", "status": "partial_both"},
+        {"layer": "physical", "unit": "identity", "target": "机房C", "status": "full"},
+    ]
+    data = ok_data(client, "/api/scoring/evaluate",
+                   {"grade": 3, "rows": rows, "ra": 0.2, "moduleLevel": 0})
+    # 0.25 × 0.2 × 1 = 0.05；均值 = (0.05+0.05+1)/3 = 0.3667
+    unit = next(u for u in layer_of(data, "physical")["units"] if u["key"] == "identity")
+    assert unit["score"] == pytest.approx(0.3667, abs=1e-4)
+    assert len(str(data["total"]).split(".")[-1]) <= 2

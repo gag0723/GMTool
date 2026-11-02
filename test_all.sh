@@ -7,3 +7,7 @@ echo "== 后端单元/接口测试 =="
 echo "== 前端 E2E（jsdom）=="
 cd tests
 node e2e/all_modules.js
+echo "== 自定义页面巡检：编码转换工具 =="
+node e2e/encode_check.js
+echo "== 自定义页面巡检：量化评估 =="
+node e2e/scoring_check.js

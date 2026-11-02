@@ -216,9 +216,10 @@ def sign_issue():
     return ok(core.issue_certificate(p))
 
 
-@bp.get("/ca/info")
+@bp.route("/ca/info", methods=["GET", "POST"])
 def ca_info():
-    family = (request.args.get("algorithm") or "SM2").upper()
+    body = request.get_json(silent=True) or {}
+    family = (body.get("algorithm") or request.args.get("algorithm") or "SM2").upper()
     if family not in ("SM2", "RSA"):
         raise ToolError("本地 CA 仅支持 SM2 / RSA")
     return ok(core.ca_info(family))

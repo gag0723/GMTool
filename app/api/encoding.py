@@ -27,7 +27,7 @@ def charset():
     return ok(encoding.charset_convert(text, src, dst))
 
 
-@bp.get("/charsets")
+@bp.route("/charsets", methods=["GET", "POST"])
 def charsets():
     return ok(encoding.CHARSETS)
 

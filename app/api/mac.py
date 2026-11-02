@@ -52,7 +52,7 @@ def calc():
     return ok(out)
 
 
-@bp.get("/algorithms")
+@bp.route("/algorithms", methods=["GET", "POST"])
 def algorithms():
     """算法、模式、填充的可选值（供前端/联调参考）。"""
     return ok(
